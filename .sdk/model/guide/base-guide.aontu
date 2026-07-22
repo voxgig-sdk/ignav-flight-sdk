@@ -1,0 +1,35 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 4
+  metrics: count: path: 5
+  metrics: count: method: 5
+
+  entity: airport: {
+    path: "/api/airports": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: booking_link: {
+    path: "/api/fares/booking-links": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: fare_search_model: {
+    path: "/api/fares/search": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: fare_search_response_model: {
+    path: "/api/fares/one-way": {
+      op: create: method: *POST
+    }
+    path: "/api/fares/round-trip": {
+      op: create: method: *POST
+    }
+  }
+
+}

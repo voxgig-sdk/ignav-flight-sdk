@@ -1,0 +1,153 @@
+# Entity: fare_search_response_model
+
+main: kit: entity: fare_search_response_model: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "adult"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "airlines_exclude"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "airlines_include"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "allow_self_transfer"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "cabin_class"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "child"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "departure_date"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "departure_time_range"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "destination"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "infants_in_seat"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "infants_on_lap"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "itinerary"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "market"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "max_price"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "max_stop"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "min_carry_on_bag"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "min_checked_bag"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "origin"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "return_date"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "return_time_range"
+      req: false
+      type: "`$ANY`"
+    }
+  ]
+
+  name: "fare_search_response_model"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/fares/one-way"
+          parts: [
+            "api"
+            "fares"
+            "one-way"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "POST"
+          orig: "/api/fares/round-trip"
+          parts: [
+            "api"
+            "fares"
+            "round-trip"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

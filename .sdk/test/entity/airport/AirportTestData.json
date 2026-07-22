@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "airport": {
+      "AIRPORT00": {
+        "city": "s28",
+        "code": "s29",
+        "country": "s2a",
+        "name": "s2b"
+      },
+      "AIRPORT01": {
+        "city": "s50",
+        "code": "s51",
+        "country": "s52",
+        "name": "s53"
+      },
+      "AIRPORT02": {
+        "city": "s78",
+        "code": "s79",
+        "country": "s7a",
+        "name": "s7b"
+      }
+    }
+  },
+  "new": {
+    "airport": {
+      "airport_ref01": {
+        "city": "sa0",
+        "code": "sa1",
+        "country": "sa2",
+        "name": "sa3"
+      }
+    }
+  }
+}

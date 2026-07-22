@@ -1,0 +1,594 @@
+package core
+
+func MakeConfig() map[string]any {
+	return map[string]any{
+		"main": map[string]any{
+			"name": "IgnavFlight",
+		},
+		"feature": map[string]any{
+			"test": map[string]any{
+				"options": map[string]any{
+					"active": false,
+				},
+			},
+		},
+		"options": map[string]any{
+			"base": "https://ignav.com",
+			"auth": map[string]any{
+				"prefix": "",
+			},
+			"headers": map[string]any{
+				"content-type": "application/json",
+			},
+			"entity": map[string]any{
+				"airport": map[string]any{},
+				"booking_link": map[string]any{},
+				"fare_search_model": map[string]any{},
+				"fare_search_response_model": map[string]any{},
+			},
+		},
+		"entity": map[string]any{
+			"airport": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"active": true,
+						"name": "city",
+						"req": true,
+						"type": "`$STRING`",
+						"index$": 0,
+					},
+					map[string]any{
+						"active": true,
+						"name": "code",
+						"req": true,
+						"type": "`$STRING`",
+						"index$": 1,
+					},
+					map[string]any{
+						"active": true,
+						"name": "country",
+						"req": true,
+						"type": "`$STRING`",
+						"index$": 2,
+					},
+					map[string]any{
+						"active": true,
+						"name": "name",
+						"req": true,
+						"type": "`$STRING`",
+						"index$": 3,
+					},
+				},
+				"name": "airport",
+				"op": map[string]any{
+					"list": map[string]any{
+						"input": "data",
+						"name": "list",
+						"points": []any{
+							map[string]any{
+								"active": true,
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"active": true,
+											"example": 10,
+											"kind": "query",
+											"name": "limit",
+											"orig": "limit",
+											"reqd": false,
+											"type": "`$INTEGER`",
+										},
+										map[string]any{
+											"active": true,
+											"kind": "query",
+											"name": "q",
+											"orig": "q",
+											"reqd": true,
+											"type": "`$STRING`",
+										},
+									},
+								},
+								"method": "GET",
+								"orig": "/api/airports",
+								"parts": []any{
+									"api",
+									"airports",
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"limit",
+										"q",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"index$": 0,
+							},
+						},
+						"key$": "list",
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+			"booking_link": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"active": true,
+						"name": "adult",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 0,
+					},
+					map[string]any{
+						"active": true,
+						"name": "child",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 1,
+					},
+					map[string]any{
+						"active": true,
+						"name": "departure_date",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 2,
+					},
+					map[string]any{
+						"active": true,
+						"name": "destination",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 3,
+					},
+					map[string]any{
+						"active": true,
+						"name": "ignav_id",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 4,
+					},
+					map[string]any{
+						"active": true,
+						"name": "inbound_carrier_code",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 5,
+					},
+					map[string]any{
+						"active": true,
+						"name": "inbound_flight_number",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 6,
+					},
+					map[string]any{
+						"active": true,
+						"name": "infants_in_seat",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 7,
+					},
+					map[string]any{
+						"active": true,
+						"name": "infants_on_lap",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 8,
+					},
+					map[string]any{
+						"active": true,
+						"name": "market",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 9,
+					},
+					map[string]any{
+						"active": true,
+						"name": "origin",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 10,
+					},
+					map[string]any{
+						"active": true,
+						"name": "outbound_carrier_code",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 11,
+					},
+					map[string]any{
+						"active": true,
+						"name": "outbound_flight_number",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 12,
+					},
+					map[string]any{
+						"active": true,
+						"name": "return_date",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 13,
+					},
+				},
+				"name": "booking_link",
+				"op": map[string]any{
+					"create": map[string]any{
+						"input": "data",
+						"name": "create",
+						"points": []any{
+							map[string]any{
+								"active": true,
+								"args": map[string]any{},
+								"method": "POST",
+								"orig": "/api/fares/booking-links",
+								"parts": []any{
+									"api",
+									"fares",
+									"booking-links",
+								},
+								"select": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"index$": 0,
+							},
+						},
+						"key$": "create",
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+			"fare_search_model": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"active": true,
+						"name": "adult",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 0,
+					},
+					map[string]any{
+						"active": true,
+						"name": "airlines_exclude",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 1,
+					},
+					map[string]any{
+						"active": true,
+						"name": "airlines_include",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 2,
+					},
+					map[string]any{
+						"active": true,
+						"name": "allow_self_transfer",
+						"req": false,
+						"type": "`$BOOLEAN`",
+						"index$": 3,
+					},
+					map[string]any{
+						"active": true,
+						"name": "cabin_class",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 4,
+					},
+					map[string]any{
+						"active": true,
+						"name": "child",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 5,
+					},
+					map[string]any{
+						"active": true,
+						"name": "infants_in_seat",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 6,
+					},
+					map[string]any{
+						"active": true,
+						"name": "infants_on_lap",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 7,
+					},
+					map[string]any{
+						"active": true,
+						"name": "itinerary",
+						"req": true,
+						"type": "`$ARRAY`",
+						"index$": 8,
+					},
+					map[string]any{
+						"active": true,
+						"name": "leg",
+						"req": true,
+						"type": "`$ARRAY`",
+						"index$": 9,
+					},
+					map[string]any{
+						"active": true,
+						"name": "market",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 10,
+					},
+					map[string]any{
+						"active": true,
+						"name": "max_price",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 11,
+					},
+					map[string]any{
+						"active": true,
+						"name": "min_carry_on_bag",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 12,
+					},
+					map[string]any{
+						"active": true,
+						"name": "min_checked_bag",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 13,
+					},
+				},
+				"name": "fare_search_model",
+				"op": map[string]any{
+					"create": map[string]any{
+						"input": "data",
+						"name": "create",
+						"points": []any{
+							map[string]any{
+								"active": true,
+								"args": map[string]any{},
+								"method": "POST",
+								"orig": "/api/fares/search",
+								"parts": []any{
+									"api",
+									"fares",
+									"search",
+								},
+								"select": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"index$": 0,
+							},
+						},
+						"key$": "create",
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+			"fare_search_response_model": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"active": true,
+						"name": "adult",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 0,
+					},
+					map[string]any{
+						"active": true,
+						"name": "airlines_exclude",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 1,
+					},
+					map[string]any{
+						"active": true,
+						"name": "airlines_include",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 2,
+					},
+					map[string]any{
+						"active": true,
+						"name": "allow_self_transfer",
+						"req": false,
+						"type": "`$BOOLEAN`",
+						"index$": 3,
+					},
+					map[string]any{
+						"active": true,
+						"name": "cabin_class",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 4,
+					},
+					map[string]any{
+						"active": true,
+						"name": "child",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 5,
+					},
+					map[string]any{
+						"active": true,
+						"name": "departure_date",
+						"req": true,
+						"type": "`$STRING`",
+						"index$": 6,
+					},
+					map[string]any{
+						"active": true,
+						"name": "departure_time_range",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 7,
+					},
+					map[string]any{
+						"active": true,
+						"name": "destination",
+						"req": true,
+						"type": "`$STRING`",
+						"index$": 8,
+					},
+					map[string]any{
+						"active": true,
+						"name": "infants_in_seat",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 9,
+					},
+					map[string]any{
+						"active": true,
+						"name": "infants_on_lap",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 10,
+					},
+					map[string]any{
+						"active": true,
+						"name": "itinerary",
+						"req": true,
+						"type": "`$ARRAY`",
+						"index$": 11,
+					},
+					map[string]any{
+						"active": true,
+						"name": "market",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 12,
+					},
+					map[string]any{
+						"active": true,
+						"name": "max_price",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 13,
+					},
+					map[string]any{
+						"active": true,
+						"name": "max_stop",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 14,
+					},
+					map[string]any{
+						"active": true,
+						"name": "min_carry_on_bag",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 15,
+					},
+					map[string]any{
+						"active": true,
+						"name": "min_checked_bag",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 16,
+					},
+					map[string]any{
+						"active": true,
+						"name": "origin",
+						"req": true,
+						"type": "`$STRING`",
+						"index$": 17,
+					},
+					map[string]any{
+						"active": true,
+						"name": "return_date",
+						"op": map[string]any{
+							"create": map[string]any{
+								"req": true,
+								"type": "`$STRING`",
+							},
+						},
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 18,
+					},
+					map[string]any{
+						"active": true,
+						"name": "return_time_range",
+						"req": false,
+						"type": "`$ANY`",
+						"index$": 19,
+					},
+				},
+				"name": "fare_search_response_model",
+				"op": map[string]any{
+					"create": map[string]any{
+						"input": "data",
+						"name": "create",
+						"points": []any{
+							map[string]any{
+								"active": true,
+								"args": map[string]any{},
+								"method": "POST",
+								"orig": "/api/fares/one-way",
+								"parts": []any{
+									"api",
+									"fares",
+									"one-way",
+								},
+								"select": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"index$": 0,
+							},
+							map[string]any{
+								"active": true,
+								"args": map[string]any{},
+								"method": "POST",
+								"orig": "/api/fares/round-trip",
+								"parts": []any{
+									"api",
+									"fares",
+									"round-trip",
+								},
+								"select": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"index$": 1,
+							},
+						},
+						"key$": "create",
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+		},
+	}
+}
+
+func makeFeature(name string) Feature {
+	switch name {
+	case "test":
+		if NewTestFeatureFunc != nil {
+			return NewTestFeatureFunc()
+		}
+	default:
+		if NewBaseFeatureFunc != nil {
+			return NewBaseFeatureFunc()
+		}
+	}
+	return nil
+}

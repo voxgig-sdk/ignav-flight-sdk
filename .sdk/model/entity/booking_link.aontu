@@ -1,0 +1,104 @@
+# Entity: booking_link
+
+main: kit: entity: booking_link: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "adult"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "child"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "departure_date"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "destination"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ignav_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "inbound_carrier_code"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "inbound_flight_number"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "infants_in_seat"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "infants_on_lap"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "market"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "origin"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "outbound_carrier_code"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "outbound_flight_number"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "return_date"
+      req: false
+      type: "`$ANY`"
+    }
+  ]
+
+  name: "booking_link"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/fares/booking-links"
+          parts: [
+            "api"
+            "fares"
+            "booking-links"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,18 @@
+# BasicBookingLinkFlow
+
+main: kit: flow: BasicBookingLinkFlow:
+{
+  entity: "booking_link",
+  kind: "basic",
+  name: "BasicBookingLinkFlow",
+  step: [
+    {
+      input: {
+        ref: "booking_link_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicBookingLinkFlow"
+}

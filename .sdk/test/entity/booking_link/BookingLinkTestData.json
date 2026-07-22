@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "booking_link": {
+      "BOOKING_LINK00": {
+        "adult": "s8c",
+        "child": "s8d",
+        "departure_date": "s8e",
+        "destination": "s8f",
+        "ignav_id": "IGNAV01",
+        "inbound_carrier_code": "s91",
+        "inbound_flight_number": "s92",
+        "infants_in_seat": "s93",
+        "infants_on_lap": "s94",
+        "market": "s95",
+        "origin": "s96",
+        "outbound_carrier_code": "s97",
+        "outbound_flight_number": "s98",
+        "return_date": "s99",
+        "id": "BOOKING_LINK00"
+      },
+      "BOOKING_LINK01": {
+        "adult": "s118",
+        "child": "s119",
+        "departure_date": "s11a",
+        "destination": "s11b",
+        "ignav_id": "IGNAV01",
+        "inbound_carrier_code": "s11d",
+        "inbound_flight_number": "s11e",
+        "infants_in_seat": "s11f",
+        "infants_on_lap": "s120",
+        "market": "s121",
+        "origin": "s122",
+        "outbound_carrier_code": "s123",
+        "outbound_flight_number": "s124",
+        "return_date": "s125",
+        "id": "BOOKING_LINK01"
+      },
+      "BOOKING_LINK02": {
+        "adult": "s1a4",
+        "child": "s1a5",
+        "departure_date": "s1a6",
+        "destination": "s1a7",
+        "ignav_id": "IGNAV01",
+        "inbound_carrier_code": "s1a9",
+        "inbound_flight_number": "s1aa",
+        "infants_in_seat": "s1ab",
+        "infants_on_lap": "s1ac",
+        "market": "s1ad",
+        "origin": "s1ae",
+        "outbound_carrier_code": "s1af",
+        "outbound_flight_number": "s1b0",
+        "return_date": "s1b1",
+        "id": "BOOKING_LINK02"
+      }
+    }
+  },
+  "new": {
+    "booking_link": {
+      "booking_link_ref01": {
+        "adult": "s230",
+        "child": "s231",
+        "departure_date": "s232",
+        "destination": "s233",
+        "ignav_id": "IGNAV01",
+        "inbound_carrier_code": "s235",
+        "inbound_flight_number": "s236",
+        "infants_in_seat": "s237",
+        "infants_on_lap": "s238",
+        "market": "s239",
+        "origin": "s23a",
+        "outbound_carrier_code": "s23b",
+        "outbound_flight_number": "s23c",
+        "return_date": "s23d"
+      }
+    }
+  }
+}

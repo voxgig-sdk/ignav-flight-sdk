@@ -1,0 +1,104 @@
+# Entity: fare_search_model
+
+main: kit: entity: fare_search_model: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "adult"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "airlines_exclude"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "airlines_include"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "allow_self_transfer"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "cabin_class"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "child"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "infants_in_seat"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "infants_on_lap"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "itinerary"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "leg"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "market"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "max_price"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "min_carry_on_bag"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "min_checked_bag"
+      req: false
+      type: "`$ANY`"
+    }
+  ]
+
+  name: "fare_search_model"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/fares/search"
+          parts: [
+            "api"
+            "fares"
+            "search"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

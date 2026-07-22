@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "Public fare search, booking-link, and airport-search contract."
+      security: {
+        in: "header"
+        name: "X-Api-Key"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
+      servers: [
+        {
+          url: "https://ignav.com"
+        }
+      ]
+      summary: "Public fare search, booking-link, and airport-search contract."
+      title: "Ignav Public API"
+      version: "1.0.0"
+      website: "https://ignav.com"
+    }
+  }
+}
+

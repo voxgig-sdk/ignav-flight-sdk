@@ -1,0 +1,131 @@
+-- Typed models for the IgnavFlight SDK (LuaLS annotations).
+--
+-- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+-- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+-- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
+-- edit by hand.
+
+---@class Airport
+---@field city string
+---@field code string
+---@field country string
+---@field name string
+
+---@class AirportListMatch
+---@field city? string
+---@field code? string
+---@field country? string
+---@field name? string
+
+---@class BookingLink
+---@field adult? any
+---@field child? any
+---@field departure_date? any
+---@field destination? any
+---@field ignav_id? string
+---@field inbound_carrier_code? any
+---@field inbound_flight_number? number
+---@field infants_in_seat? any
+---@field infants_on_lap? any
+---@field market? any
+---@field origin? any
+---@field outbound_carrier_code? any
+---@field outbound_flight_number? number
+---@field return_date? any
+
+---@class BookingLinkCreateData
+---@field adult? any
+---@field child? any
+---@field departure_date? any
+---@field destination? any
+---@field ignav_id? string
+---@field inbound_carrier_code? any
+---@field inbound_flight_number? number
+---@field infants_in_seat? any
+---@field infants_on_lap? any
+---@field market? any
+---@field origin? any
+---@field outbound_carrier_code? any
+---@field outbound_flight_number? number
+---@field return_date? any
+
+---@class FareSearchModel
+---@field adult? number
+---@field airlines_exclude? any
+---@field airlines_include? any
+---@field allow_self_transfer? boolean
+---@field cabin_class? string
+---@field child? number
+---@field infants_in_seat? number
+---@field infants_on_lap? number
+---@field itinerary table
+---@field leg table
+---@field market? string
+---@field max_price? any
+---@field min_carry_on_bag? any
+---@field min_checked_bag? any
+
+---@class FareSearchModelCreateData
+---@field adult? number
+---@field airlines_exclude? any
+---@field airlines_include? any
+---@field allow_self_transfer? boolean
+---@field cabin_class? string
+---@field child? number
+---@field infants_in_seat? number
+---@field infants_on_lap? number
+---@field itinerary table
+---@field leg table
+---@field market? string
+---@field max_price? any
+---@field min_carry_on_bag? any
+---@field min_checked_bag? any
+
+---@class FareSearchResponseModel
+---@field adult? number
+---@field airlines_exclude? any
+---@field airlines_include? any
+---@field allow_self_transfer? boolean
+---@field cabin_class? string
+---@field child? number
+---@field departure_date string
+---@field departure_time_range? any
+---@field destination string
+---@field infants_in_seat? number
+---@field infants_on_lap? number
+---@field itinerary table
+---@field market? string
+---@field max_price? any
+---@field max_stop? any
+---@field min_carry_on_bag? any
+---@field min_checked_bag? any
+---@field origin string
+---@field return_date? any
+---@field return_time_range? any
+
+---@class FareSearchResponseModelCreateData
+---@field adult? number
+---@field airlines_exclude? any
+---@field airlines_include? any
+---@field allow_self_transfer? boolean
+---@field cabin_class? string
+---@field child? number
+---@field departure_date string
+---@field departure_time_range? any
+---@field destination string
+---@field infants_in_seat? number
+---@field infants_on_lap? number
+---@field itinerary table
+---@field market? string
+---@field max_price? any
+---@field max_stop? any
+---@field min_carry_on_bag? any
+---@field min_checked_bag? any
+---@field origin string
+---@field return_date? any
+---@field return_time_range? any
+
+local M = {}
+
+return M
