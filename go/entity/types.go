@@ -6,7 +6,11 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/ignav-flight-sdk/go/core"
+)
 
 // Airport is the typed data model for the airport entity.
 type Airport struct {
@@ -26,8 +30,8 @@ type AirportListMatch struct {
 
 // BookingLink is the typed data model for the booking_link entity.
 type BookingLink struct {
-	Adult *any `json:"adult,omitempty"`
-	Child *any `json:"child,omitempty"`
+	Adults *any `json:"adults,omitempty"`
+	Children *any `json:"children,omitempty"`
 	DepartureDate *any `json:"departure_date,omitempty"`
 	Destination *any `json:"destination,omitempty"`
 	IgnavId *string `json:"ignav_id,omitempty"`
@@ -44,8 +48,8 @@ type BookingLink struct {
 
 // BookingLinkCreateData is the typed request payload for BookingLink.CreateTyped.
 type BookingLinkCreateData struct {
-	Adult *any `json:"adult,omitempty"`
-	Child *any `json:"child,omitempty"`
+	Adults *any `json:"adults,omitempty"`
+	Children *any `json:"children,omitempty"`
 	DepartureDate *any `json:"departure_date,omitempty"`
 	Destination *any `json:"destination,omitempty"`
 	IgnavId *string `json:"ignav_id,omitempty"`
@@ -62,59 +66,59 @@ type BookingLinkCreateData struct {
 
 // FareSearchModel is the typed data model for the fare_search_model entity.
 type FareSearchModel struct {
-	Adult *int `json:"adult,omitempty"`
+	Adults *int `json:"adults,omitempty"`
 	AirlinesExclude *any `json:"airlines_exclude,omitempty"`
 	AirlinesInclude *any `json:"airlines_include,omitempty"`
 	AllowSelfTransfer *bool `json:"allow_self_transfer,omitempty"`
 	CabinClass *string `json:"cabin_class,omitempty"`
-	Child *int `json:"child,omitempty"`
+	Children *int `json:"children,omitempty"`
 	InfantsInSeat *int `json:"infants_in_seat,omitempty"`
 	InfantsOnLap *int `json:"infants_on_lap,omitempty"`
-	Itinerary []any `json:"itinerary"`
-	Leg []any `json:"leg"`
+	Itineraries []any `json:"itineraries"`
+	Legs []any `json:"legs"`
 	Market *string `json:"market,omitempty"`
 	MaxPrice *any `json:"max_price,omitempty"`
-	MinCarryOnBag *any `json:"min_carry_on_bag,omitempty"`
-	MinCheckedBag *any `json:"min_checked_bag,omitempty"`
+	MinCarryOnBags *any `json:"min_carry_on_bags,omitempty"`
+	MinCheckedBags *any `json:"min_checked_bags,omitempty"`
 }
 
 // FareSearchModelCreateData is the typed request payload for FareSearchModel.CreateTyped.
 type FareSearchModelCreateData struct {
-	Adult *int `json:"adult,omitempty"`
+	Adults *int `json:"adults,omitempty"`
 	AirlinesExclude *any `json:"airlines_exclude,omitempty"`
 	AirlinesInclude *any `json:"airlines_include,omitempty"`
 	AllowSelfTransfer *bool `json:"allow_self_transfer,omitempty"`
 	CabinClass *string `json:"cabin_class,omitempty"`
-	Child *int `json:"child,omitempty"`
+	Children *int `json:"children,omitempty"`
 	InfantsInSeat *int `json:"infants_in_seat,omitempty"`
 	InfantsOnLap *int `json:"infants_on_lap,omitempty"`
-	Itinerary []any `json:"itinerary"`
-	Leg []any `json:"leg"`
+	Itineraries []any `json:"itineraries"`
+	Legs []any `json:"legs"`
 	Market *string `json:"market,omitempty"`
 	MaxPrice *any `json:"max_price,omitempty"`
-	MinCarryOnBag *any `json:"min_carry_on_bag,omitempty"`
-	MinCheckedBag *any `json:"min_checked_bag,omitempty"`
+	MinCarryOnBags *any `json:"min_carry_on_bags,omitempty"`
+	MinCheckedBags *any `json:"min_checked_bags,omitempty"`
 }
 
 // FareSearchResponseModel is the typed data model for the fare_search_response_model entity.
 type FareSearchResponseModel struct {
-	Adult *int `json:"adult,omitempty"`
+	Adults *int `json:"adults,omitempty"`
 	AirlinesExclude *any `json:"airlines_exclude,omitempty"`
 	AirlinesInclude *any `json:"airlines_include,omitempty"`
 	AllowSelfTransfer *bool `json:"allow_self_transfer,omitempty"`
 	CabinClass *string `json:"cabin_class,omitempty"`
-	Child *int `json:"child,omitempty"`
+	Children *int `json:"children,omitempty"`
 	DepartureDate string `json:"departure_date"`
 	DepartureTimeRange *any `json:"departure_time_range,omitempty"`
 	Destination string `json:"destination"`
 	InfantsInSeat *int `json:"infants_in_seat,omitempty"`
 	InfantsOnLap *int `json:"infants_on_lap,omitempty"`
-	Itinerary []any `json:"itinerary"`
+	Itineraries []any `json:"itineraries"`
 	Market *string `json:"market,omitempty"`
 	MaxPrice *any `json:"max_price,omitempty"`
-	MaxStop *any `json:"max_stop,omitempty"`
-	MinCarryOnBag *any `json:"min_carry_on_bag,omitempty"`
-	MinCheckedBag *any `json:"min_checked_bag,omitempty"`
+	MaxStops *any `json:"max_stops,omitempty"`
+	MinCarryOnBags *any `json:"min_carry_on_bags,omitempty"`
+	MinCheckedBags *any `json:"min_checked_bags,omitempty"`
 	Origin string `json:"origin"`
 	ReturnDate *any `json:"return_date,omitempty"`
 	ReturnTimeRange *any `json:"return_time_range,omitempty"`
@@ -122,23 +126,23 @@ type FareSearchResponseModel struct {
 
 // FareSearchResponseModelCreateData is the typed request payload for FareSearchResponseModel.CreateTyped.
 type FareSearchResponseModelCreateData struct {
-	Adult *int `json:"adult,omitempty"`
+	Adults *int `json:"adults,omitempty"`
 	AirlinesExclude *any `json:"airlines_exclude,omitempty"`
 	AirlinesInclude *any `json:"airlines_include,omitempty"`
 	AllowSelfTransfer *bool `json:"allow_self_transfer,omitempty"`
 	CabinClass *string `json:"cabin_class,omitempty"`
-	Child *int `json:"child,omitempty"`
+	Children *int `json:"children,omitempty"`
 	DepartureDate string `json:"departure_date"`
 	DepartureTimeRange *any `json:"departure_time_range,omitempty"`
 	Destination string `json:"destination"`
 	InfantsInSeat *int `json:"infants_in_seat,omitempty"`
 	InfantsOnLap *int `json:"infants_on_lap,omitempty"`
-	Itinerary []any `json:"itinerary"`
+	Itineraries []any `json:"itineraries"`
 	Market *string `json:"market,omitempty"`
 	MaxPrice *any `json:"max_price,omitempty"`
-	MaxStop *any `json:"max_stop,omitempty"`
-	MinCarryOnBag *any `json:"min_carry_on_bag,omitempty"`
-	MinCheckedBag *any `json:"min_checked_bag,omitempty"`
+	MaxStops *any `json:"max_stops,omitempty"`
+	MinCarryOnBags *any `json:"min_carry_on_bags,omitempty"`
+	MinCheckedBags *any `json:"min_checked_bags,omitempty"`
 	Origin string `json:"origin"`
 	ReturnDate *any `json:"return_date,omitempty"`
 	ReturnTimeRange *any `json:"return_time_range,omitempty"`
@@ -156,12 +160,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -173,12 +191,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

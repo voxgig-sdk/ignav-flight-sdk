@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "airport": {
           "active": true,
@@ -79,6 +84,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/airports",
                   "parts": [
@@ -111,13 +117,13 @@
           "fields": [
             {
               "active": true,
-              "name": "adult",
+              "name": "adults",
               "req": false,
               "type": "`$ANY`"
             },
             {
               "active": true,
-              "name": "child",
+              "name": "children",
               "req": false,
               "type": "`$ANY`"
             },
@@ -203,6 +209,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/api/fares/booking-links",
                   "parts": [
@@ -212,7 +219,22 @@
                   ],
                   "select": {},
                   "transform": {
-                    "req": "`reqdata`",
+                    "req": {
+                      "adults": "`reqdata.adult`",
+                      "children": "`reqdata.child`",
+                      "departure_date": "`reqdata.departure_date`",
+                      "destination": "`reqdata.destination`",
+                      "ignav_id": "`reqdata.ignav_id`",
+                      "inbound_carrier_code": "`reqdata.inbound_carrier_code`",
+                      "inbound_flight_number": "`reqdata.inbound_flight_number`",
+                      "infants_in_seat": "`reqdata.infants_in_seat`",
+                      "infants_on_lap": "`reqdata.infants_on_lap`",
+                      "market": "`reqdata.market`",
+                      "origin": "`reqdata.origin`",
+                      "outbound_carrier_code": "`reqdata.outbound_carrier_code`",
+                      "outbound_flight_number": "`reqdata.outbound_flight_number`",
+                      "return_date": "`reqdata.return_date`"
+                    },
                     "res": "`body`"
                   }
                 }
@@ -231,7 +253,7 @@
           "fields": [
             {
               "active": true,
-              "name": "adult",
+              "name": "adults",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -261,7 +283,7 @@
             },
             {
               "active": true,
-              "name": "child",
+              "name": "children",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -279,13 +301,13 @@
             },
             {
               "active": true,
-              "name": "itinerary",
+              "name": "itineraries",
               "req": true,
               "type": "`$ARRAY`"
             },
             {
               "active": true,
-              "name": "leg",
+              "name": "legs",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -303,13 +325,13 @@
             },
             {
               "active": true,
-              "name": "min_carry_on_bag",
+              "name": "min_carry_on_bags",
               "req": false,
               "type": "`$ANY`"
             },
             {
               "active": true,
-              "name": "min_checked_bag",
+              "name": "min_checked_bags",
               "req": false,
               "type": "`$ANY`"
             }
@@ -323,6 +345,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/api/fares/search",
                   "parts": [
@@ -332,7 +355,21 @@
                   ],
                   "select": {},
                   "transform": {
-                    "req": "`reqdata`",
+                    "req": {
+                      "adults": "`reqdata.adult`",
+                      "airlines_exclude": "`reqdata.airlines_exclude`",
+                      "airlines_include": "`reqdata.airlines_include`",
+                      "allow_self_transfer": "`reqdata.allow_self_transfer`",
+                      "cabin_class": "`reqdata.cabin_class`",
+                      "children": "`reqdata.child`",
+                      "infants_in_seat": "`reqdata.infants_in_seat`",
+                      "infants_on_lap": "`reqdata.infants_on_lap`",
+                      "legs": "`reqdata.leg`",
+                      "market": "`reqdata.market`",
+                      "max_price": "`reqdata.max_price`",
+                      "min_carry_on_bags": "`reqdata.min_carry_on_bag`",
+                      "min_checked_bags": "`reqdata.min_checked_bag`"
+                    },
                     "res": "`body`"
                   }
                 }
@@ -351,7 +388,7 @@
           "fields": [
             {
               "active": true,
-              "name": "adult",
+              "name": "adults",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -381,7 +418,7 @@
             },
             {
               "active": true,
-              "name": "child",
+              "name": "children",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -417,7 +454,7 @@
             },
             {
               "active": true,
-              "name": "itinerary",
+              "name": "itineraries",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -435,19 +472,19 @@
             },
             {
               "active": true,
-              "name": "max_stop",
+              "name": "max_stops",
               "req": false,
               "type": "`$ANY`"
             },
             {
               "active": true,
-              "name": "min_carry_on_bag",
+              "name": "min_carry_on_bags",
               "req": false,
               "type": "`$ANY`"
             },
             {
               "active": true,
-              "name": "min_checked_bag",
+              "name": "min_checked_bags",
               "req": false,
               "type": "`$ANY`"
             },
@@ -485,6 +522,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/api/fares/one-way",
                   "parts": [
@@ -494,13 +532,32 @@
                   ],
                   "select": {},
                   "transform": {
-                    "req": "`reqdata`",
+                    "req": {
+                      "adults": "`reqdata.adult`",
+                      "airlines_exclude": "`reqdata.airlines_exclude`",
+                      "airlines_include": "`reqdata.airlines_include`",
+                      "allow_self_transfer": "`reqdata.allow_self_transfer`",
+                      "cabin_class": "`reqdata.cabin_class`",
+                      "children": "`reqdata.child`",
+                      "departure_date": "`reqdata.departure_date`",
+                      "departure_time_range": "`reqdata.departure_time_range`",
+                      "destination": "`reqdata.destination`",
+                      "infants_in_seat": "`reqdata.infants_in_seat`",
+                      "infants_on_lap": "`reqdata.infants_on_lap`",
+                      "market": "`reqdata.market`",
+                      "max_price": "`reqdata.max_price`",
+                      "max_stops": "`reqdata.max_stop`",
+                      "min_carry_on_bags": "`reqdata.min_carry_on_bag`",
+                      "min_checked_bags": "`reqdata.min_checked_bag`",
+                      "origin": "`reqdata.origin`"
+                    },
                     "res": "`body`"
                   }
                 },
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/api/fares/round-trip",
                   "parts": [
@@ -510,7 +567,27 @@
                   ],
                   "select": {},
                   "transform": {
-                    "req": "`reqdata`",
+                    "req": {
+                      "adults": "`reqdata.adult`",
+                      "airlines_exclude": "`reqdata.airlines_exclude`",
+                      "airlines_include": "`reqdata.airlines_include`",
+                      "allow_self_transfer": "`reqdata.allow_self_transfer`",
+                      "cabin_class": "`reqdata.cabin_class`",
+                      "children": "`reqdata.child`",
+                      "departure_date": "`reqdata.departure_date`",
+                      "departure_time_range": "`reqdata.departure_time_range`",
+                      "destination": "`reqdata.destination`",
+                      "infants_in_seat": "`reqdata.infants_in_seat`",
+                      "infants_on_lap": "`reqdata.infants_on_lap`",
+                      "market": "`reqdata.market`",
+                      "max_price": "`reqdata.max_price`",
+                      "max_stops": "`reqdata.max_stop`",
+                      "min_carry_on_bags": "`reqdata.min_carry_on_bag`",
+                      "min_checked_bags": "`reqdata.min_checked_bag`",
+                      "origin": "`reqdata.origin`",
+                      "return_date": "`reqdata.return_date`",
+                      "return_time_range": "`reqdata.return_time_range`"
+                    },
                     "res": "`body`"
                   }
                 }
@@ -727,18 +804,41 @@
         "website": "https://ignav.com"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "ignav-flight"
+            "goversion": "",
+            "name": "ignav-flight",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -760,22 +860,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "ignav-flight"
+            "goversion": "",
+            "name": "ignav-flight",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -814,21 +932,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "ignav-flight"
+            "goversion": "",
+            "name": "ignav-flight",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -867,12 +1003,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -884,10 +1025,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "ignav-flight"
+            "goversion": "",
+            "name": "ignav-flight",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -909,22 +1063,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "ignav-flight"
+            "goversion": "",
+            "name": "ignav-flight",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -946,13 +1118,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -964,10 +1141,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "ignav-flight"
+            "goversion": "",
+            "name": "ignav-flight",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -989,13 +1179,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1012,10 +1207,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "ignav-flight"
+            "goversion": "",
+            "name": "ignav-flight",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1037,13 +1245,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -1066,10 +1279,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "ignav-flight"
+            "goversion": "",
+            "name": "ignav-flight",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1091,9 +1317,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

@@ -52,10 +52,10 @@ AirportListMatch = Struct.new(
 
 # BookingLink entity data model.
 #
-# @!attribute [rw] adult
+# @!attribute [rw] adults
 #   @return [Object, nil]
 #
-# @!attribute [rw] child
+# @!attribute [rw] children
 #   @return [Object, nil]
 #
 # @!attribute [rw] departure_date
@@ -94,8 +94,8 @@ AirportListMatch = Struct.new(
 # @!attribute [rw] return_date
 #   @return [Object, nil]
 BookingLink = Struct.new(
-  :adult,
-  :child,
+  :adults,
+  :children,
   :departure_date,
   :destination,
   :ignav_id,
@@ -113,10 +113,10 @@ BookingLink = Struct.new(
 
 # Request payload for BookingLink#create.
 #
-# @!attribute [rw] adult
+# @!attribute [rw] adults
 #   @return [Object, nil]
 #
-# @!attribute [rw] child
+# @!attribute [rw] children
 #   @return [Object, nil]
 #
 # @!attribute [rw] departure_date
@@ -155,8 +155,8 @@ BookingLink = Struct.new(
 # @!attribute [rw] return_date
 #   @return [Object, nil]
 BookingLinkCreateData = Struct.new(
-  :adult,
-  :child,
+  :adults,
+  :children,
   :departure_date,
   :destination,
   :ignav_id,
@@ -174,7 +174,7 @@ BookingLinkCreateData = Struct.new(
 
 # FareSearchModel entity data model.
 #
-# @!attribute [rw] adult
+# @!attribute [rw] adults
 #   @return [Integer, nil]
 #
 # @!attribute [rw] airlines_exclude
@@ -189,7 +189,7 @@ BookingLinkCreateData = Struct.new(
 # @!attribute [rw] cabin_class
 #   @return [String, nil]
 #
-# @!attribute [rw] child
+# @!attribute [rw] children
 #   @return [Integer, nil]
 #
 # @!attribute [rw] infants_in_seat
@@ -198,10 +198,10 @@ BookingLinkCreateData = Struct.new(
 # @!attribute [rw] infants_on_lap
 #   @return [Integer, nil]
 #
-# @!attribute [rw] itinerary
+# @!attribute [rw] itineraries
 #   @return [Array]
 #
-# @!attribute [rw] leg
+# @!attribute [rw] legs
 #   @return [Array]
 #
 # @!attribute [rw] market
@@ -210,32 +210,32 @@ BookingLinkCreateData = Struct.new(
 # @!attribute [rw] max_price
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_carry_on_bag
+# @!attribute [rw] min_carry_on_bags
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_checked_bag
+# @!attribute [rw] min_checked_bags
 #   @return [Object, nil]
 FareSearchModel = Struct.new(
-  :adult,
+  :adults,
   :airlines_exclude,
   :airlines_include,
   :allow_self_transfer,
   :cabin_class,
-  :child,
+  :children,
   :infants_in_seat,
   :infants_on_lap,
-  :itinerary,
-  :leg,
+  :itineraries,
+  :legs,
   :market,
   :max_price,
-  :min_carry_on_bag,
-  :min_checked_bag,
+  :min_carry_on_bags,
+  :min_checked_bags,
   keyword_init: true
 )
 
 # Request payload for FareSearchModel#create.
 #
-# @!attribute [rw] adult
+# @!attribute [rw] adults
 #   @return [Integer, nil]
 #
 # @!attribute [rw] airlines_exclude
@@ -250,7 +250,7 @@ FareSearchModel = Struct.new(
 # @!attribute [rw] cabin_class
 #   @return [String, nil]
 #
-# @!attribute [rw] child
+# @!attribute [rw] children
 #   @return [Integer, nil]
 #
 # @!attribute [rw] infants_in_seat
@@ -259,10 +259,10 @@ FareSearchModel = Struct.new(
 # @!attribute [rw] infants_on_lap
 #   @return [Integer, nil]
 #
-# @!attribute [rw] itinerary
+# @!attribute [rw] itineraries
 #   @return [Array]
 #
-# @!attribute [rw] leg
+# @!attribute [rw] legs
 #   @return [Array]
 #
 # @!attribute [rw] market
@@ -271,32 +271,32 @@ FareSearchModel = Struct.new(
 # @!attribute [rw] max_price
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_carry_on_bag
+# @!attribute [rw] min_carry_on_bags
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_checked_bag
+# @!attribute [rw] min_checked_bags
 #   @return [Object, nil]
 FareSearchModelCreateData = Struct.new(
-  :adult,
+  :adults,
   :airlines_exclude,
   :airlines_include,
   :allow_self_transfer,
   :cabin_class,
-  :child,
+  :children,
   :infants_in_seat,
   :infants_on_lap,
-  :itinerary,
-  :leg,
+  :itineraries,
+  :legs,
   :market,
   :max_price,
-  :min_carry_on_bag,
-  :min_checked_bag,
+  :min_carry_on_bags,
+  :min_checked_bags,
   keyword_init: true
 )
 
 # FareSearchResponseModel entity data model.
 #
-# @!attribute [rw] adult
+# @!attribute [rw] adults
 #   @return [Integer, nil]
 #
 # @!attribute [rw] airlines_exclude
@@ -311,7 +311,7 @@ FareSearchModelCreateData = Struct.new(
 # @!attribute [rw] cabin_class
 #   @return [String, nil]
 #
-# @!attribute [rw] child
+# @!attribute [rw] children
 #   @return [Integer, nil]
 #
 # @!attribute [rw] departure_date
@@ -329,7 +329,7 @@ FareSearchModelCreateData = Struct.new(
 # @!attribute [rw] infants_on_lap
 #   @return [Integer, nil]
 #
-# @!attribute [rw] itinerary
+# @!attribute [rw] itineraries
 #   @return [Array]
 #
 # @!attribute [rw] market
@@ -338,13 +338,13 @@ FareSearchModelCreateData = Struct.new(
 # @!attribute [rw] max_price
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_stop
+# @!attribute [rw] max_stops
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_carry_on_bag
+# @!attribute [rw] min_carry_on_bags
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_checked_bag
+# @!attribute [rw] min_checked_bags
 #   @return [Object, nil]
 #
 # @!attribute [rw] origin
@@ -356,23 +356,23 @@ FareSearchModelCreateData = Struct.new(
 # @!attribute [rw] return_time_range
 #   @return [Object, nil]
 FareSearchResponseModel = Struct.new(
-  :adult,
+  :adults,
   :airlines_exclude,
   :airlines_include,
   :allow_self_transfer,
   :cabin_class,
-  :child,
+  :children,
   :departure_date,
   :departure_time_range,
   :destination,
   :infants_in_seat,
   :infants_on_lap,
-  :itinerary,
+  :itineraries,
   :market,
   :max_price,
-  :max_stop,
-  :min_carry_on_bag,
-  :min_checked_bag,
+  :max_stops,
+  :min_carry_on_bags,
+  :min_checked_bags,
   :origin,
   :return_date,
   :return_time_range,
@@ -381,7 +381,7 @@ FareSearchResponseModel = Struct.new(
 
 # Request payload for FareSearchResponseModel#create.
 #
-# @!attribute [rw] adult
+# @!attribute [rw] adults
 #   @return [Integer, nil]
 #
 # @!attribute [rw] airlines_exclude
@@ -396,7 +396,7 @@ FareSearchResponseModel = Struct.new(
 # @!attribute [rw] cabin_class
 #   @return [String, nil]
 #
-# @!attribute [rw] child
+# @!attribute [rw] children
 #   @return [Integer, nil]
 #
 # @!attribute [rw] departure_date
@@ -414,7 +414,7 @@ FareSearchResponseModel = Struct.new(
 # @!attribute [rw] infants_on_lap
 #   @return [Integer, nil]
 #
-# @!attribute [rw] itinerary
+# @!attribute [rw] itineraries
 #   @return [Array]
 #
 # @!attribute [rw] market
@@ -423,13 +423,13 @@ FareSearchResponseModel = Struct.new(
 # @!attribute [rw] max_price
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_stop
+# @!attribute [rw] max_stops
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_carry_on_bag
+# @!attribute [rw] min_carry_on_bags
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_checked_bag
+# @!attribute [rw] min_checked_bags
 #   @return [Object, nil]
 #
 # @!attribute [rw] origin
@@ -441,23 +441,23 @@ FareSearchResponseModel = Struct.new(
 # @!attribute [rw] return_time_range
 #   @return [Object, nil]
 FareSearchResponseModelCreateData = Struct.new(
-  :adult,
+  :adults,
   :airlines_exclude,
   :airlines_include,
   :allow_self_transfer,
   :cabin_class,
-  :child,
+  :children,
   :departure_date,
   :departure_time_range,
   :destination,
   :infants_in_seat,
   :infants_on_lap,
-  :itinerary,
+  :itineraries,
   :market,
   :max_price,
-  :max_stop,
-  :min_carry_on_bag,
-  :min_checked_bag,
+  :max_stops,
+  :min_carry_on_bags,
+  :min_checked_bags,
   :origin,
   :return_date,
   :return_time_range,

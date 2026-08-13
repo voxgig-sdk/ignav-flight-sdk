@@ -160,8 +160,8 @@ $booking_link = $client->BookingLink();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adult` | `mixed` | No |  |
-| `child` | `mixed` | No |  |
+| `adults` | `mixed` | No |  |
+| `children` | `mixed` | No |  |
 | `departure_date` | `mixed` | No |  |
 | `destination` | `mixed` | No |  |
 | `ignav_id` | `string` | No |  |
@@ -226,20 +226,20 @@ $fare_search_model = $client->FareSearchModel();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adult` | `int` | No |  |
+| `adults` | `int` | No |  |
 | `airlines_exclude` | `mixed` | No |  |
 | `airlines_include` | `mixed` | No |  |
 | `allow_self_transfer` | `bool` | No |  |
 | `cabin_class` | `string` | No |  |
-| `child` | `int` | No |  |
+| `children` | `int` | No |  |
 | `infants_in_seat` | `int` | No |  |
 | `infants_on_lap` | `int` | No |  |
-| `itinerary` | `array` | Yes |  |
-| `leg` | `array` | Yes |  |
+| `itineraries` | `array` | Yes |  |
+| `legs` | `array` | Yes |  |
 | `market` | `string` | No |  |
 | `max_price` | `mixed` | No |  |
-| `min_carry_on_bag` | `mixed` | No |  |
-| `min_checked_bag` | `mixed` | No |  |
+| `min_carry_on_bags` | `mixed` | No |  |
+| `min_checked_bags` | `mixed` | No |  |
 
 ### Operations
 
@@ -249,8 +249,8 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->FareSearchModel()->create([
-  "itinerary" => null, // array
-  "leg" => null, // array
+  "itineraries" => null, // array
+  "legs" => null, // array
 ]);
 ```
 
@@ -294,23 +294,23 @@ $fare_search_response_model = $client->FareSearchResponseModel();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adult` | `int` | No |  |
+| `adults` | `int` | No |  |
 | `airlines_exclude` | `mixed` | No |  |
 | `airlines_include` | `mixed` | No |  |
 | `allow_self_transfer` | `bool` | No |  |
 | `cabin_class` | `string` | No |  |
-| `child` | `int` | No |  |
+| `children` | `int` | No |  |
 | `departure_date` | `string` | Yes |  |
 | `departure_time_range` | `mixed` | No |  |
 | `destination` | `string` | Yes |  |
 | `infants_in_seat` | `int` | No |  |
 | `infants_on_lap` | `int` | No |  |
-| `itinerary` | `array` | Yes |  |
+| `itineraries` | `array` | Yes |  |
 | `market` | `string` | No |  |
 | `max_price` | `mixed` | No |  |
-| `max_stop` | `mixed` | No |  |
-| `min_carry_on_bag` | `mixed` | No |  |
-| `min_checked_bag` | `mixed` | No |  |
+| `max_stops` | `mixed` | No |  |
+| `min_carry_on_bags` | `mixed` | No |  |
+| `min_checked_bags` | `mixed` | No |  |
 | `origin` | `string` | Yes |  |
 | `return_date` | `mixed` | No |  |
 | `return_time_range` | `mixed` | No |  |
@@ -319,23 +319,23 @@ $fare_search_response_model = $client->FareSearchResponseModel();
 
 | Field | create |
 | --- | --- |
-| `adult` | - |
+| `adults` | - |
 | `airlines_exclude` | - |
 | `airlines_include` | - |
 | `allow_self_transfer` | - |
 | `cabin_class` | - |
-| `child` | - |
+| `children` | - |
 | `departure_date` | - |
 | `departure_time_range` | - |
 | `destination` | - |
 | `infants_in_seat` | - |
 | `infants_on_lap` | - |
-| `itinerary` | - |
+| `itineraries` | - |
 | `market` | - |
 | `max_price` | - |
-| `max_stop` | - |
-| `min_carry_on_bag` | - |
-| `min_checked_bag` | - |
+| `max_stops` | - |
+| `min_carry_on_bags` | - |
+| `min_checked_bags` | - |
 | `origin` | - |
 | `return_date` | Yes |
 | `return_time_range` | - |
@@ -350,7 +350,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->FareSearchResponseModel()->create([
   "departure_date" => null, // string
   "destination" => null, // string
-  "itinerary" => null, // array
+  "itineraries" => null, // array
   "origin" => null, // string
 ]);
 ```

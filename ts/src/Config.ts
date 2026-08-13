@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'IgnavFlight',
   }
 
 
@@ -125,6 +125,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/airports",
               "parts": [
@@ -155,14 +156,14 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "adult",
+          "name": "adults",
           "req": false,
           "type": "`$ANY`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "child",
+          "name": "children",
           "req": false,
           "type": "`$ANY`",
           "index$": 1
@@ -261,6 +262,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/fares/booking-links",
               "parts": [
@@ -270,7 +272,22 @@ class Config {
               ],
               "select": {},
               "transform": {
-                "req": "`reqdata`",
+                "req": {
+                  "adults": "`reqdata.adult`",
+                  "children": "`reqdata.child`",
+                  "departure_date": "`reqdata.departure_date`",
+                  "destination": "`reqdata.destination`",
+                  "ignav_id": "`reqdata.ignav_id`",
+                  "inbound_carrier_code": "`reqdata.inbound_carrier_code`",
+                  "inbound_flight_number": "`reqdata.inbound_flight_number`",
+                  "infants_in_seat": "`reqdata.infants_in_seat`",
+                  "infants_on_lap": "`reqdata.infants_on_lap`",
+                  "market": "`reqdata.market`",
+                  "origin": "`reqdata.origin`",
+                  "outbound_carrier_code": "`reqdata.outbound_carrier_code`",
+                  "outbound_flight_number": "`reqdata.outbound_flight_number`",
+                  "return_date": "`reqdata.return_date`"
+                },
                 "res": "`body`"
               },
               "index$": 0
@@ -287,7 +304,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "adult",
+          "name": "adults",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 0
@@ -322,7 +339,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "child",
+          "name": "children",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 5
@@ -343,14 +360,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "itinerary",
+          "name": "itineraries",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "leg",
+          "name": "legs",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 9
@@ -371,14 +388,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "min_carry_on_bag",
+          "name": "min_carry_on_bags",
           "req": false,
           "type": "`$ANY`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "min_checked_bag",
+          "name": "min_checked_bags",
           "req": false,
           "type": "`$ANY`",
           "index$": 13
@@ -393,6 +410,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/fares/search",
               "parts": [
@@ -402,7 +420,21 @@ class Config {
               ],
               "select": {},
               "transform": {
-                "req": "`reqdata`",
+                "req": {
+                  "adults": "`reqdata.adult`",
+                  "airlines_exclude": "`reqdata.airlines_exclude`",
+                  "airlines_include": "`reqdata.airlines_include`",
+                  "allow_self_transfer": "`reqdata.allow_self_transfer`",
+                  "cabin_class": "`reqdata.cabin_class`",
+                  "children": "`reqdata.child`",
+                  "infants_in_seat": "`reqdata.infants_in_seat`",
+                  "infants_on_lap": "`reqdata.infants_on_lap`",
+                  "legs": "`reqdata.leg`",
+                  "market": "`reqdata.market`",
+                  "max_price": "`reqdata.max_price`",
+                  "min_carry_on_bags": "`reqdata.min_carry_on_bag`",
+                  "min_checked_bags": "`reqdata.min_checked_bag`"
+                },
                 "res": "`body`"
               },
               "index$": 0
@@ -419,7 +451,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "adult",
+          "name": "adults",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 0
@@ -454,7 +486,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "child",
+          "name": "children",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 5
@@ -496,7 +528,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "itinerary",
+          "name": "itineraries",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 11
@@ -517,21 +549,21 @@ class Config {
         },
         {
           "active": true,
-          "name": "max_stop",
+          "name": "max_stops",
           "req": false,
           "type": "`$ANY`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "min_carry_on_bag",
+          "name": "min_carry_on_bags",
           "req": false,
           "type": "`$ANY`",
           "index$": 15
         },
         {
           "active": true,
-          "name": "min_checked_bag",
+          "name": "min_checked_bags",
           "req": false,
           "type": "`$ANY`",
           "index$": 16
@@ -573,6 +605,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/fares/one-way",
               "parts": [
@@ -582,7 +615,25 @@ class Config {
               ],
               "select": {},
               "transform": {
-                "req": "`reqdata`",
+                "req": {
+                  "adults": "`reqdata.adult`",
+                  "airlines_exclude": "`reqdata.airlines_exclude`",
+                  "airlines_include": "`reqdata.airlines_include`",
+                  "allow_self_transfer": "`reqdata.allow_self_transfer`",
+                  "cabin_class": "`reqdata.cabin_class`",
+                  "children": "`reqdata.child`",
+                  "departure_date": "`reqdata.departure_date`",
+                  "departure_time_range": "`reqdata.departure_time_range`",
+                  "destination": "`reqdata.destination`",
+                  "infants_in_seat": "`reqdata.infants_in_seat`",
+                  "infants_on_lap": "`reqdata.infants_on_lap`",
+                  "market": "`reqdata.market`",
+                  "max_price": "`reqdata.max_price`",
+                  "max_stops": "`reqdata.max_stop`",
+                  "min_carry_on_bags": "`reqdata.min_carry_on_bag`",
+                  "min_checked_bags": "`reqdata.min_checked_bag`",
+                  "origin": "`reqdata.origin`"
+                },
                 "res": "`body`"
               },
               "index$": 0
@@ -590,6 +641,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/fares/round-trip",
               "parts": [
@@ -599,7 +651,27 @@ class Config {
               ],
               "select": {},
               "transform": {
-                "req": "`reqdata`",
+                "req": {
+                  "adults": "`reqdata.adult`",
+                  "airlines_exclude": "`reqdata.airlines_exclude`",
+                  "airlines_include": "`reqdata.airlines_include`",
+                  "allow_self_transfer": "`reqdata.allow_self_transfer`",
+                  "cabin_class": "`reqdata.cabin_class`",
+                  "children": "`reqdata.child`",
+                  "departure_date": "`reqdata.departure_date`",
+                  "departure_time_range": "`reqdata.departure_time_range`",
+                  "destination": "`reqdata.destination`",
+                  "infants_in_seat": "`reqdata.infants_in_seat`",
+                  "infants_on_lap": "`reqdata.infants_on_lap`",
+                  "market": "`reqdata.market`",
+                  "max_price": "`reqdata.max_price`",
+                  "max_stops": "`reqdata.max_stop`",
+                  "min_carry_on_bags": "`reqdata.min_carry_on_bag`",
+                  "min_checked_bags": "`reqdata.min_checked_bag`",
+                  "origin": "`reqdata.origin`",
+                  "return_date": "`reqdata.return_date`",
+                  "return_time_range": "`reqdata.return_time_range`"
+                },
                 "res": "`body`"
               },
               "index$": 1

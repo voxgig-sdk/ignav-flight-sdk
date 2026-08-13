@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = IgnavFlightSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = IgnavFlightSDK.test({
+  entity: {
+    airport: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const airports = await client.Airport().list()
-// airports is an array of bare Airport records populated with mock data
+// airports is an array of Airport entities, populated with mock data
+// — call airports[0].data() for the record itself
 console.log(airports)
 ```
 
@@ -112,7 +121,7 @@ const client = new IgnavFlightSDK({
   apikey: process.env.IGNAV_FLIGHT_APIKEY,
 })
 
-// List all airports (returns Airport[])
+// List all airports (returns AirportEntity[] — .data() for the record)
 const airports = await client.Airport().list()
 for (const airport of airports) {
   console.log(airport)
@@ -359,6 +368,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://ignav.com](https://ignav.com)
 

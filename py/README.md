@@ -127,7 +127,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = IgnavFlightSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 airport = client.Airport().list()
 # airport contains the mock response record
 ```
@@ -229,7 +230,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -264,8 +265,8 @@ API path: `/api/airports`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
-| `child` |  |
+| `adults` |  |
+| `children` |  |
 | `departure_date` |  |
 | `destination` |  |
 | `ignav_id` |  |
@@ -287,20 +288,20 @@ API path: `/api/fares/booking-links`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
+| `adults` |  |
 | `airlines_exclude` |  |
 | `airlines_include` |  |
 | `allow_self_transfer` |  |
 | `cabin_class` |  |
-| `child` |  |
+| `children` |  |
 | `infants_in_seat` |  |
 | `infants_on_lap` |  |
-| `itinerary` |  |
-| `leg` |  |
+| `itineraries` |  |
+| `legs` |  |
 | `market` |  |
 | `max_price` |  |
-| `min_carry_on_bag` |  |
-| `min_checked_bag` |  |
+| `min_carry_on_bags` |  |
+| `min_checked_bags` |  |
 
 Operations: Create.
 
@@ -310,23 +311,23 @@ API path: `/api/fares/search`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
+| `adults` |  |
 | `airlines_exclude` |  |
 | `airlines_include` |  |
 | `allow_self_transfer` |  |
 | `cabin_class` |  |
-| `child` |  |
+| `children` |  |
 | `departure_date` |  |
 | `departure_time_range` |  |
 | `destination` |  |
 | `infants_in_seat` |  |
 | `infants_on_lap` |  |
-| `itinerary` |  |
+| `itineraries` |  |
 | `market` |  |
 | `max_price` |  |
-| `max_stop` |  |
-| `min_carry_on_bag` |  |
-| `min_checked_bag` |  |
+| `max_stops` |  |
+| `min_carry_on_bags` |  |
+| `min_checked_bags` |  |
 | `origin` |  |
 | `return_date` |  |
 | `return_time_range` |  |
@@ -380,8 +381,8 @@ Create an instance: `booking_link = client.BookingLink()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `Any` |  |
-| `child` | `Any` |  |
+| `adults` | `Any` |  |
+| `children` | `Any` |  |
 | `departure_date` | `Any` |  |
 | `destination` | `Any` |  |
 | `ignav_id` | `str` |  |
@@ -417,27 +418,27 @@ Create an instance: `fare_search_model = client.FareSearchModel()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `int` |  |
+| `adults` | `int` |  |
 | `airlines_exclude` | `Any` |  |
 | `airlines_include` | `Any` |  |
 | `allow_self_transfer` | `bool` |  |
 | `cabin_class` | `str` |  |
-| `child` | `int` |  |
+| `children` | `int` |  |
 | `infants_in_seat` | `int` |  |
 | `infants_on_lap` | `int` |  |
-| `itinerary` | `list` |  |
-| `leg` | `list` |  |
+| `itineraries` | `list` |  |
+| `legs` | `list` |  |
 | `market` | `str` |  |
 | `max_price` | `Any` |  |
-| `min_carry_on_bag` | `Any` |  |
-| `min_checked_bag` | `Any` |  |
+| `min_carry_on_bags` | `Any` |  |
+| `min_checked_bags` | `Any` |  |
 
 #### Example: Create
 
 ```python
 fare_search_model = client.FareSearchModel().create({
-    "itinerary": [],  # list
-    "leg": [],  # list
+    "itineraries": [],  # list
+    "legs": [],  # list
 })
 ```
 
@@ -456,23 +457,23 @@ Create an instance: `fare_search_response_model = client.FareSearchResponseModel
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `int` |  |
+| `adults` | `int` |  |
 | `airlines_exclude` | `Any` |  |
 | `airlines_include` | `Any` |  |
 | `allow_self_transfer` | `bool` |  |
 | `cabin_class` | `str` |  |
-| `child` | `int` |  |
+| `children` | `int` |  |
 | `departure_date` | `str` |  |
 | `departure_time_range` | `Any` |  |
 | `destination` | `str` |  |
 | `infants_in_seat` | `int` |  |
 | `infants_on_lap` | `int` |  |
-| `itinerary` | `list` |  |
+| `itineraries` | `list` |  |
 | `market` | `str` |  |
 | `max_price` | `Any` |  |
-| `max_stop` | `Any` |  |
-| `min_carry_on_bag` | `Any` |  |
-| `min_checked_bag` | `Any` |  |
+| `max_stops` | `Any` |  |
+| `min_carry_on_bags` | `Any` |  |
+| `min_checked_bags` | `Any` |  |
 | `origin` | `str` |  |
 | `return_date` | `Any` |  |
 | `return_time_range` | `Any` |  |
@@ -483,7 +484,7 @@ Create an instance: `fare_search_response_model = client.FareSearchResponseModel
 fare_search_response_model = client.FareSearchResponseModel().create({
     "departure_date": "example_departure_date",  # str
     "destination": "example_destination",  # str
-    "itinerary": [],  # list
+    "itineraries": [],  # list
     "origin": "example_origin",  # str
 })
 ```

@@ -43,8 +43,8 @@ class IgnavFlightTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('IGNAVFLIGHT_TEST_LIVE');
-        $override = self::getenv('IGNAVFLIGHT_TEST_OVERRIDE');
+        $live = self::getenv('IGNAV_FLIGHT_TEST_LIVE');
+        $override = self::getenv('IGNAV_FLIGHT_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class IgnavFlightTestRunner
             }
         }
 
-        $explain = self::getenv('IGNAVFLIGHT_TEST_EXPLAIN');
+        $explain = self::getenv('IGNAV_FLIGHT_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['IGNAVFLIGHT_TEST_EXPLAIN'] = $explain;
+            $m['IGNAV_FLIGHT_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

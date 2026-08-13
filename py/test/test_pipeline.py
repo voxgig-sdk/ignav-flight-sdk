@@ -16,11 +16,11 @@
 import pytest
 
 from ignavflight_sdk import IgnavFlightSDK
-from core.error import IgnavFlightError
-from core.result import IgnavFlightResult
-from core.response import IgnavFlightResponse
-from core.spec import IgnavFlightSpec
-from feature.base_feature import IgnavFlightBaseFeature
+from ignavflight_sdk.core.error import IgnavFlightError
+from ignavflight_sdk.core.result import IgnavFlightResult
+from ignavflight_sdk.core.response import IgnavFlightResponse
+from ignavflight_sdk.core.spec import IgnavFlightSpec
+from ignavflight_sdk.feature.base_feature import IgnavFlightBaseFeature
 
 
 def _client():

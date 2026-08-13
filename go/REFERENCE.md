@@ -165,8 +165,8 @@ fmt.Println(bookingLink.GetName()) // "booking_link"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adult` | `any` | No |  |
-| `child` | `any` | No |  |
+| `adults` | `any` | No |  |
+| `children` | `any` | No |  |
 | `departure_date` | `any` | No |  |
 | `destination` | `any` | No |  |
 | `ignav_id` | `string` | No |  |
@@ -230,20 +230,20 @@ fmt.Println(fareSearchModel.GetName()) // "fare_search_model"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adult` | `int` | No |  |
+| `adults` | `int` | No |  |
 | `airlines_exclude` | `any` | No |  |
 | `airlines_include` | `any` | No |  |
 | `allow_self_transfer` | `bool` | No |  |
 | `cabin_class` | `string` | No |  |
-| `child` | `int` | No |  |
+| `children` | `int` | No |  |
 | `infants_in_seat` | `int` | No |  |
 | `infants_on_lap` | `int` | No |  |
-| `itinerary` | `[]any` | Yes |  |
-| `leg` | `[]any` | Yes |  |
+| `itineraries` | `[]any` | Yes |  |
+| `legs` | `[]any` | Yes |  |
 | `market` | `string` | No |  |
 | `max_price` | `any` | No |  |
-| `min_carry_on_bag` | `any` | No |  |
-| `min_checked_bag` | `any` | No |  |
+| `min_carry_on_bags` | `any` | No |  |
+| `min_checked_bags` | `any` | No |  |
 
 ### Operations
 
@@ -253,8 +253,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.FareSearchModel(nil).Create(map[string]any{
-    "itinerary": []any{},
-    "leg": []any{},
+    "itineraries": []any{},
+    "legs": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -297,23 +297,23 @@ fmt.Println(fareSearchResponseModel.GetName()) // "fare_search_response_model"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adult` | `int` | No |  |
+| `adults` | `int` | No |  |
 | `airlines_exclude` | `any` | No |  |
 | `airlines_include` | `any` | No |  |
 | `allow_self_transfer` | `bool` | No |  |
 | `cabin_class` | `string` | No |  |
-| `child` | `int` | No |  |
+| `children` | `int` | No |  |
 | `departure_date` | `string` | Yes |  |
 | `departure_time_range` | `any` | No |  |
 | `destination` | `string` | Yes |  |
 | `infants_in_seat` | `int` | No |  |
 | `infants_on_lap` | `int` | No |  |
-| `itinerary` | `[]any` | Yes |  |
+| `itineraries` | `[]any` | Yes |  |
 | `market` | `string` | No |  |
 | `max_price` | `any` | No |  |
-| `max_stop` | `any` | No |  |
-| `min_carry_on_bag` | `any` | No |  |
-| `min_checked_bag` | `any` | No |  |
+| `max_stops` | `any` | No |  |
+| `min_carry_on_bags` | `any` | No |  |
+| `min_checked_bags` | `any` | No |  |
 | `origin` | `string` | Yes |  |
 | `return_date` | `any` | No |  |
 | `return_time_range` | `any` | No |  |
@@ -322,23 +322,23 @@ fmt.Println(fareSearchResponseModel.GetName()) // "fare_search_response_model"
 
 | Field | create |
 | --- | --- |
-| `adult` | - |
+| `adults` | - |
 | `airlines_exclude` | - |
 | `airlines_include` | - |
 | `allow_self_transfer` | - |
 | `cabin_class` | - |
-| `child` | - |
+| `children` | - |
 | `departure_date` | - |
 | `departure_time_range` | - |
 | `destination` | - |
 | `infants_in_seat` | - |
 | `infants_on_lap` | - |
-| `itinerary` | - |
+| `itineraries` | - |
 | `market` | - |
 | `max_price` | - |
-| `max_stop` | - |
-| `min_carry_on_bag` | - |
-| `min_checked_bag` | - |
+| `max_stops` | - |
+| `min_carry_on_bags` | - |
+| `min_checked_bags` | - |
 | `origin` | - |
 | `return_date` | Yes |
 | `return_time_range` | - |
@@ -353,7 +353,7 @@ Create a new entity with the given data.
 result, err := client.FareSearchResponseModel(nil).Create(map[string]any{
     "departure_date": "example_departure_date",
     "destination": "example_destination",
-    "itinerary": []any{},
+    "itineraries": []any{},
     "origin": "example_origin",
 }, nil)
 if err != nil {

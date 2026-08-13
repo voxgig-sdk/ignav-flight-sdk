@@ -283,8 +283,8 @@ API path: `/api/airports`
 
 | Field | Description |
 | --- | --- |
-| `"adult"` |  |
-| `"child"` |  |
+| `"adults"` |  |
+| `"children"` |  |
 | `"departure_date"` |  |
 | `"destination"` |  |
 | `"ignav_id"` |  |
@@ -306,20 +306,20 @@ API path: `/api/fares/booking-links`
 
 | Field | Description |
 | --- | --- |
-| `"adult"` |  |
+| `"adults"` |  |
 | `"airlines_exclude"` |  |
 | `"airlines_include"` |  |
 | `"allow_self_transfer"` |  |
 | `"cabin_class"` |  |
-| `"child"` |  |
+| `"children"` |  |
 | `"infants_in_seat"` |  |
 | `"infants_on_lap"` |  |
-| `"itinerary"` |  |
-| `"leg"` |  |
+| `"itineraries"` |  |
+| `"legs"` |  |
 | `"market"` |  |
 | `"max_price"` |  |
-| `"min_carry_on_bag"` |  |
-| `"min_checked_bag"` |  |
+| `"min_carry_on_bags"` |  |
+| `"min_checked_bags"` |  |
 
 Operations: Create.
 
@@ -329,23 +329,23 @@ API path: `/api/fares/search`
 
 | Field | Description |
 | --- | --- |
-| `"adult"` |  |
+| `"adults"` |  |
 | `"airlines_exclude"` |  |
 | `"airlines_include"` |  |
 | `"allow_self_transfer"` |  |
 | `"cabin_class"` |  |
-| `"child"` |  |
+| `"children"` |  |
 | `"departure_date"` |  |
 | `"departure_time_range"` |  |
 | `"destination"` |  |
 | `"infants_in_seat"` |  |
 | `"infants_on_lap"` |  |
-| `"itinerary"` |  |
+| `"itineraries"` |  |
 | `"market"` |  |
 | `"max_price"` |  |
-| `"max_stop"` |  |
-| `"min_carry_on_bag"` |  |
-| `"min_checked_bag"` |  |
+| `"max_stops"` |  |
+| `"min_carry_on_bags"` |  |
+| `"min_checked_bags"` |  |
 | `"origin"` |  |
 | `"return_date"` |  |
 | `"return_time_range"` |  |
@@ -403,8 +403,8 @@ Create an instance: `bookingLink := client.BookingLink(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `any` |  |
-| `child` | `any` |  |
+| `adults` | `any` |  |
+| `children` | `any` |  |
 | `departure_date` | `any` |  |
 | `destination` | `any` |  |
 | `ignav_id` | `string` |  |
@@ -444,27 +444,27 @@ Create an instance: `fareSearchModel := client.FareSearchModel(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `int` |  |
+| `adults` | `int` |  |
 | `airlines_exclude` | `any` |  |
 | `airlines_include` | `any` |  |
 | `allow_self_transfer` | `bool` |  |
 | `cabin_class` | `string` |  |
-| `child` | `int` |  |
+| `children` | `int` |  |
 | `infants_in_seat` | `int` |  |
 | `infants_on_lap` | `int` |  |
-| `itinerary` | `[]any` |  |
-| `leg` | `[]any` |  |
+| `itineraries` | `[]any` |  |
+| `legs` | `[]any` |  |
 | `market` | `string` |  |
 | `max_price` | `any` |  |
-| `min_carry_on_bag` | `any` |  |
-| `min_checked_bag` | `any` |  |
+| `min_carry_on_bags` | `any` |  |
+| `min_checked_bags` | `any` |  |
 
 #### Example: Create
 
 ```go
 result, err := client.FareSearchModel(nil).Create(map[string]any{
-    "itinerary": []any{},
-    "leg": []any{},
+    "itineraries": []any{},
+    "legs": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -487,23 +487,23 @@ Create an instance: `fareSearchResponseModel := client.FareSearchResponseModel(n
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `int` |  |
+| `adults` | `int` |  |
 | `airlines_exclude` | `any` |  |
 | `airlines_include` | `any` |  |
 | `allow_self_transfer` | `bool` |  |
 | `cabin_class` | `string` |  |
-| `child` | `int` |  |
+| `children` | `int` |  |
 | `departure_date` | `string` |  |
 | `departure_time_range` | `any` |  |
 | `destination` | `string` |  |
 | `infants_in_seat` | `int` |  |
 | `infants_on_lap` | `int` |  |
-| `itinerary` | `[]any` |  |
+| `itineraries` | `[]any` |  |
 | `market` | `string` |  |
 | `max_price` | `any` |  |
-| `max_stop` | `any` |  |
-| `min_carry_on_bag` | `any` |  |
-| `min_checked_bag` | `any` |  |
+| `max_stops` | `any` |  |
+| `min_carry_on_bags` | `any` |  |
+| `min_checked_bags` | `any` |  |
 | `origin` | `string` |  |
 | `return_date` | `any` |  |
 | `return_time_range` | `any` |  |
@@ -514,7 +514,7 @@ Create an instance: `fareSearchResponseModel := client.FareSearchResponseModel(n
 result, err := client.FareSearchResponseModel(nil).Create(map[string]any{
     "departure_date": "example_departure_date",
     "destination": "example_destination",
-    "itinerary": []any{},
+    "itineraries": []any{},
     "origin": "example_origin",
 }, nil)
 if err != nil {

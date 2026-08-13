@@ -33,8 +33,8 @@ class AirportListMatch
 /** BookingLink entity data model. */
 class BookingLink
 {
-    public mixed $adult = null;
-    public mixed $child = null;
+    public mixed $adults = null;
+    public mixed $children = null;
     public mixed $departure_date = null;
     public mixed $destination = null;
     public ?string $ignav_id = null;
@@ -52,8 +52,8 @@ class BookingLink
 /** Request payload for BookingLink#create. */
 class BookingLinkCreateData
 {
-    public mixed $adult = null;
-    public mixed $child = null;
+    public mixed $adults = null;
+    public mixed $children = null;
     public mixed $departure_date = null;
     public mixed $destination = null;
     public ?string $ignav_id = null;
@@ -71,61 +71,61 @@ class BookingLinkCreateData
 /** FareSearchModel entity data model. */
 class FareSearchModel
 {
-    public ?int $adult = null;
+    public ?int $adults = null;
     public mixed $airlines_exclude = null;
     public mixed $airlines_include = null;
     public ?bool $allow_self_transfer = null;
     public ?string $cabin_class = null;
-    public ?int $child = null;
+    public ?int $children = null;
     public ?int $infants_in_seat = null;
     public ?int $infants_on_lap = null;
-    public array $itinerary;
-    public array $leg;
+    public array $itineraries;
+    public array $legs;
     public ?string $market = null;
     public mixed $max_price = null;
-    public mixed $min_carry_on_bag = null;
-    public mixed $min_checked_bag = null;
+    public mixed $min_carry_on_bags = null;
+    public mixed $min_checked_bags = null;
 }
 
 /** Request payload for FareSearchModel#create. */
 class FareSearchModelCreateData
 {
-    public ?int $adult = null;
+    public ?int $adults = null;
     public mixed $airlines_exclude = null;
     public mixed $airlines_include = null;
     public ?bool $allow_self_transfer = null;
     public ?string $cabin_class = null;
-    public ?int $child = null;
+    public ?int $children = null;
     public ?int $infants_in_seat = null;
     public ?int $infants_on_lap = null;
-    public array $itinerary;
-    public array $leg;
+    public array $itineraries;
+    public array $legs;
     public ?string $market = null;
     public mixed $max_price = null;
-    public mixed $min_carry_on_bag = null;
-    public mixed $min_checked_bag = null;
+    public mixed $min_carry_on_bags = null;
+    public mixed $min_checked_bags = null;
 }
 
 /** FareSearchResponseModel entity data model. */
 class FareSearchResponseModel
 {
-    public ?int $adult = null;
+    public ?int $adults = null;
     public mixed $airlines_exclude = null;
     public mixed $airlines_include = null;
     public ?bool $allow_self_transfer = null;
     public ?string $cabin_class = null;
-    public ?int $child = null;
+    public ?int $children = null;
     public string $departure_date;
     public mixed $departure_time_range = null;
     public string $destination;
     public ?int $infants_in_seat = null;
     public ?int $infants_on_lap = null;
-    public array $itinerary;
+    public array $itineraries;
     public ?string $market = null;
     public mixed $max_price = null;
-    public mixed $max_stop = null;
-    public mixed $min_carry_on_bag = null;
-    public mixed $min_checked_bag = null;
+    public mixed $max_stops = null;
+    public mixed $min_carry_on_bags = null;
+    public mixed $min_checked_bags = null;
     public string $origin;
     public mixed $return_date = null;
     public mixed $return_time_range = null;
@@ -134,23 +134,23 @@ class FareSearchResponseModel
 /** Request payload for FareSearchResponseModel#create. */
 class FareSearchResponseModelCreateData
 {
-    public ?int $adult = null;
+    public ?int $adults = null;
     public mixed $airlines_exclude = null;
     public mixed $airlines_include = null;
     public ?bool $allow_self_transfer = null;
     public ?string $cabin_class = null;
-    public ?int $child = null;
+    public ?int $children = null;
     public string $departure_date;
     public mixed $departure_time_range = null;
     public string $destination;
     public ?int $infants_in_seat = null;
     public ?int $infants_on_lap = null;
-    public array $itinerary;
+    public array $itineraries;
     public ?string $market = null;
     public mixed $max_price = null;
-    public mixed $max_stop = null;
-    public mixed $min_carry_on_bag = null;
-    public mixed $min_checked_bag = null;
+    public mixed $max_stops = null;
+    public mixed $min_carry_on_bags = null;
+    public mixed $min_checked_bags = null;
     public string $origin;
     public mixed $return_date = null;
     public mixed $return_time_range = null;

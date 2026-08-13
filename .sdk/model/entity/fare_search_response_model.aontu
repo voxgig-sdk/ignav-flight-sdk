@@ -6,7 +6,7 @@ main: kit: entity: fare_search_response_model: {
 
   fields: [
     {
-      name: "adult"
+      name: "adults"
       req: false
       type: "`$INTEGER`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: fare_search_response_model: {
       type: "`$STRING`"
     }
     {
-      name: "child"
+      name: "children"
       req: false
       type: "`$INTEGER`"
     }
@@ -61,7 +61,7 @@ main: kit: entity: fare_search_response_model: {
       type: "`$INTEGER`"
     }
     {
-      name: "itinerary"
+      name: "itineraries"
       req: true
       type: "`$ARRAY`"
     }
@@ -76,17 +76,17 @@ main: kit: entity: fare_search_response_model: {
       type: "`$ANY`"
     }
     {
-      name: "max_stop"
+      name: "max_stops"
       req: false
       type: "`$ANY`"
     }
     {
-      name: "min_carry_on_bag"
+      name: "min_carry_on_bags"
       req: false
       type: "`$ANY`"
     }
     {
-      name: "min_checked_bag"
+      name: "min_checked_bags"
       req: false
       type: "`$ANY`"
     }
@@ -127,7 +127,25 @@ main: kit: entity: fare_search_response_model: {
             "one-way"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              adults: "`reqdata.adult`"
+              airlines_exclude: "`reqdata.airlines_exclude`"
+              airlines_include: "`reqdata.airlines_include`"
+              allow_self_transfer: "`reqdata.allow_self_transfer`"
+              cabin_class: "`reqdata.cabin_class`"
+              children: "`reqdata.child`"
+              departure_date: "`reqdata.departure_date`"
+              departure_time_range: "`reqdata.departure_time_range`"
+              destination: "`reqdata.destination`"
+              infants_in_seat: "`reqdata.infants_in_seat`"
+              infants_on_lap: "`reqdata.infants_on_lap`"
+              market: "`reqdata.market`"
+              max_price: "`reqdata.max_price`"
+              max_stops: "`reqdata.max_stop`"
+              min_carry_on_bags: "`reqdata.min_carry_on_bag`"
+              min_checked_bags: "`reqdata.min_checked_bag`"
+              origin: "`reqdata.origin`"
+            }
             res: "`body`"
           }
         }
@@ -140,7 +158,27 @@ main: kit: entity: fare_search_response_model: {
             "round-trip"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              adults: "`reqdata.adult`"
+              airlines_exclude: "`reqdata.airlines_exclude`"
+              airlines_include: "`reqdata.airlines_include`"
+              allow_self_transfer: "`reqdata.allow_self_transfer`"
+              cabin_class: "`reqdata.cabin_class`"
+              children: "`reqdata.child`"
+              departure_date: "`reqdata.departure_date`"
+              departure_time_range: "`reqdata.departure_time_range`"
+              destination: "`reqdata.destination`"
+              infants_in_seat: "`reqdata.infants_in_seat`"
+              infants_on_lap: "`reqdata.infants_on_lap`"
+              market: "`reqdata.market`"
+              max_price: "`reqdata.max_price`"
+              max_stops: "`reqdata.max_stop`"
+              min_carry_on_bags: "`reqdata.min_carry_on_bag`"
+              min_checked_bags: "`reqdata.min_checked_bag`"
+              origin: "`reqdata.origin`"
+              return_date: "`reqdata.return_date`"
+              return_time_range: "`reqdata.return_time_range`"
+            }
             res: "`body`"
           }
         }

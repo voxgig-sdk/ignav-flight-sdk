@@ -26,8 +26,8 @@ import {
 describe('AirportEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when IGNAVFLIGHT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('IGNAVFLIGHT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when IGNAV_FLIGHT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('IGNAV_FLIGHT_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = IgnavFlightSDK.test()
@@ -63,7 +63,7 @@ describe('AirportEntity', async () => {
     const airport_ref01_ent = client.Airport()
     const airport_ref01_match: any = {}
 
-    const airport_ref01_list = await airport_ref01_ent.list(airport_ref01_match)
+    const airport_ref01_list = (await airport_ref01_ent.list(airport_ref01_match)).map((e: any) => e.data())
 
 
   })

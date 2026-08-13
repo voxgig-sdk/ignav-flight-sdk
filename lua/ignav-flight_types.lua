@@ -19,8 +19,8 @@
 ---@field name? string
 
 ---@class BookingLink
----@field adult? any
----@field child? any
+---@field adults? any
+---@field children? any
 ---@field departure_date? any
 ---@field destination? any
 ---@field ignav_id? string
@@ -35,8 +35,8 @@
 ---@field return_date? any
 
 ---@class BookingLinkCreateData
----@field adult? any
----@field child? any
+---@field adults? any
+---@field children? any
 ---@field departure_date? any
 ---@field destination? any
 ---@field ignav_id? string
@@ -51,77 +51,77 @@
 ---@field return_date? any
 
 ---@class FareSearchModel
----@field adult? number
+---@field adults? number
 ---@field airlines_exclude? any
 ---@field airlines_include? any
 ---@field allow_self_transfer? boolean
 ---@field cabin_class? string
----@field child? number
+---@field children? number
 ---@field infants_in_seat? number
 ---@field infants_on_lap? number
----@field itinerary table
----@field leg table
+---@field itineraries table
+---@field legs table
 ---@field market? string
 ---@field max_price? any
----@field min_carry_on_bag? any
----@field min_checked_bag? any
+---@field min_carry_on_bags? any
+---@field min_checked_bags? any
 
 ---@class FareSearchModelCreateData
----@field adult? number
+---@field adults? number
 ---@field airlines_exclude? any
 ---@field airlines_include? any
 ---@field allow_self_transfer? boolean
 ---@field cabin_class? string
----@field child? number
+---@field children? number
 ---@field infants_in_seat? number
 ---@field infants_on_lap? number
----@field itinerary table
----@field leg table
+---@field itineraries table
+---@field legs table
 ---@field market? string
 ---@field max_price? any
----@field min_carry_on_bag? any
----@field min_checked_bag? any
+---@field min_carry_on_bags? any
+---@field min_checked_bags? any
 
 ---@class FareSearchResponseModel
----@field adult? number
+---@field adults? number
 ---@field airlines_exclude? any
 ---@field airlines_include? any
 ---@field allow_self_transfer? boolean
 ---@field cabin_class? string
----@field child? number
+---@field children? number
 ---@field departure_date string
 ---@field departure_time_range? any
 ---@field destination string
 ---@field infants_in_seat? number
 ---@field infants_on_lap? number
----@field itinerary table
+---@field itineraries table
 ---@field market? string
 ---@field max_price? any
----@field max_stop? any
----@field min_carry_on_bag? any
----@field min_checked_bag? any
+---@field max_stops? any
+---@field min_carry_on_bags? any
+---@field min_checked_bags? any
 ---@field origin string
 ---@field return_date? any
 ---@field return_time_range? any
 
 ---@class FareSearchResponseModelCreateData
----@field adult? number
+---@field adults? number
 ---@field airlines_exclude? any
 ---@field airlines_include? any
 ---@field allow_self_transfer? boolean
 ---@field cabin_class? string
----@field child? number
+---@field children? number
 ---@field departure_date string
 ---@field departure_time_range? any
 ---@field destination string
 ---@field infants_in_seat? number
 ---@field infants_on_lap? number
----@field itinerary table
+---@field itineraries table
 ---@field market? string
 ---@field max_price? any
----@field max_stop? any
----@field min_carry_on_bag? any
----@field min_checked_bag? any
+---@field max_stops? any
+---@field min_carry_on_bags? any
+---@field min_checked_bags? any
 ---@field origin string
 ---@field return_date? any
 ---@field return_time_range? any

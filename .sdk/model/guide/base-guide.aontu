@@ -14,21 +14,84 @@ guide: {
   entity: booking_link: {
     path: "/api/fares/booking-links": {
       op: create: method: *POST
+      op: create: transform: req: "adults": *("`reqdata.adult`")|top
+      op: create: transform: req: "children": *("`reqdata.child`")|top
+      op: create: transform: req: "departure_date": *("`reqdata.departure_date`")|top
+      op: create: transform: req: "destination": *("`reqdata.destination`")|top
+      op: create: transform: req: "ignav_id": *("`reqdata.ignav_id`")|top
+      op: create: transform: req: "inbound_carrier_code": *("`reqdata.inbound_carrier_code`")|top
+      op: create: transform: req: "inbound_flight_number": *("`reqdata.inbound_flight_number`")|top
+      op: create: transform: req: "infants_in_seat": *("`reqdata.infants_in_seat`")|top
+      op: create: transform: req: "infants_on_lap": *("`reqdata.infants_on_lap`")|top
+      op: create: transform: req: "market": *("`reqdata.market`")|top
+      op: create: transform: req: "origin": *("`reqdata.origin`")|top
+      op: create: transform: req: "outbound_carrier_code": *("`reqdata.outbound_carrier_code`")|top
+      op: create: transform: req: "outbound_flight_number": *("`reqdata.outbound_flight_number`")|top
+      op: create: transform: req: "return_date": *("`reqdata.return_date`")|top
     }
   }
 
   entity: fare_search_model: {
     path: "/api/fares/search": {
       op: create: method: *POST
+      op: create: transform: req: "adults": *("`reqdata.adult`")|top
+      op: create: transform: req: "airlines_exclude": *("`reqdata.airlines_exclude`")|top
+      op: create: transform: req: "airlines_include": *("`reqdata.airlines_include`")|top
+      op: create: transform: req: "allow_self_transfer": *("`reqdata.allow_self_transfer`")|top
+      op: create: transform: req: "cabin_class": *("`reqdata.cabin_class`")|top
+      op: create: transform: req: "children": *("`reqdata.child`")|top
+      op: create: transform: req: "infants_in_seat": *("`reqdata.infants_in_seat`")|top
+      op: create: transform: req: "infants_on_lap": *("`reqdata.infants_on_lap`")|top
+      op: create: transform: req: "legs": *("`reqdata.leg`")|top
+      op: create: transform: req: "market": *("`reqdata.market`")|top
+      op: create: transform: req: "max_price": *("`reqdata.max_price`")|top
+      op: create: transform: req: "min_carry_on_bags": *("`reqdata.min_carry_on_bag`")|top
+      op: create: transform: req: "min_checked_bags": *("`reqdata.min_checked_bag`")|top
     }
   }
 
   entity: fare_search_response_model: {
     path: "/api/fares/one-way": {
       op: create: method: *POST
+      op: create: transform: req: "adults": *("`reqdata.adult`")|top
+      op: create: transform: req: "airlines_exclude": *("`reqdata.airlines_exclude`")|top
+      op: create: transform: req: "airlines_include": *("`reqdata.airlines_include`")|top
+      op: create: transform: req: "allow_self_transfer": *("`reqdata.allow_self_transfer`")|top
+      op: create: transform: req: "cabin_class": *("`reqdata.cabin_class`")|top
+      op: create: transform: req: "children": *("`reqdata.child`")|top
+      op: create: transform: req: "departure_date": *("`reqdata.departure_date`")|top
+      op: create: transform: req: "departure_time_range": *("`reqdata.departure_time_range`")|top
+      op: create: transform: req: "destination": *("`reqdata.destination`")|top
+      op: create: transform: req: "infants_in_seat": *("`reqdata.infants_in_seat`")|top
+      op: create: transform: req: "infants_on_lap": *("`reqdata.infants_on_lap`")|top
+      op: create: transform: req: "market": *("`reqdata.market`")|top
+      op: create: transform: req: "max_price": *("`reqdata.max_price`")|top
+      op: create: transform: req: "max_stops": *("`reqdata.max_stop`")|top
+      op: create: transform: req: "min_carry_on_bags": *("`reqdata.min_carry_on_bag`")|top
+      op: create: transform: req: "min_checked_bags": *("`reqdata.min_checked_bag`")|top
+      op: create: transform: req: "origin": *("`reqdata.origin`")|top
     }
     path: "/api/fares/round-trip": {
       op: create: method: *POST
+      op: create: transform: req: "adults": *("`reqdata.adult`")|top
+      op: create: transform: req: "airlines_exclude": *("`reqdata.airlines_exclude`")|top
+      op: create: transform: req: "airlines_include": *("`reqdata.airlines_include`")|top
+      op: create: transform: req: "allow_self_transfer": *("`reqdata.allow_self_transfer`")|top
+      op: create: transform: req: "cabin_class": *("`reqdata.cabin_class`")|top
+      op: create: transform: req: "children": *("`reqdata.child`")|top
+      op: create: transform: req: "departure_date": *("`reqdata.departure_date`")|top
+      op: create: transform: req: "departure_time_range": *("`reqdata.departure_time_range`")|top
+      op: create: transform: req: "destination": *("`reqdata.destination`")|top
+      op: create: transform: req: "infants_in_seat": *("`reqdata.infants_in_seat`")|top
+      op: create: transform: req: "infants_on_lap": *("`reqdata.infants_on_lap`")|top
+      op: create: transform: req: "market": *("`reqdata.market`")|top
+      op: create: transform: req: "max_price": *("`reqdata.max_price`")|top
+      op: create: transform: req: "max_stops": *("`reqdata.max_stop`")|top
+      op: create: transform: req: "min_carry_on_bags": *("`reqdata.min_carry_on_bag`")|top
+      op: create: transform: req: "min_checked_bags": *("`reqdata.min_checked_bag`")|top
+      op: create: transform: req: "origin": *("`reqdata.origin`")|top
+      op: create: transform: req: "return_date": *("`reqdata.return_date`")|top
+      op: create: transform: req: "return_time_range": *("`reqdata.return_time_range`")|top
     }
   }
 

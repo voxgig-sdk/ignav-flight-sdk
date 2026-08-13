@@ -60,16 +60,16 @@ def airport_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "IGNAVFLIGHT_TEST_AIRPORT_ENTID" => {},
-    "IGNAVFLIGHT_TEST_LIVE" => "FALSE",
-    "IGNAVFLIGHT_APIKEY" => "NONE",
+    "IGNAV_FLIGHT_TEST_AIRPORT_ENTID" => {},
+    "IGNAV_FLIGHT_TEST_LIVE" => "FALSE",
+    "IGNAV_FLIGHT_APIKEY" => "NONE",
   })
 
-  live = env["IGNAVFLIGHT_TEST_LIVE"] == "TRUE"
+  live = env["IGNAV_FLIGHT_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["IGNAVFLIGHT_APIKEY"],
+      "apikey" => env["IGNAV_FLIGHT_APIKEY"],
     }
     client = IgnavFlightSDK.new(merged_opts)
     return {

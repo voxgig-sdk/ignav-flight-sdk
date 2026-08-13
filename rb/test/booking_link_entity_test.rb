@@ -26,7 +26,7 @@ class BookingLinkEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set IGNAVFLIGHT_TEST_BOOKING_LINK_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set IGNAV_FLIGHT_TEST_BOOKING_LINK_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -37,7 +37,7 @@ class BookingLinkEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.booking_link"), "booking_link_ref01"))
 
     booking_link_ref01_data_result = booking_link_ref01_ent.create(booking_link_ref01_data, nil)
-    booking_link_ref01_data = Helpers.to_map(booking_link_ref01_data_result)
+    booking_link_ref01_data = Helpers.to_map(booking_link_ref01_data_result.respond_to?(:data_get) ? booking_link_ref01_data_result.data_get : booking_link_ref01_data_result)
     assert !booking_link_ref01_data.nil?
 
   end
@@ -69,39 +69,39 @@ def booking_link_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["IGNAVFLIGHT_TEST_BOOKING_LINK_ENTID"]
+  entid_env_raw = ENV["IGNAV_FLIGHT_TEST_BOOKING_LINK_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "IGNAVFLIGHT_TEST_BOOKING_LINK_ENTID" => idmap,
-    "IGNAVFLIGHT_TEST_LIVE" => "FALSE",
-    "IGNAVFLIGHT_TEST_EXPLAIN" => "FALSE",
-    "IGNAVFLIGHT_APIKEY" => "NONE",
+    "IGNAV_FLIGHT_TEST_BOOKING_LINK_ENTID" => idmap,
+    "IGNAV_FLIGHT_TEST_LIVE" => "FALSE",
+    "IGNAV_FLIGHT_TEST_EXPLAIN" => "FALSE",
+    "IGNAV_FLIGHT_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["IGNAVFLIGHT_TEST_BOOKING_LINK_ENTID"])
+    env["IGNAV_FLIGHT_TEST_BOOKING_LINK_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["IGNAVFLIGHT_TEST_LIVE"] == "TRUE"
+  if env["IGNAV_FLIGHT_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["IGNAVFLIGHT_APIKEY"],
+        "apikey" => env["IGNAV_FLIGHT_APIKEY"],
       },
       extra || {},
     ])
     client = IgnavFlightSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["IGNAVFLIGHT_TEST_LIVE"] == "TRUE"
+  live = env["IGNAV_FLIGHT_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["IGNAVFLIGHT_TEST_EXPLAIN"] == "TRUE",
+    explain: env["IGNAV_FLIGHT_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

@@ -19,11 +19,15 @@ import {
 describe('AirportDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when IGNAVFLIGHT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('IGNAVFLIGHT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when IGNAV_FLIGHT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('IGNAV_FLIGHT_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new IgnavFlightSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -77,19 +81,19 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'IGNAVFLIGHT_TEST_AIRPORT_ENTID': {},
-    'IGNAVFLIGHT_TEST_LIVE': 'FALSE',
-    'IGNAVFLIGHT_APIKEY': 'NONE',
+    'IGNAV_FLIGHT_TEST_AIRPORT_ENTID': {},
+    'IGNAV_FLIGHT_TEST_LIVE': 'FALSE',
+    'IGNAV_FLIGHT_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.IGNAVFLIGHT_TEST_LIVE
+  const live = 'TRUE' === env.IGNAV_FLIGHT_TEST_LIVE
 
   if (live) {
     const client = new IgnavFlightSDK({
-      apikey: env.IGNAVFLIGHT_APIKEY,
+      apikey: env.IGNAV_FLIGHT_APIKEY,
     })
 
-    let idmap: any = env['IGNAVFLIGHT_TEST_AIRPORT_ENTID']
+    let idmap: any = env['IGNAV_FLIGHT_TEST_AIRPORT_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

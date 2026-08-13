@@ -26,8 +26,8 @@ import {
 describe('BookingLinkEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when IGNAVFLIGHT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('IGNAVFLIGHT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when IGNAV_FLIGHT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('IGNAV_FLIGHT_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = IgnavFlightSDK.test()
@@ -62,7 +62,7 @@ describe('BookingLinkEntity', async () => {
     const booking_link_ref01_ent = client.BookingLink()
     let booking_link_ref01_data = setup.data.new.booking_link['booking_link_ref01']
 
-    booking_link_ref01_data = await booking_link_ref01_ent.create(booking_link_ref01_data)
+    booking_link_ref01_data = (await booking_link_ref01_ent.create(booking_link_ref01_data)).data()
     assert(null != booking_link_ref01_data)
 
 

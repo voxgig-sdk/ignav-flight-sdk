@@ -2,54 +2,54 @@
   "existing": {
     "fare_search_model": {
       "FARE_SEARCH_MODEL00": {
-        "adult": "s8c",
+        "adults": "s8c",
         "airlines_exclude": "s8d",
         "airlines_include": "s8e",
         "allow_self_transfer": false,
         "cabin_class": "s90",
-        "child": "s91",
+        "children": "s91",
         "infants_in_seat": "s92",
         "infants_on_lap": "s93",
-        "itinerary": [],
-        "leg": [],
+        "itineraries": [],
+        "legs": [],
         "market": "s96",
         "max_price": "s97",
-        "min_carry_on_bag": "s98",
-        "min_checked_bag": "s99",
+        "min_carry_on_bags": "s98",
+        "min_checked_bags": "s99",
         "id": "FARE_SEARCH_MODEL00"
       },
       "FARE_SEARCH_MODEL01": {
-        "adult": "s118",
+        "adults": "s118",
         "airlines_exclude": "s119",
         "airlines_include": "s11a",
         "allow_self_transfer": false,
         "cabin_class": "s11c",
-        "child": "s11d",
+        "children": "s11d",
         "infants_in_seat": "s11e",
         "infants_on_lap": "s11f",
-        "itinerary": [],
-        "leg": [],
+        "itineraries": [],
+        "legs": [],
         "market": "s122",
         "max_price": "s123",
-        "min_carry_on_bag": "s124",
-        "min_checked_bag": "s125",
+        "min_carry_on_bags": "s124",
+        "min_checked_bags": "s125",
         "id": "FARE_SEARCH_MODEL01"
       },
       "FARE_SEARCH_MODEL02": {
-        "adult": "s1a4",
+        "adults": "s1a4",
         "airlines_exclude": "s1a5",
         "airlines_include": "s1a6",
         "allow_self_transfer": false,
         "cabin_class": "s1a8",
-        "child": "s1a9",
+        "children": "s1a9",
         "infants_in_seat": "s1aa",
         "infants_on_lap": "s1ab",
-        "itinerary": [],
-        "leg": [],
+        "itineraries": [],
+        "legs": [],
         "market": "s1ae",
         "max_price": "s1af",
-        "min_carry_on_bag": "s1b0",
-        "min_checked_bag": "s1b1",
+        "min_carry_on_bags": "s1b0",
+        "min_checked_bags": "s1b1",
         "id": "FARE_SEARCH_MODEL02"
       }
     }
@@ -57,20 +57,20 @@
   "new": {
     "fare_search_model": {
       "fare_search_model_ref01": {
-        "adult": "s230",
+        "adults": "s230",
         "airlines_exclude": "s231",
         "airlines_include": "s232",
         "allow_self_transfer": false,
         "cabin_class": "s234",
-        "child": "s235",
+        "children": "s235",
         "infants_in_seat": "s236",
         "infants_on_lap": "s237",
-        "itinerary": [],
-        "leg": [],
+        "itineraries": [],
+        "legs": [],
         "market": "s23a",
         "max_price": "s23b",
-        "min_carry_on_bag": "s23c",
-        "min_checked_bag": "s23d"
+        "min_carry_on_bags": "s23c",
+        "min_checked_bags": "s23d"
       }
     }
   }

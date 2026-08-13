@@ -227,9 +227,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local airport, err = client:Airport():load()
+    local airport, err = client:Airport():list()
     if err then error(err) end
-    -- airport is the loaded record
+    -- airport is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -253,8 +253,8 @@ API path: `/api/airports`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
-| `child` |  |
+| `adults` |  |
+| `children` |  |
 | `departure_date` |  |
 | `destination` |  |
 | `ignav_id` |  |
@@ -276,20 +276,20 @@ API path: `/api/fares/booking-links`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
+| `adults` |  |
 | `airlines_exclude` |  |
 | `airlines_include` |  |
 | `allow_self_transfer` |  |
 | `cabin_class` |  |
-| `child` |  |
+| `children` |  |
 | `infants_in_seat` |  |
 | `infants_on_lap` |  |
-| `itinerary` |  |
-| `leg` |  |
+| `itineraries` |  |
+| `legs` |  |
 | `market` |  |
 | `max_price` |  |
-| `min_carry_on_bag` |  |
-| `min_checked_bag` |  |
+| `min_carry_on_bags` |  |
+| `min_checked_bags` |  |
 
 Operations: Create.
 
@@ -299,23 +299,23 @@ API path: `/api/fares/search`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
+| `adults` |  |
 | `airlines_exclude` |  |
 | `airlines_include` |  |
 | `allow_self_transfer` |  |
 | `cabin_class` |  |
-| `child` |  |
+| `children` |  |
 | `departure_date` |  |
 | `departure_time_range` |  |
 | `destination` |  |
 | `infants_in_seat` |  |
 | `infants_on_lap` |  |
-| `itinerary` |  |
+| `itineraries` |  |
 | `market` |  |
 | `max_price` |  |
-| `max_stop` |  |
-| `min_carry_on_bag` |  |
-| `min_checked_bag` |  |
+| `max_stops` |  |
+| `min_carry_on_bags` |  |
+| `min_checked_bags` |  |
 | `origin` |  |
 | `return_date` |  |
 | `return_time_range` |  |
@@ -369,8 +369,8 @@ Create an instance: `local booking_link = client:BookingLink(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `any` |  |
-| `child` | `any` |  |
+| `adults` | `any` |  |
+| `children` | `any` |  |
 | `departure_date` | `any` |  |
 | `destination` | `any` |  |
 | `ignav_id` | `string` |  |
@@ -406,27 +406,27 @@ Create an instance: `local fare_search_model = client:FareSearchModel(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `number` |  |
+| `adults` | `number` |  |
 | `airlines_exclude` | `any` |  |
 | `airlines_include` | `any` |  |
 | `allow_self_transfer` | `boolean` |  |
 | `cabin_class` | `string` |  |
-| `child` | `number` |  |
+| `children` | `number` |  |
 | `infants_in_seat` | `number` |  |
 | `infants_on_lap` | `number` |  |
-| `itinerary` | `table` |  |
-| `leg` | `table` |  |
+| `itineraries` | `table` |  |
+| `legs` | `table` |  |
 | `market` | `string` |  |
 | `max_price` | `any` |  |
-| `min_carry_on_bag` | `any` |  |
-| `min_checked_bag` | `any` |  |
+| `min_carry_on_bags` | `any` |  |
+| `min_checked_bags` | `any` |  |
 
 #### Example: Create
 
 ```lua
 local fare_search_model, err = client:FareSearchModel():create({
-  itinerary = {}, -- table
-  leg = {}, -- table
+  itineraries = {}, -- table
+  legs = {}, -- table
 })
 ```
 
@@ -445,23 +445,23 @@ Create an instance: `local fare_search_response_model = client:FareSearchRespons
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `number` |  |
+| `adults` | `number` |  |
 | `airlines_exclude` | `any` |  |
 | `airlines_include` | `any` |  |
 | `allow_self_transfer` | `boolean` |  |
 | `cabin_class` | `string` |  |
-| `child` | `number` |  |
+| `children` | `number` |  |
 | `departure_date` | `string` |  |
 | `departure_time_range` | `any` |  |
 | `destination` | `string` |  |
 | `infants_in_seat` | `number` |  |
 | `infants_on_lap` | `number` |  |
-| `itinerary` | `table` |  |
+| `itineraries` | `table` |  |
 | `market` | `string` |  |
 | `max_price` | `any` |  |
-| `max_stop` | `any` |  |
-| `min_carry_on_bag` | `any` |  |
-| `min_checked_bag` | `any` |  |
+| `max_stops` | `any` |  |
+| `min_carry_on_bags` | `any` |  |
+| `min_checked_bags` | `any` |  |
 | `origin` | `string` |  |
 | `return_date` | `any` |  |
 | `return_time_range` | `any` |  |
@@ -472,7 +472,7 @@ Create an instance: `local fare_search_response_model = client:FareSearchRespons
 local fare_search_response_model, err = client:FareSearchResponseModel():create({
   departure_date = "example_departure_date", -- string
   destination = "example_destination", -- string
-  itinerary = {}, -- table
+  itineraries = {}, -- table
   origin = "example_origin", -- string
 })
 ```

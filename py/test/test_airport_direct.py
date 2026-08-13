@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from ignavflight_sdk.utility.voxgig_struct import voxgig_struct as vs
 from ignavflight_sdk import IgnavFlightSDK
-from core import helpers
+from ignavflight_sdk.core import helpers
 from test import runner
 
 
@@ -58,16 +58,16 @@ def _airport_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "IGNAVFLIGHT_TEST_AIRPORT_ENTID": {},
-        "IGNAVFLIGHT_TEST_LIVE": "FALSE",
-        "IGNAVFLIGHT_APIKEY": "NONE",
+        "IGNAV_FLIGHT_TEST_AIRPORT_ENTID": {},
+        "IGNAV_FLIGHT_TEST_LIVE": "FALSE",
+        "IGNAV_FLIGHT_APIKEY": "NONE",
     })
 
-    live = env.get("IGNAVFLIGHT_TEST_LIVE") == "TRUE"
+    live = env.get("IGNAV_FLIGHT_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("IGNAVFLIGHT_APIKEY"),
+            "apikey": env.get("IGNAV_FLIGHT_APIKEY"),
         }
         client = IgnavFlightSDK(merged_opts)
         return {

@@ -127,7 +127,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = IgnavFlightSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $airport = $client->Airport()->list();
 print_r($airport);
 ```
@@ -232,7 +233,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -267,8 +268,8 @@ API path: `/api/airports`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
-| `child` |  |
+| `adults` |  |
+| `children` |  |
 | `departure_date` |  |
 | `destination` |  |
 | `ignav_id` |  |
@@ -290,20 +291,20 @@ API path: `/api/fares/booking-links`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
+| `adults` |  |
 | `airlines_exclude` |  |
 | `airlines_include` |  |
 | `allow_self_transfer` |  |
 | `cabin_class` |  |
-| `child` |  |
+| `children` |  |
 | `infants_in_seat` |  |
 | `infants_on_lap` |  |
-| `itinerary` |  |
-| `leg` |  |
+| `itineraries` |  |
+| `legs` |  |
 | `market` |  |
 | `max_price` |  |
-| `min_carry_on_bag` |  |
-| `min_checked_bag` |  |
+| `min_carry_on_bags` |  |
+| `min_checked_bags` |  |
 
 Operations: Create.
 
@@ -313,23 +314,23 @@ API path: `/api/fares/search`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
+| `adults` |  |
 | `airlines_exclude` |  |
 | `airlines_include` |  |
 | `allow_self_transfer` |  |
 | `cabin_class` |  |
-| `child` |  |
+| `children` |  |
 | `departure_date` |  |
 | `departure_time_range` |  |
 | `destination` |  |
 | `infants_in_seat` |  |
 | `infants_on_lap` |  |
-| `itinerary` |  |
+| `itineraries` |  |
 | `market` |  |
 | `max_price` |  |
-| `max_stop` |  |
-| `min_carry_on_bag` |  |
-| `min_checked_bag` |  |
+| `max_stops` |  |
+| `min_carry_on_bags` |  |
+| `min_checked_bags` |  |
 | `origin` |  |
 | `return_date` |  |
 | `return_time_range` |  |
@@ -384,8 +385,8 @@ Create an instance: `$booking_link = $client->BookingLink();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `mixed` |  |
-| `child` | `mixed` |  |
+| `adults` | `mixed` |  |
+| `children` | `mixed` |  |
 | `departure_date` | `mixed` |  |
 | `destination` | `mixed` |  |
 | `ignav_id` | `string` |  |
@@ -421,27 +422,27 @@ Create an instance: `$fare_search_model = $client->FareSearchModel();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `int` |  |
+| `adults` | `int` |  |
 | `airlines_exclude` | `mixed` |  |
 | `airlines_include` | `mixed` |  |
 | `allow_self_transfer` | `bool` |  |
 | `cabin_class` | `string` |  |
-| `child` | `int` |  |
+| `children` | `int` |  |
 | `infants_in_seat` | `int` |  |
 | `infants_on_lap` | `int` |  |
-| `itinerary` | `array` |  |
-| `leg` | `array` |  |
+| `itineraries` | `array` |  |
+| `legs` | `array` |  |
 | `market` | `string` |  |
 | `max_price` | `mixed` |  |
-| `min_carry_on_bag` | `mixed` |  |
-| `min_checked_bag` | `mixed` |  |
+| `min_carry_on_bags` | `mixed` |  |
+| `min_checked_bags` | `mixed` |  |
 
 #### Example: Create
 
 ```php
 $fare_search_model = $client->FareSearchModel()->create([
-    "itinerary" => null, // array
-    "leg" => null, // array
+    "itineraries" => null, // array
+    "legs" => null, // array
 ]);
 ```
 
@@ -460,23 +461,23 @@ Create an instance: `$fare_search_response_model = $client->FareSearchResponseMo
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `int` |  |
+| `adults` | `int` |  |
 | `airlines_exclude` | `mixed` |  |
 | `airlines_include` | `mixed` |  |
 | `allow_self_transfer` | `bool` |  |
 | `cabin_class` | `string` |  |
-| `child` | `int` |  |
+| `children` | `int` |  |
 | `departure_date` | `string` |  |
 | `departure_time_range` | `mixed` |  |
 | `destination` | `string` |  |
 | `infants_in_seat` | `int` |  |
 | `infants_on_lap` | `int` |  |
-| `itinerary` | `array` |  |
+| `itineraries` | `array` |  |
 | `market` | `string` |  |
 | `max_price` | `mixed` |  |
-| `max_stop` | `mixed` |  |
-| `min_carry_on_bag` | `mixed` |  |
-| `min_checked_bag` | `mixed` |  |
+| `max_stops` | `mixed` |  |
+| `min_carry_on_bags` | `mixed` |  |
+| `min_checked_bags` | `mixed` |  |
 | `origin` | `string` |  |
 | `return_date` | `mixed` |  |
 | `return_time_range` | `mixed` |  |
@@ -487,7 +488,7 @@ Create an instance: `$fare_search_response_model = $client->FareSearchResponseMo
 $fare_search_response_model = $client->FareSearchResponseModel()->create([
     "departure_date" => null, // string
     "destination" => null, // string
-    "itinerary" => null, // array
+    "itineraries" => null, // array
     "origin" => null, // string
 ]);
 ```

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# IgnavFlight SDK exists test
 
 import pytest
 from ignavflight_sdk import IgnavFlightSDK

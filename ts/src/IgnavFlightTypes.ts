@@ -20,8 +20,8 @@ export interface AirportListMatch {
 }
 
 export interface BookingLink {
-  adult?: any
-  child?: any
+  adults?: any
+  children?: any
   departure_date?: any
   destination?: any
   ignav_id?: string
@@ -37,8 +37,8 @@ export interface BookingLink {
 }
 
 export interface BookingLinkCreateData {
-  adult?: any
-  child?: any
+  adults?: any
+  children?: any
   departure_date?: any
   destination?: any
   ignav_id?: string
@@ -54,80 +54,80 @@ export interface BookingLinkCreateData {
 }
 
 export interface FareSearchModel {
-  adult?: number
+  adults?: number
   airlines_exclude?: any
   airlines_include?: any
   allow_self_transfer?: boolean
   cabin_class?: string
-  child?: number
+  children?: number
   infants_in_seat?: number
   infants_on_lap?: number
-  itinerary: any[]
-  leg: any[]
+  itineraries: any[]
+  legs: any[]
   market?: string
   max_price?: any
-  min_carry_on_bag?: any
-  min_checked_bag?: any
+  min_carry_on_bags?: any
+  min_checked_bags?: any
 }
 
 export interface FareSearchModelCreateData {
-  adult?: number
+  adults?: number
   airlines_exclude?: any
   airlines_include?: any
   allow_self_transfer?: boolean
   cabin_class?: string
-  child?: number
+  children?: number
   infants_in_seat?: number
   infants_on_lap?: number
-  itinerary: any[]
-  leg: any[]
+  itineraries: any[]
+  legs: any[]
   market?: string
   max_price?: any
-  min_carry_on_bag?: any
-  min_checked_bag?: any
+  min_carry_on_bags?: any
+  min_checked_bags?: any
 }
 
 export interface FareSearchResponseModel {
-  adult?: number
+  adults?: number
   airlines_exclude?: any
   airlines_include?: any
   allow_self_transfer?: boolean
   cabin_class?: string
-  child?: number
+  children?: number
   departure_date: string
   departure_time_range?: any
   destination: string
   infants_in_seat?: number
   infants_on_lap?: number
-  itinerary: any[]
+  itineraries: any[]
   market?: string
   max_price?: any
-  max_stop?: any
-  min_carry_on_bag?: any
-  min_checked_bag?: any
+  max_stops?: any
+  min_carry_on_bags?: any
+  min_checked_bags?: any
   origin: string
   return_date?: any
   return_time_range?: any
 }
 
 export interface FareSearchResponseModelCreateData {
-  adult?: number
+  adults?: number
   airlines_exclude?: any
   airlines_include?: any
   allow_self_transfer?: boolean
   cabin_class?: string
-  child?: number
+  children?: number
   departure_date: string
   departure_time_range?: any
   destination: string
   infants_in_seat?: number
   infants_on_lap?: number
-  itinerary: any[]
+  itineraries: any[]
   market?: string
   max_price?: any
-  max_stop?: any
-  min_carry_on_bag?: any
-  min_checked_bag?: any
+  max_stops?: any
+  min_carry_on_bags?: any
+  min_checked_bags?: any
   origin: string
   return_date?: any
   return_time_range?: any

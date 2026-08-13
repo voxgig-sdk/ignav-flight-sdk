@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.IGNAVFLIGHT_TEST_LIVE ||
-    'TRUE' === process.env.IGNAVFLIGHT_TEST_OVERRIDE
+    'TRUE' === process.env.IGNAV_FLIGHT_TEST_LIVE ||
+    'TRUE' === process.env.IGNAV_FLIGHT_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.IGNAVFLIGHT_TEST_EXPLAIN = process.env.IGNAVFLIGHT_TEST_EXPLAIN || m.IGNAVFLIGHT_TEST_EXPLAIN
+  m.IGNAV_FLIGHT_TEST_EXPLAIN = process.env.IGNAV_FLIGHT_TEST_EXPLAIN || m.IGNAV_FLIGHT_TEST_EXPLAIN
 
   return m
 }

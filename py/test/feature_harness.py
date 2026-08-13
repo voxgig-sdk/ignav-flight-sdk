@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import IgnavFlightControl
-from core.error import IgnavFlightError
-from core.result import IgnavFlightResult
-from core.spec import IgnavFlightSpec
+from ignavflight_sdk.config import make_config
+from ignavflight_sdk.features import _make_feature
+from ignavflight_sdk.core.control import IgnavFlightControl
+from ignavflight_sdk.core.error import IgnavFlightError
+from ignavflight_sdk.core.result import IgnavFlightResult
+from ignavflight_sdk.core.spec import IgnavFlightSpec
 
 
 # True when this SDK was generated with the named feature.

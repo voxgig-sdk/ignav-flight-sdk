@@ -44,7 +44,7 @@ func TestFareSearchModelEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set IGNAVFLIGHT_TEST_FARE_SEARCH_MODEL_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set IGNAV_FLIGHT_TEST_FARE_SEARCH_MODEL_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -58,7 +58,7 @@ func TestFareSearchModelEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		fareSearchModelRef01Data = core.ToMapAny(fareSearchModelRef01DataResult)
+		fareSearchModelRef01Data = core.ToMapAny(entityData(fareSearchModelRef01DataResult))
 		if fareSearchModelRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -103,38 +103,38 @@ func fare_search_modelBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("IGNAVFLIGHT_TEST_FARE_SEARCH_MODEL_ENTID")
+	entidEnvRaw := os.Getenv("IGNAV_FLIGHT_TEST_FARE_SEARCH_MODEL_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"IGNAVFLIGHT_TEST_FARE_SEARCH_MODEL_ENTID": idmap,
-		"IGNAVFLIGHT_TEST_LIVE":      "FALSE",
-		"IGNAVFLIGHT_TEST_EXPLAIN":   "FALSE",
-		"IGNAVFLIGHT_APIKEY":         "NONE",
+		"IGNAV_FLIGHT_TEST_FARE_SEARCH_MODEL_ENTID": idmap,
+		"IGNAV_FLIGHT_TEST_LIVE":      "FALSE",
+		"IGNAV_FLIGHT_TEST_EXPLAIN":   "FALSE",
+		"IGNAV_FLIGHT_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["IGNAVFLIGHT_TEST_FARE_SEARCH_MODEL_ENTID"])
+	idmapResolved := core.ToMapAny(env["IGNAV_FLIGHT_TEST_FARE_SEARCH_MODEL_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["IGNAVFLIGHT_TEST_LIVE"] == "TRUE" {
+	if env["IGNAV_FLIGHT_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["IGNAVFLIGHT_APIKEY"],
+				"apikey": env["IGNAV_FLIGHT_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewIgnavFlightSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["IGNAVFLIGHT_TEST_LIVE"] == "TRUE"
+	live := env["IGNAV_FLIGHT_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["IGNAVFLIGHT_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["IGNAV_FLIGHT_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

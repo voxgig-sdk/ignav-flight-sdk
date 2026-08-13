@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = IgnavFlightSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 airport = client.Airport.list()
 puts airport
 ```
@@ -257,8 +258,8 @@ API path: `/api/airports`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
-| `child` |  |
+| `adults` |  |
+| `children` |  |
 | `departure_date` |  |
 | `destination` |  |
 | `ignav_id` |  |
@@ -280,20 +281,20 @@ API path: `/api/fares/booking-links`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
+| `adults` |  |
 | `airlines_exclude` |  |
 | `airlines_include` |  |
 | `allow_self_transfer` |  |
 | `cabin_class` |  |
-| `child` |  |
+| `children` |  |
 | `infants_in_seat` |  |
 | `infants_on_lap` |  |
-| `itinerary` |  |
-| `leg` |  |
+| `itineraries` |  |
+| `legs` |  |
 | `market` |  |
 | `max_price` |  |
-| `min_carry_on_bag` |  |
-| `min_checked_bag` |  |
+| `min_carry_on_bags` |  |
+| `min_checked_bags` |  |
 
 Operations: Create.
 
@@ -303,23 +304,23 @@ API path: `/api/fares/search`
 
 | Field | Description |
 | --- | --- |
-| `adult` |  |
+| `adults` |  |
 | `airlines_exclude` |  |
 | `airlines_include` |  |
 | `allow_self_transfer` |  |
 | `cabin_class` |  |
-| `child` |  |
+| `children` |  |
 | `departure_date` |  |
 | `departure_time_range` |  |
 | `destination` |  |
 | `infants_in_seat` |  |
 | `infants_on_lap` |  |
-| `itinerary` |  |
+| `itineraries` |  |
 | `market` |  |
 | `max_price` |  |
-| `max_stop` |  |
-| `min_carry_on_bag` |  |
-| `min_checked_bag` |  |
+| `max_stops` |  |
+| `min_carry_on_bags` |  |
+| `min_checked_bags` |  |
 | `origin` |  |
 | `return_date` |  |
 | `return_time_range` |  |
@@ -374,8 +375,8 @@ Create an instance: `booking_link = client.BookingLink`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `Object` |  |
-| `child` | `Object` |  |
+| `adults` | `Object` |  |
+| `children` | `Object` |  |
 | `departure_date` | `Object` |  |
 | `destination` | `Object` |  |
 | `ignav_id` | `String` |  |
@@ -411,27 +412,27 @@ Create an instance: `fare_search_model = client.FareSearchModel`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `Integer` |  |
+| `adults` | `Integer` |  |
 | `airlines_exclude` | `Object` |  |
 | `airlines_include` | `Object` |  |
 | `allow_self_transfer` | `Boolean` |  |
 | `cabin_class` | `String` |  |
-| `child` | `Integer` |  |
+| `children` | `Integer` |  |
 | `infants_in_seat` | `Integer` |  |
 | `infants_on_lap` | `Integer` |  |
-| `itinerary` | `Array` |  |
-| `leg` | `Array` |  |
+| `itineraries` | `Array` |  |
+| `legs` | `Array` |  |
 | `market` | `String` |  |
 | `max_price` | `Object` |  |
-| `min_carry_on_bag` | `Object` |  |
-| `min_checked_bag` | `Object` |  |
+| `min_carry_on_bags` | `Object` |  |
+| `min_checked_bags` | `Object` |  |
 
 #### Example: Create
 
 ```ruby
 fare_search_model = client.FareSearchModel.create({
-  "itinerary" => [], # Array
-  "leg" => [], # Array
+  "itineraries" => [], # Array
+  "legs" => [], # Array
 })
 ```
 
@@ -450,23 +451,23 @@ Create an instance: `fare_search_response_model = client.FareSearchResponseModel
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adult` | `Integer` |  |
+| `adults` | `Integer` |  |
 | `airlines_exclude` | `Object` |  |
 | `airlines_include` | `Object` |  |
 | `allow_self_transfer` | `Boolean` |  |
 | `cabin_class` | `String` |  |
-| `child` | `Integer` |  |
+| `children` | `Integer` |  |
 | `departure_date` | `String` |  |
 | `departure_time_range` | `Object` |  |
 | `destination` | `String` |  |
 | `infants_in_seat` | `Integer` |  |
 | `infants_on_lap` | `Integer` |  |
-| `itinerary` | `Array` |  |
+| `itineraries` | `Array` |  |
 | `market` | `String` |  |
 | `max_price` | `Object` |  |
-| `max_stop` | `Object` |  |
-| `min_carry_on_bag` | `Object` |  |
-| `min_checked_bag` | `Object` |  |
+| `max_stops` | `Object` |  |
+| `min_carry_on_bags` | `Object` |  |
+| `min_checked_bags` | `Object` |  |
 | `origin` | `String` |  |
 | `return_date` | `Object` |  |
 | `return_time_range` | `Object` |  |
@@ -477,7 +478,7 @@ Create an instance: `fare_search_response_model = client.FareSearchResponseModel
 fare_search_response_model = client.FareSearchResponseModel.create({
   "departure_date" => "example_departure_date", # String
   "destination" => "example_destination", # String
-  "itinerary" => [], # Array
+  "itineraries" => [], # Array
   "origin" => "example_origin", # String
 })
 ```

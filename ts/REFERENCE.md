@@ -206,8 +206,8 @@ const booking_link = client.BookingLink()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adult` | `any` | No |  |
-| `child` | `any` | No |  |
+| `adults` | `any` | No |  |
+| `children` | `any` | No |  |
 | `departure_date` | `any` | No |  |
 | `destination` | `any` | No |  |
 | `ignav_id` | `string` | No |  |
@@ -270,20 +270,20 @@ const fare_search_model = client.FareSearchModel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adult` | `number` | No |  |
+| `adults` | `number` | No |  |
 | `airlines_exclude` | `any` | No |  |
 | `airlines_include` | `any` | No |  |
 | `allow_self_transfer` | `boolean` | No |  |
 | `cabin_class` | `string` | No |  |
-| `child` | `number` | No |  |
+| `children` | `number` | No |  |
 | `infants_in_seat` | `number` | No |  |
 | `infants_on_lap` | `number` | No |  |
-| `itinerary` | `any[]` | Yes |  |
-| `leg` | `any[]` | Yes |  |
+| `itineraries` | `any[]` | Yes |  |
+| `legs` | `any[]` | Yes |  |
 | `market` | `string` | No |  |
 | `max_price` | `any` | No |  |
-| `min_carry_on_bag` | `any` | No |  |
-| `min_checked_bag` | `any` | No |  |
+| `min_carry_on_bags` | `any` | No |  |
+| `min_checked_bags` | `any` | No |  |
 
 ### Operations
 
@@ -293,8 +293,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.FareSearchModel().create({
-  itinerary: [],
-  leg: [],
+  itineraries: [],
+  legs: [],
 })
 ```
 
@@ -336,23 +336,23 @@ const fare_search_response_model = client.FareSearchResponseModel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adult` | `number` | No |  |
+| `adults` | `number` | No |  |
 | `airlines_exclude` | `any` | No |  |
 | `airlines_include` | `any` | No |  |
 | `allow_self_transfer` | `boolean` | No |  |
 | `cabin_class` | `string` | No |  |
-| `child` | `number` | No |  |
+| `children` | `number` | No |  |
 | `departure_date` | `string` | Yes |  |
 | `departure_time_range` | `any` | No |  |
 | `destination` | `string` | Yes |  |
 | `infants_in_seat` | `number` | No |  |
 | `infants_on_lap` | `number` | No |  |
-| `itinerary` | `any[]` | Yes |  |
+| `itineraries` | `any[]` | Yes |  |
 | `market` | `string` | No |  |
 | `max_price` | `any` | No |  |
-| `max_stop` | `any` | No |  |
-| `min_carry_on_bag` | `any` | No |  |
-| `min_checked_bag` | `any` | No |  |
+| `max_stops` | `any` | No |  |
+| `min_carry_on_bags` | `any` | No |  |
+| `min_checked_bags` | `any` | No |  |
 | `origin` | `string` | Yes |  |
 | `return_date` | `any` | No |  |
 | `return_time_range` | `any` | No |  |
@@ -361,23 +361,23 @@ const fare_search_response_model = client.FareSearchResponseModel()
 
 | Field | create |
 | --- | --- |
-| `adult` | - |
+| `adults` | - |
 | `airlines_exclude` | - |
 | `airlines_include` | - |
 | `allow_self_transfer` | - |
 | `cabin_class` | - |
-| `child` | - |
+| `children` | - |
 | `departure_date` | - |
 | `departure_time_range` | - |
 | `destination` | - |
 | `infants_in_seat` | - |
 | `infants_on_lap` | - |
-| `itinerary` | - |
+| `itineraries` | - |
 | `market` | - |
 | `max_price` | - |
-| `max_stop` | - |
-| `min_carry_on_bag` | - |
-| `min_checked_bag` | - |
+| `max_stops` | - |
+| `min_carry_on_bags` | - |
+| `min_checked_bags` | - |
 | `origin` | - |
 | `return_date` | Yes |
 | `return_time_range` | - |
@@ -392,7 +392,7 @@ Create a new entity with the given data.
 const result = await client.FareSearchResponseModel().create({
   departure_date: 'example_departure_date',
   destination: 'example_destination',
-  itinerary: [],
+  itineraries: [],
   origin: 'example_origin',
 })
 ```

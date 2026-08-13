@@ -6,12 +6,12 @@ main: kit: entity: booking_link: {
 
   fields: [
     {
-      name: "adult"
+      name: "adults"
       req: false
       type: "`$ANY`"
     }
     {
-      name: "child"
+      name: "children"
       req: false
       type: "`$ANY`"
     }
@@ -91,7 +91,22 @@ main: kit: entity: booking_link: {
             "booking-links"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              adults: "`reqdata.adult`"
+              children: "`reqdata.child`"
+              departure_date: "`reqdata.departure_date`"
+              destination: "`reqdata.destination`"
+              ignav_id: "`reqdata.ignav_id`"
+              inbound_carrier_code: "`reqdata.inbound_carrier_code`"
+              inbound_flight_number: "`reqdata.inbound_flight_number`"
+              infants_in_seat: "`reqdata.infants_in_seat`"
+              infants_on_lap: "`reqdata.infants_on_lap`"
+              market: "`reqdata.market`"
+              origin: "`reqdata.origin`"
+              outbound_carrier_code: "`reqdata.outbound_carrier_code`"
+              outbound_flight_number: "`reqdata.outbound_flight_number`"
+              return_date: "`reqdata.return_date`"
+            }
             res: "`body`"
           }
         }

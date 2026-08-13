@@ -2,8 +2,8 @@
   "existing": {
     "booking_link": {
       "BOOKING_LINK00": {
-        "adult": "s8c",
-        "child": "s8d",
+        "adults": "s8c",
+        "children": "s8d",
         "departure_date": "s8e",
         "destination": "s8f",
         "ignav_id": "IGNAV01",
@@ -19,8 +19,8 @@
         "id": "BOOKING_LINK00"
       },
       "BOOKING_LINK01": {
-        "adult": "s118",
-        "child": "s119",
+        "adults": "s118",
+        "children": "s119",
         "departure_date": "s11a",
         "destination": "s11b",
         "ignav_id": "IGNAV01",
@@ -36,8 +36,8 @@
         "id": "BOOKING_LINK01"
       },
       "BOOKING_LINK02": {
-        "adult": "s1a4",
-        "child": "s1a5",
+        "adults": "s1a4",
+        "children": "s1a5",
         "departure_date": "s1a6",
         "destination": "s1a7",
         "ignav_id": "IGNAV01",
@@ -57,8 +57,8 @@
   "new": {
     "booking_link": {
       "booking_link_ref01": {
-        "adult": "s230",
-        "child": "s231",
+        "adults": "s230",
+        "children": "s231",
         "departure_date": "s232",
         "destination": "s233",
         "ignav_id": "IGNAV01",

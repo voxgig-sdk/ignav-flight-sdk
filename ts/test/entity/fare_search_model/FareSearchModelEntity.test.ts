@@ -26,8 +26,8 @@ import {
 describe('FareSearchModelEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when IGNAVFLIGHT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('IGNAVFLIGHT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when IGNAV_FLIGHT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('IGNAV_FLIGHT_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = IgnavFlightSDK.test()
@@ -62,7 +62,7 @@ describe('FareSearchModelEntity', async () => {
     const fare_search_model_ref01_ent = client.FareSearchModel()
     let fare_search_model_ref01_data = setup.data.new.fare_search_model['fare_search_model_ref01']
 
-    fare_search_model_ref01_data = await fare_search_model_ref01_ent.create(fare_search_model_ref01_data)
+    fare_search_model_ref01_data = (await fare_search_model_ref01_ent.create(fare_search_model_ref01_data)).data()
     assert(null != fare_search_model_ref01_data)
 
 

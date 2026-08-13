@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ IgnavFlightUtility.registrar = ->(u) {
   u.prepare_params = IgnavFlightUtilities::PrepareParams
   u.prepare_path = IgnavFlightUtilities::PreparePath
   u.prepare_query = IgnavFlightUtilities::PrepareQuery
+  u.graphql_body = IgnavFlightUtilities::GraphqlBody
+  u.graphql_errors = IgnavFlightUtilities::GraphqlErrors
   u.result_basic = IgnavFlightUtilities::ResultBasic
   u.result_body = IgnavFlightUtilities::ResultBody
   u.result_headers = IgnavFlightUtilities::ResultHeaders
