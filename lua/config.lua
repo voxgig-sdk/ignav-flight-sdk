@@ -1,5 +1,8 @@
 -- IgnavFlight SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -31,32 +34,24 @@ local function make_config()
       ["airport"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "city",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "code",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "country",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "name",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
         },
         ["name"] = "airport",
@@ -66,20 +61,16 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = 10,
                       ["kind"] = "query",
                       ["name"] = "limit",
                       ["orig"] = "limit",
-                      ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "q",
                       ["orig"] = "q",
@@ -105,10 +96,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
         },
         ["relations"] = {
@@ -118,102 +107,60 @@ local function make_config()
       ["booking_link"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "adults",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "children",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "departure_date",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "destination",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "ignav_id",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "inbound_carrier_code",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "inbound_flight_number",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "infants_in_seat",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "infants_on_lap",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "market",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "origin",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "outbound_carrier_code",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "outbound_flight_number",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "return_date",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 13,
           },
         },
         ["name"] = "booking_link",
@@ -223,7 +170,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
@@ -253,10 +199,8 @@ local function make_config()
                   },
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "create",
           },
         },
         ["relations"] = {
@@ -266,102 +210,62 @@ local function make_config()
       ["fare_search_model"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "adults",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "airlines_exclude",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "airlines_include",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "allow_self_transfer",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "cabin_class",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "children",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "infants_in_seat",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "infants_on_lap",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "itineraries",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "legs",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "market",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "max_price",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "min_carry_on_bags",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "min_checked_bags",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 13,
           },
         },
         ["name"] = "fare_search_model",
@@ -371,7 +275,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
@@ -400,10 +303,8 @@ local function make_config()
                   },
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "create",
           },
         },
         ["relations"] = {
@@ -413,133 +314,82 @@ local function make_config()
       ["fare_search_response_model"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "adults",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "airlines_exclude",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "airlines_include",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "allow_self_transfer",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "cabin_class",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "children",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "departure_date",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "departure_time_range",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "destination",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "infants_in_seat",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "infants_on_lap",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "itineraries",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "market",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "max_price",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 13,
           },
           {
-            ["active"] = true,
             ["name"] = "max_stops",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 14,
           },
           {
-            ["active"] = true,
             ["name"] = "min_carry_on_bags",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 15,
           },
           {
-            ["active"] = true,
             ["name"] = "min_checked_bags",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 16,
           },
           {
-            ["active"] = true,
             ["name"] = "origin",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 17,
           },
           {
-            ["active"] = true,
             ["name"] = "return_date",
             ["op"] = {
               ["create"] = {
@@ -547,16 +397,11 @@ local function make_config()
                 ["type"] = "`$STRING`",
               },
             },
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 18,
           },
           {
-            ["active"] = true,
             ["name"] = "return_time_range",
-            ["req"] = false,
             ["type"] = "`$ANY`",
-            ["index$"] = 19,
           },
         },
         ["name"] = "fare_search_response_model",
@@ -566,7 +411,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
@@ -599,10 +443,8 @@ local function make_config()
                   },
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
@@ -637,10 +479,8 @@ local function make_config()
                   },
                   ["res"] = "`body`",
                 },
-                ["index$"] = 1,
               },
             },
-            ["key$"] = "create",
           },
         },
         ["relations"] = {

@@ -23,8 +23,8 @@ class IgnavFlightSDK:
         utility = IgnavFlightUtility()
         self._utility = utility
 
-        from ignavflight_sdk.config import make_config
-        config = make_config()
+        from ignavflight_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

@@ -28,7 +28,7 @@ class IgnavFlightSDK
     utility = IgnavFlightUtility.new
     @_utility = utility
 
-    config = IgnavFlightConfig.make_config
+    config = IgnavFlightConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

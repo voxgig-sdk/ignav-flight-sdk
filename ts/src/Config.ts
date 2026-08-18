@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://ignav.com',
+    base: "https://ignav.com",
 
     auth: {
       prefix: '',
@@ -68,32 +68,24 @@ class Config {
     "airport": {
       "fields": [
         {
-          "active": true,
           "name": "city",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "code",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "country",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         }
       ],
       "name": "airport",
@@ -103,20 +95,16 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": 10,
                     "kind": "query",
                     "name": "limit",
                     "orig": "limit",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "q",
                     "orig": "q",
@@ -141,11 +129,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -155,102 +141,60 @@ class Config {
     "booking_link": {
       "fields": [
         {
-          "active": true,
           "name": "adults",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "children",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "departure_date",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "destination",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ignav_id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "inbound_carrier_code",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 5
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "inbound_flight_number",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "infants_in_seat",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 7
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "infants_on_lap",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 8
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "market",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 9
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "origin",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 10
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "outbound_carrier_code",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 11
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "outbound_flight_number",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 12
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "return_date",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 13
+          "type": "`$ANY`"
         }
       ],
       "name": "booking_link",
@@ -260,7 +204,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -289,11 +232,9 @@ class Config {
                   "return_date": "`reqdata.return_date`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -303,102 +244,62 @@ class Config {
     "fare_search_model": {
       "fields": [
         {
-          "active": true,
           "name": "adults",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "airlines_exclude",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "airlines_include",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "allow_self_transfer",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 3
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "cabin_class",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "children",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 5
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "infants_in_seat",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "infants_on_lap",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "itineraries",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 8
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "legs",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 9
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "market",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "max_price",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 11
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "min_carry_on_bags",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 12
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "min_checked_bags",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 13
+          "type": "`$ANY`"
         }
       ],
       "name": "fare_search_model",
@@ -408,7 +309,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -436,11 +336,9 @@ class Config {
                   "min_checked_bags": "`reqdata.min_checked_bag`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -450,133 +348,82 @@ class Config {
     "fare_search_response_model": {
       "fields": [
         {
-          "active": true,
           "name": "adults",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "airlines_exclude",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "airlines_include",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "allow_self_transfer",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 3
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "cabin_class",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "children",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 5
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "departure_date",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "departure_time_range",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 7
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "destination",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "infants_in_seat",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 9
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "infants_on_lap",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 10
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "itineraries",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 11
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "market",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "max_price",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 13
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "max_stops",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 14
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "min_carry_on_bags",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 15
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "min_checked_bags",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 16
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "origin",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 17
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "return_date",
           "op": {
             "create": {
@@ -584,16 +431,11 @@ class Config {
               "type": "`$STRING`"
             }
           },
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 18
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "return_time_range",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 19
+          "type": "`$ANY`"
         }
       ],
       "name": "fare_search_response_model",
@@ -603,7 +445,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -635,11 +476,9 @@ class Config {
                   "origin": "`reqdata.origin`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -673,11 +512,9 @@ class Config {
                   "return_time_range": "`reqdata.return_time_range`"
                 },
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {

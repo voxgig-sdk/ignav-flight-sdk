@@ -15,7 +15,7 @@ require_relative "../IgnavFlight_sdk"
 module IgnavFlightFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = IgnavFlightConfig.make_config["feature"]
+    f = IgnavFlightConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

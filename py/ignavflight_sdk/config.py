@@ -1,7 +1,30 @@
 # IgnavFlight SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "IgnavFlight",
@@ -32,32 +55,24 @@ def make_config():
       "airport": {
         "fields": [
           {
-            "active": True,
             "name": "city",
             "req": True,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "code",
             "req": True,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "country",
             "req": True,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "name",
             "req": True,
             "type": "`$STRING`",
-            "index$": 3,
           },
         ],
         "name": "airport",
@@ -67,20 +82,16 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": 10,
                       "kind": "query",
                       "name": "limit",
                       "orig": "limit",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "q",
                       "orig": "q",
@@ -106,10 +117,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -119,102 +128,60 @@ def make_config():
       "booking_link": {
         "fields": [
           {
-            "active": True,
             "name": "adults",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "children",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "departure_date",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "destination",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "ignav_id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "inbound_carrier_code",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "inbound_flight_number",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "infants_in_seat",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "infants_on_lap",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "market",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "origin",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "outbound_carrier_code",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "outbound_flight_number",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "return_date",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 13,
           },
         ],
         "name": "booking_link",
@@ -224,7 +191,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "POST",
@@ -254,10 +220,8 @@ def make_config():
                   },
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "create",
           },
         },
         "relations": {
@@ -267,102 +231,62 @@ def make_config():
       "fare_search_model": {
         "fields": [
           {
-            "active": True,
             "name": "adults",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "airlines_exclude",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "airlines_include",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "allow_self_transfer",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "cabin_class",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "children",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "infants_in_seat",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "infants_on_lap",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "itineraries",
             "req": True,
             "type": "`$ARRAY`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "legs",
             "req": True,
             "type": "`$ARRAY`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "market",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "max_price",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "min_carry_on_bags",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "min_checked_bags",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 13,
           },
         ],
         "name": "fare_search_model",
@@ -372,7 +296,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "POST",
@@ -401,10 +324,8 @@ def make_config():
                   },
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "create",
           },
         },
         "relations": {
@@ -414,133 +335,82 @@ def make_config():
       "fare_search_response_model": {
         "fields": [
           {
-            "active": True,
             "name": "adults",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "airlines_exclude",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "airlines_include",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "allow_self_transfer",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "cabin_class",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "children",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "departure_date",
             "req": True,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "departure_time_range",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "destination",
             "req": True,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "infants_in_seat",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "infants_on_lap",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "itineraries",
             "req": True,
             "type": "`$ARRAY`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "market",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "max_price",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "max_stops",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "min_carry_on_bags",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "min_checked_bags",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "origin",
             "req": True,
             "type": "`$STRING`",
-            "index$": 17,
           },
           {
-            "active": True,
             "name": "return_date",
             "op": {
               "create": {
@@ -548,16 +418,11 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
-            "req": False,
             "type": "`$ANY`",
-            "index$": 18,
           },
           {
-            "active": True,
             "name": "return_time_range",
-            "req": False,
             "type": "`$ANY`",
-            "index$": 19,
           },
         ],
         "name": "fare_search_response_model",
@@ -567,7 +432,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "POST",
@@ -600,10 +464,8 @@ def make_config():
                   },
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "POST",
@@ -638,10 +500,8 @@ def make_config():
                   },
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "create",
           },
         },
         "relations": {

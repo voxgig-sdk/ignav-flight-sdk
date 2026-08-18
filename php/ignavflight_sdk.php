@@ -40,7 +40,7 @@ class IgnavFlightSDK
         $utility = new IgnavFlightUtility();
         $this->_utility = $utility;
 
-        $config = IgnavFlightConfig::make_config();
+        $config = IgnavFlightConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
