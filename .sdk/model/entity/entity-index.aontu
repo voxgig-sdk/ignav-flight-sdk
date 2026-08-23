@@ -1,6 +1,0 @@
-# Entity Models
-
-@"airport.aontu"
-@"booking_link.aontu"
-@"fare_search_model.aontu"
-@"fare_search_response_model.aontu"

@@ -33,6 +33,9 @@ class IgnavFlightConfig
         return [
             "main" => [
                 "name" => "IgnavFlight",
+                "slug" => "ignav-flight",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [

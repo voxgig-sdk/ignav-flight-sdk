@@ -1,6 +1,0 @@
-# Flows
-
-@"BasicAirportFlow.aontu"
-@"BasicBookingLinkFlow.aontu"
-@"BasicFareSearchModelFlow.aontu"
-@"BasicFareSearchResponseModelFlow.aontu"
