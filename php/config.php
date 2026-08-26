@@ -42,6 +42,7 @@ class IgnavFlightConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
