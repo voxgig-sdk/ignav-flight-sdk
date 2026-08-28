@@ -13,10 +13,8 @@
 ---@field name string
 
 ---@class AirportListMatch
----@field city? string
----@field code? string
----@field country? string
----@field name? string
+---@field limit? number
+---@field q string
 
 ---@class BookingLink
 ---@field adults? any

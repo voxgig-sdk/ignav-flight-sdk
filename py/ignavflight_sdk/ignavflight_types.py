@@ -23,11 +23,12 @@ class Airport(TypedDict):
     name: str
 
 
-class AirportListMatch(TypedDict, total=False):
-    city: str
-    code: str
-    country: str
-    name: str
+class AirportListMatchRequired(TypedDict):
+    q: str
+
+
+class AirportListMatch(AirportListMatchRequired, total=False):
+    limit: int
 
 
 class BookingLink(TypedDict, total=False):

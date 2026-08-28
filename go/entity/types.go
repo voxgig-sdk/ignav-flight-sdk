@@ -22,10 +22,8 @@ type Airport struct {
 
 // AirportListMatch is the typed request payload for Airport.ListTyped.
 type AirportListMatch struct {
-	City *string `json:"city,omitempty"`
-	Code *string `json:"code,omitempty"`
-	Country *string `json:"country,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Q string `json:"q"`
 }
 
 // BookingLink is the typed data model for the booking_link entity.

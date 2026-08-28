@@ -13,10 +13,8 @@ export interface Airport {
 }
 
 export interface AirportListMatch {
-  city?: string
-  code?: string
-  country?: string
-  name?: string
+  limit?: number
+  q: string
 }
 
 export interface BookingLink {

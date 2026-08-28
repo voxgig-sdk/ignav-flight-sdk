@@ -31,22 +31,14 @@ Airport = Struct.new(
 
 # Request payload for Airport#list.
 #
-# @!attribute [rw] city
-#   @return [String, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] code
-#   @return [String, nil]
-#
-# @!attribute [rw] country
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
+# @!attribute [rw] q
+#   @return [String]
 AirportListMatch = Struct.new(
-  :city,
-  :code,
-  :country,
-  :name,
+  :limit,
+  :q,
   keyword_init: true
 )
 

@@ -24,10 +24,8 @@ class Airport
 /** Request payload for Airport#list. */
 class AirportListMatch
 {
-    public ?string $city = null;
-    public ?string $code = null;
-    public ?string $country = null;
-    public ?string $name = null;
+    public ?int $limit = null;
+    public string $q;
 }
 
 /** BookingLink entity data model. */
