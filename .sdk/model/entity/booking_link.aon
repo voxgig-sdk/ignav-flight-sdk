@@ -85,10 +85,16 @@ main: kit: entity: booking_link: {
         {
           method: "POST"
           orig: "/api/fares/booking-links"
-          parts: [
-            "api"
-            "fares"
-            "booking-links"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "fares"
+            }
+            {
+              lit: "booking-links"
+            }
           ]
           transform: {
             req: {

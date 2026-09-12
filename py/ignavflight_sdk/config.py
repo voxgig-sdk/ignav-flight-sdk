@@ -1,6 +1,14 @@
 # IgnavFlight SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -107,9 +115,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/airports",
-                "parts": [
-                  "api",
-                  "airports",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "airports",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -121,6 +133,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "airports",
+                ],
               },
             ],
           },
@@ -199,10 +215,16 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/fares/booking-links",
-                "parts": [
-                  "api",
-                  "fares",
-                  "booking-links",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "fares",
+                  },
+                  {
+                    "lit": "booking-links",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -224,6 +246,11 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "fares",
+                  "booking-links",
+                ],
               },
             ],
           },
@@ -304,10 +331,16 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/fares/search",
-                "parts": [
-                  "api",
-                  "fares",
-                  "search",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "fares",
+                  },
+                  {
+                    "lit": "search",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -328,6 +361,11 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "fares",
+                  "search",
+                ],
               },
             ],
           },
@@ -363,6 +401,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "date",
             "name": "departure_date",
             "req": True,
             "type": "`$STRING`",
@@ -415,6 +454,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "return_date",
             "op": {
               "create": {
@@ -440,10 +480,16 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/fares/one-way",
-                "parts": [
-                  "api",
-                  "fares",
-                  "one-way",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "fares",
+                  },
+                  {
+                    "lit": "one-way",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -468,16 +514,27 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "fares",
+                  "one-way",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/fares/round-trip",
-                "parts": [
-                  "api",
-                  "fares",
-                  "round-trip",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "fares",
+                  },
+                  {
+                    "lit": "round-trip",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -504,6 +561,11 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "fares",
+                  "round-trip",
+                ],
               },
             ],
           },

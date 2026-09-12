@@ -52,7 +52,7 @@ func TestFareSearchModelEntity(t *testing.T) {
 		// CREATE
 		fareSearchModelRef01Ent := client.FareSearchModel(nil)
 		fareSearchModelRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "fare_search_model"}, setup.data), "fare_search_model_ref01"))
+			vs.GetPath(setup.data, []any{"new", "fare_search_model"}), "fare_search_model_ref01"))
 
 		fareSearchModelRef01DataResult, err := fareSearchModelRef01Ent.Create(fareSearchModelRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func fare_search_modelBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"fare_search_model01", "fare_search_model02", "fare_search_model03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func fare_search_modelBasicSetup(extra map[string]any) *entityTestSetup {
 		"IGNAV_FLIGHT_TEST_FARE_SEARCH_MODEL_ENTID": idmap,
 		"IGNAV_FLIGHT_TEST_LIVE":      "FALSE",
 		"IGNAV_FLIGHT_TEST_EXPLAIN":   "FALSE",
-		"IGNAV_FLIGHT_APIKEY":         "NONE",
+		"IGNAV_FLIGHT_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["IGNAV_FLIGHT_TEST_FARE_SEARCH_MODEL_ENTID"])
@@ -119,11 +119,23 @@ func fare_search_modelBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["IGNAV_FLIGHT_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["IGNAV_FLIGHT_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewIgnavFlightSDK(core.ToMapAny(mergedOpts))
 	}

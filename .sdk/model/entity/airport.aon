@@ -54,9 +54,13 @@ main: kit: entity: airport: {
           }
           method: "GET"
           orig: "/api/airports"
-          parts: [
-            "api"
-            "airports"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "airports"
+            }
           ]
           select: {
             exist: [

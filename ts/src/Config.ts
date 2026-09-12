@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -128,9 +139,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/airports",
-              "parts": [
-                "api",
-                "airports"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "airports"
+                }
               ],
               "select": {
                 "exist": [
@@ -141,7 +156,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "airports"
+              ]
             }
           ]
         }
@@ -220,10 +239,16 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/fares/booking-links",
-              "parts": [
-                "api",
-                "fares",
-                "booking-links"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "fares"
+                },
+                {
+                  "lit": "booking-links"
+                }
               ],
               "select": {},
               "transform": {
@@ -244,7 +269,12 @@ class Config {
                   "return_date": "`reqdata.return_date`"
                 },
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "fares",
+                "booking-links"
+              ]
             }
           ]
         }
@@ -325,10 +355,16 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/fares/search",
-              "parts": [
-                "api",
-                "fares",
-                "search"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "fares"
+                },
+                {
+                  "lit": "search"
+                }
               ],
               "select": {},
               "transform": {
@@ -348,7 +384,12 @@ class Config {
                   "min_checked_bags": "`reqdata.min_checked_bag`"
                 },
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "fares",
+                "search"
+              ]
             }
           ]
         }
@@ -384,6 +425,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date",
           "name": "departure_date",
           "req": true,
           "type": "`$STRING`"
@@ -436,6 +478,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "return_date",
           "op": {
             "create": {
@@ -461,10 +504,16 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/fares/one-way",
-              "parts": [
-                "api",
-                "fares",
-                "one-way"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "fares"
+                },
+                {
+                  "lit": "one-way"
+                }
               ],
               "select": {},
               "transform": {
@@ -488,17 +537,28 @@ class Config {
                   "origin": "`reqdata.origin`"
                 },
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "fares",
+                "one-way"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/api/fares/round-trip",
-              "parts": [
-                "api",
-                "fares",
-                "round-trip"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "fares"
+                },
+                {
+                  "lit": "round-trip"
+                }
               ],
               "select": {},
               "transform": {
@@ -524,7 +584,12 @@ class Config {
                   "return_time_range": "`reqdata.return_time_range`"
                 },
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "fares",
+                "round-trip"
+              ]
             }
           ]
         }
@@ -540,6 +605,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

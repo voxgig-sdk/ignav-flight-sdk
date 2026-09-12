@@ -86,9 +86,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/airports",
-                ["parts"] = {
-                  "api",
-                  "airports",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "airports",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -99,6 +103,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "airports",
                 },
               },
             },
@@ -178,10 +186,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/fares/booking-links",
-                ["parts"] = {
-                  "api",
-                  "fares",
-                  "booking-links",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "fares",
+                  },
+                  {
+                    ["lit"] = "booking-links",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
@@ -202,6 +216,11 @@ local function make_config()
                     ["return_date"] = "`reqdata.return_date`",
                   },
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "fares",
+                  "booking-links",
                 },
               },
             },
@@ -283,10 +302,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/fares/search",
-                ["parts"] = {
-                  "api",
-                  "fares",
-                  "search",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "fares",
+                  },
+                  {
+                    ["lit"] = "search",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
@@ -306,6 +331,11 @@ local function make_config()
                     ["min_checked_bags"] = "`reqdata.min_checked_bag`",
                   },
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "fares",
+                  "search",
                 },
               },
             },
@@ -342,6 +372,7 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "date",
             ["name"] = "departure_date",
             ["req"] = true,
             ["type"] = "`$STRING`",
@@ -394,6 +425,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date",
             ["name"] = "return_date",
             ["op"] = {
               ["create"] = {
@@ -419,10 +451,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/fares/one-way",
-                ["parts"] = {
-                  "api",
-                  "fares",
-                  "one-way",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "fares",
+                  },
+                  {
+                    ["lit"] = "one-way",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
@@ -447,16 +485,27 @@ local function make_config()
                   },
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "api",
+                  "fares",
+                  "one-way",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/fares/round-trip",
-                ["parts"] = {
-                  "api",
-                  "fares",
-                  "round-trip",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "fares",
+                  },
+                  {
+                    ["lit"] = "round-trip",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
@@ -482,6 +531,11 @@ local function make_config()
                     ["return_time_range"] = "`reqdata.return_time_range`",
                   },
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "fares",
+                  "round-trip",
                 },
               },
             },

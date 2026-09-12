@@ -98,9 +98,13 @@ module IgnavFlightConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/airports",
-                  "parts" => [
-                    "api",
-                    "airports",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "airports",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -112,6 +116,10 @@ module IgnavFlightConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "airports",
+                  ],
                 },
               ],
             },
@@ -190,10 +198,16 @@ module IgnavFlightConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/fares/booking-links",
-                  "parts" => [
-                    "api",
-                    "fares",
-                    "booking-links",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "fares",
+                    },
+                    {
+                      "lit" => "booking-links",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -215,6 +229,11 @@ module IgnavFlightConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "fares",
+                    "booking-links",
+                  ],
                 },
               ],
             },
@@ -295,10 +314,16 @@ module IgnavFlightConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/fares/search",
-                  "parts" => [
-                    "api",
-                    "fares",
-                    "search",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "fares",
+                    },
+                    {
+                      "lit" => "search",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -319,6 +344,11 @@ module IgnavFlightConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "fares",
+                    "search",
+                  ],
                 },
               ],
             },
@@ -354,6 +384,7 @@ module IgnavFlightConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "date",
               "name" => "departure_date",
               "req" => true,
               "type" => "`$STRING`",
@@ -406,6 +437,7 @@ module IgnavFlightConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "return_date",
               "op" => {
                 "create" => {
@@ -431,10 +463,16 @@ module IgnavFlightConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/fares/one-way",
-                  "parts" => [
-                    "api",
-                    "fares",
-                    "one-way",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "fares",
+                    },
+                    {
+                      "lit" => "one-way",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -459,16 +497,27 @@ module IgnavFlightConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "fares",
+                    "one-way",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/fares/round-trip",
-                  "parts" => [
-                    "api",
-                    "fares",
-                    "round-trip",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "fares",
+                    },
+                    {
+                      "lit" => "round-trip",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -495,6 +544,11 @@ module IgnavFlightConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "fares",
+                    "round-trip",
+                  ],
                 },
               ],
             },

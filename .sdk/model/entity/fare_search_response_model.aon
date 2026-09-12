@@ -36,6 +36,7 @@ main: kit: entity: fare_search_response_model: {
       type: "`$INTEGER`"
     }
     {
+      format: "date"
       name: "departure_date"
       req: true
       type: "`$STRING`"
@@ -96,6 +97,7 @@ main: kit: entity: fare_search_response_model: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "return_date"
       op: {
         create: {
@@ -121,10 +123,16 @@ main: kit: entity: fare_search_response_model: {
         {
           method: "POST"
           orig: "/api/fares/one-way"
-          parts: [
-            "api"
-            "fares"
-            "one-way"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "fares"
+            }
+            {
+              lit: "one-way"
+            }
           ]
           transform: {
             req: {
@@ -152,10 +160,16 @@ main: kit: entity: fare_search_response_model: {
         {
           method: "POST"
           orig: "/api/fares/round-trip"
-          parts: [
-            "api"
-            "fares"
-            "round-trip"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "fares"
+            }
+            {
+              lit: "round-trip"
+            }
           ]
           transform: {
             req: {

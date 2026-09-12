@@ -85,10 +85,16 @@ main: kit: entity: fare_search_model: {
         {
           method: "POST"
           orig: "/api/fares/search"
-          parts: [
-            "api"
-            "fares"
-            "search"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "fares"
+            }
+            {
+              lit: "search"
+            }
           ]
           transform: {
             req: {

@@ -112,9 +112,13 @@ class IgnavFlightConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/airports',
-                  'parts' => [
-                    'api',
-                    'airports',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'airports',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -125,6 +129,10 @@ class IgnavFlightConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'airports',
                   ],
                 ],
               ],
@@ -204,10 +212,16 @@ class IgnavFlightConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/fares/booking-links',
-                  'parts' => [
-                    'api',
-                    'fares',
-                    'booking-links',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'fares',
+                    ],
+                    [
+                      'lit' => 'booking-links',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -228,6 +242,11 @@ class IgnavFlightConfig
                       'return_date' => '`reqdata.return_date`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'fares',
+                    'booking-links',
                   ],
                 ],
               ],
@@ -309,10 +328,16 @@ class IgnavFlightConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/fares/search',
-                  'parts' => [
-                    'api',
-                    'fares',
-                    'search',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'fares',
+                    ],
+                    [
+                      'lit' => 'search',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -332,6 +357,11 @@ class IgnavFlightConfig
                       'min_checked_bags' => '`reqdata.min_checked_bag`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'fares',
+                    'search',
                   ],
                 ],
               ],
@@ -368,6 +398,7 @@ class IgnavFlightConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'date',
               'name' => 'departure_date',
               'req' => true,
               'type' => '`$STRING`',
@@ -420,6 +451,7 @@ class IgnavFlightConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'return_date',
               'op' => [
                 'create' => [
@@ -445,10 +477,16 @@ class IgnavFlightConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/fares/one-way',
-                  'parts' => [
-                    'api',
-                    'fares',
-                    'one-way',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'fares',
+                    ],
+                    [
+                      'lit' => 'one-way',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -473,16 +511,27 @@ class IgnavFlightConfig
                     ],
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'api',
+                    'fares',
+                    'one-way',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/fares/round-trip',
-                  'parts' => [
-                    'api',
-                    'fares',
-                    'round-trip',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'fares',
+                    ],
+                    [
+                      'lit' => 'round-trip',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -508,6 +557,11 @@ class IgnavFlightConfig
                       'return_time_range' => '`reqdata.return_time_range`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'fares',
+                    'round-trip',
                   ],
                 ],
               ],
