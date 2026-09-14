@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { IgnavFlightSDK } from '@voxgig-sdk/ignav-flight'
+import { IgnavFlightSDK } from '@voxgig-sdk/ignav-flight-sdk'
 
 const client = new IgnavFlightSDK({
   apikey: process.env.IGNAV_FLIGHT_APIKEY,
@@ -618,7 +618,7 @@ ignav-flight/
 Import the SDK from the package root:
 
 ```ts
-import { IgnavFlightSDK } from '@voxgig-sdk/ignav-flight'
+import { IgnavFlightSDK } from '@voxgig-sdk/ignav-flight-sdk'
 ```
 
 ### Entity state

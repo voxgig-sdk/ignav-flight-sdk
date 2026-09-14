@@ -105,7 +105,7 @@ local results, err = client:Airport():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/releases) |
+| TypeScript | `@voxgig-sdk/ignav-flight-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/releases) |
 | Python | `voxgig-sdk-ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/releases) |
 | PHP | `voxgig-sdk/ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/ignav-flight-sdk/go` | `go get github.com/voxgig-sdk/ignav-flight-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Airport():list()
 ### TypeScript
 
 ```ts
-import { IgnavFlightSDK } from '@voxgig-sdk/ignav-flight'
+import { IgnavFlightSDK } from '@voxgig-sdk/ignav-flight-sdk'
 
 const client = new IgnavFlightSDK({
   apikey: process.env.IGNAV_FLIGHT_APIKEY,
