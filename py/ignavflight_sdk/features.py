@@ -1,12 +1,18 @@
 # IgnavFlight SDK feature factory
 
 from ignavflight_sdk.feature.base_feature import IgnavFlightBaseFeature
+from ignavflight_sdk.feature.ratelimit_feature import IgnavFlightRatelimitFeature
+from ignavflight_sdk.feature.retry_feature import IgnavFlightRetryFeature
 from ignavflight_sdk.feature.test_feature import IgnavFlightTestFeature
+from ignavflight_sdk.feature.timeout_feature import IgnavFlightTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: IgnavFlightBaseFeature(),
+    "ratelimit": lambda: IgnavFlightRatelimitFeature(),
+    "retry": lambda: IgnavFlightRetryFeature(),
     "test": lambda: IgnavFlightTestFeature(),
+    "timeout": lambda: IgnavFlightTimeoutFeature(),
 }
 
 

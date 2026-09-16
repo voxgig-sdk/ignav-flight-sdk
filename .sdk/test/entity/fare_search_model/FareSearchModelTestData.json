@@ -2,14 +2,14 @@
   "existing": {
     "fare_search_model": {
       "FARE_SEARCH_MODEL00": {
-        "adults": "s8c",
+        "adults": 140,
         "airlines_exclude": "s8d",
         "airlines_include": "s8e",
         "allow_self_transfer": false,
         "cabin_class": "s90",
-        "children": "s91",
-        "infants_in_seat": "s92",
-        "infants_on_lap": "s93",
+        "children": 145,
+        "infants_in_seat": 146,
+        "infants_on_lap": 147,
         "itineraries": [],
         "legs": [],
         "market": "s96",
@@ -19,14 +19,14 @@
         "id": "FARE_SEARCH_MODEL00"
       },
       "FARE_SEARCH_MODEL01": {
-        "adults": "s118",
+        "adults": 280,
         "airlines_exclude": "s119",
         "airlines_include": "s11a",
         "allow_self_transfer": false,
         "cabin_class": "s11c",
-        "children": "s11d",
-        "infants_in_seat": "s11e",
-        "infants_on_lap": "s11f",
+        "children": 285,
+        "infants_in_seat": 286,
+        "infants_on_lap": 287,
         "itineraries": [],
         "legs": [],
         "market": "s122",
@@ -36,14 +36,14 @@
         "id": "FARE_SEARCH_MODEL01"
       },
       "FARE_SEARCH_MODEL02": {
-        "adults": "s1a4",
+        "adults": 420,
         "airlines_exclude": "s1a5",
         "airlines_include": "s1a6",
         "allow_self_transfer": false,
         "cabin_class": "s1a8",
-        "children": "s1a9",
-        "infants_in_seat": "s1aa",
-        "infants_on_lap": "s1ab",
+        "children": 425,
+        "infants_in_seat": 426,
+        "infants_on_lap": 427,
         "itineraries": [],
         "legs": [],
         "market": "s1ae",
@@ -57,20 +57,765 @@
   "new": {
     "fare_search_model": {
       "fare_search_model_ref01": {
-        "adults": "s230",
+        "adults": 560,
         "airlines_exclude": "s231",
         "airlines_include": "s232",
         "allow_self_transfer": false,
         "cabin_class": "s234",
-        "children": "s235",
-        "infants_in_seat": "s236",
-        "infants_on_lap": "s237",
+        "children": 565,
+        "infants_in_seat": 566,
+        "infants_on_lap": 567,
         "itineraries": [],
         "legs": [],
         "market": "s23a",
         "max_price": "s23b",
         "min_carry_on_bags": "s23c",
         "min_checked_bags": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/fares/search": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "search_fares_api_fares_search_post",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "adults": {
+                    "default": 1,
+                    "minimum": 1,
+                    "title": "Adults",
+                    "type": "integer"
+                  },
+                  "airlines_exclude": {
+                    "anyOf": [
+                      {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Airlines Exclude"
+                  },
+                  "airlines_include": {
+                    "anyOf": [
+                      {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Airlines Include"
+                  },
+                  "allow_self_transfer": {
+                    "default": true,
+                    "title": "Allow Self Transfer",
+                    "type": "boolean"
+                  },
+                  "cabin_class": {
+                    "default": "economy",
+                    "enum": [
+                      "economy",
+                      "premium_economy",
+                      "business",
+                      "first"
+                    ],
+                    "title": "Cabin Class",
+                    "type": "string"
+                  },
+                  "children": {
+                    "default": 0,
+                    "minimum": 0,
+                    "title": "Children",
+                    "type": "integer"
+                  },
+                  "infants_in_seat": {
+                    "default": 0,
+                    "minimum": 0,
+                    "title": "Infants In Seat",
+                    "type": "integer"
+                  },
+                  "infants_on_lap": {
+                    "default": 0,
+                    "minimum": 0,
+                    "title": "Infants On Lap",
+                    "type": "integer"
+                  },
+                  "legs": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "departure_date": {
+                          "format": "date",
+                          "title": "Departure Date",
+                          "type": "string"
+                        },
+                        "departure_time_range": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "arrival_earliest_hour": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 23,
+                                      "minimum": 0,
+                                      "type": "integer"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "title": "Arrival Earliest Hour"
+                                },
+                                "arrival_latest_hour": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 23,
+                                      "minimum": 0,
+                                      "type": "integer"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "title": "Arrival Latest Hour"
+                                },
+                                "earliest_hour": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 23,
+                                      "minimum": 0,
+                                      "type": "integer"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "title": "Earliest Hour"
+                                },
+                                "latest_hour": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 23,
+                                      "minimum": 0,
+                                      "type": "integer"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "title": "Latest Hour"
+                                }
+                              },
+                              "title": "TimeRangeInput",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "destination": {
+                          "title": "Destination",
+                          "type": "string"
+                        },
+                        "max_stops": {
+                          "anyOf": [
+                            {
+                              "maximum": 2,
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "title": "Max Stops"
+                        },
+                        "origin": {
+                          "title": "Origin",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "origin",
+                        "destination",
+                        "departure_date"
+                      ],
+                      "title": "SearchLegInput",
+                      "type": "object"
+                    },
+                    "maxItems": 4,
+                    "minItems": 1,
+                    "title": "Legs",
+                    "type": "array"
+                  },
+                  "market": {
+                    "default": "US",
+                    "title": "Market",
+                    "type": "string"
+                  },
+                  "max_price": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Max Price"
+                  },
+                  "min_carry_on_bags": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Min Carry On Bags"
+                  },
+                  "min_checked_bags": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Min Checked Bags"
+                  }
+                },
+                "required": [
+                  "legs"
+                ],
+                "title": "FareSearchRequest",
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "itineraries": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "bags": {
+                            "anyOf": [
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "carry_on": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ],
+                                    "title": "Carry On"
+                                  },
+                                  "checked": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ],
+                                    "title": "Checked"
+                                  }
+                                },
+                                "title": "BaggageAllowanceModel",
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "cabin_class": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ],
+                            "title": "Cabin Class"
+                          },
+                          "ignav_id": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ],
+                            "title": "Ignav Id"
+                          },
+                          "legs": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "carrier": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "title": "Carrier"
+                                },
+                                "duration_minutes": {
+                                  "anyOf": [
+                                    {
+                                      "type": "integer"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "title": "Duration Minutes"
+                                },
+                                "segments": {
+                                  "items": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                      "aircraft": {
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "type": "null"
+                                          }
+                                        ],
+                                        "title": "Aircraft"
+                                      },
+                                      "arrival_airport": {
+                                        "title": "Arrival Airport",
+                                        "type": "string"
+                                      },
+                                      "arrival_time_local": {
+                                        "title": "Arrival Time Local",
+                                        "type": "string"
+                                      },
+                                      "arrival_time_utc": {
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "type": "null"
+                                          }
+                                        ],
+                                        "title": "Arrival Time Utc"
+                                      },
+                                      "arrival_timezone": {
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "type": "null"
+                                          }
+                                        ],
+                                        "title": "Arrival Timezone"
+                                      },
+                                      "departure_airport": {
+                                        "title": "Departure Airport",
+                                        "type": "string"
+                                      },
+                                      "departure_time_local": {
+                                        "title": "Departure Time Local",
+                                        "type": "string"
+                                      },
+                                      "departure_time_utc": {
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "type": "null"
+                                          }
+                                        ],
+                                        "title": "Departure Time Utc"
+                                      },
+                                      "departure_timezone": {
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "type": "null"
+                                          }
+                                        ],
+                                        "title": "Departure Timezone"
+                                      },
+                                      "duration_minutes": {
+                                        "title": "Duration Minutes",
+                                        "type": "integer"
+                                      },
+                                      "flight_number": {
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "type": "null"
+                                          }
+                                        ],
+                                        "title": "Flight Number"
+                                      },
+                                      "marketing_carrier_code": {
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "type": "null"
+                                          }
+                                        ],
+                                        "title": "Marketing Carrier Code"
+                                      },
+                                      "operating_carrier_name": {
+                                        "anyOf": [
+                                          {
+                                            "type": "string"
+                                          },
+                                          {
+                                            "type": "null"
+                                          }
+                                        ],
+                                        "title": "Operating Carrier Name"
+                                      }
+                                    },
+                                    "required": [
+                                      "marketing_carrier_code",
+                                      "flight_number",
+                                      "operating_carrier_name",
+                                      "departure_airport",
+                                      "departure_time_local",
+                                      "departure_timezone",
+                                      "departure_time_utc",
+                                      "arrival_airport",
+                                      "arrival_time_local",
+                                      "arrival_timezone",
+                                      "arrival_time_utc",
+                                      "duration_minutes",
+                                      "aircraft"
+                                    ],
+                                    "title": "SegmentModel",
+                                    "type": "object"
+                                  },
+                                  "title": "Segments",
+                                  "type": "array"
+                                }
+                              },
+                              "required": [
+                                "segments"
+                              ],
+                              "title": "LegModel",
+                              "type": "object"
+                            },
+                            "title": "Legs",
+                            "type": "array"
+                          },
+                          "price": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "amount": {
+                                "title": "Amount",
+                                "type": "number"
+                              },
+                              "currency": {
+                                "title": "Currency",
+                                "type": "string"
+                              },
+                              "status": {
+                                "enum": [
+                                  "verified",
+                                  "unverified"
+                                ],
+                                "title": "Status",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "amount",
+                              "currency",
+                              "status"
+                            ],
+                            "title": "PriceModel",
+                            "type": "object"
+                          },
+                          "requires_self_transfer": {
+                            "anyOf": [
+                              {
+                                "type": "boolean"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ],
+                            "title": "Requires Self Transfer"
+                          }
+                        },
+                        "required": [
+                          "price",
+                          "legs"
+                        ],
+                        "title": "SearchItineraryModel",
+                        "type": "object"
+                      },
+                      "title": "Itineraries",
+                      "type": "array"
+                    },
+                    "legs": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "departure_date": {
+                            "title": "Departure Date",
+                            "type": "string"
+                          },
+                          "destination": {
+                            "title": "Destination",
+                            "type": "string"
+                          },
+                          "origin": {
+                            "title": "Origin",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "origin",
+                          "destination",
+                          "departure_date"
+                        ],
+                        "title": "SearchLegModel",
+                        "type": "object"
+                      },
+                      "title": "Legs",
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "legs",
+                    "itineraries"
+                  ],
+                  "title": "FareSearchModel",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "title": "Code",
+                          "type": "string"
+                        },
+                        "field": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "title": "Field"
+                        },
+                        "message": {
+                          "title": "Message",
+                          "type": "string"
+                        },
+                        "type": {
+                          "title": "Type",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "code",
+                        "message"
+                      ],
+                      "title": "ErrorDetailModel",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "ErrorResponseModel",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "title": "Code",
+                          "type": "string"
+                        },
+                        "field": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "title": "Field"
+                        },
+                        "message": {
+                          "title": "Message",
+                          "type": "string"
+                        },
+                        "type": {
+                          "title": "Type",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "code",
+                        "message"
+                      ],
+                      "title": "ErrorDetailModel",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "ErrorResponseModel",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "424": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "title": "Code",
+                          "type": "string"
+                        },
+                        "field": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "title": "Field"
+                        },
+                        "message": {
+                          "title": "Message",
+                          "type": "string"
+                        },
+                        "type": {
+                          "title": "Type",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "code",
+                        "message"
+                      ],
+                      "title": "ErrorDetailModel",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "title": "ErrorResponseModel",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Failed Dependency"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "in": "header",
+            "name": "X-Api-Key",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "definition"
       }
     }
   }
