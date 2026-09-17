@@ -89,6 +89,7 @@ module IgnavFlightConfig
         "base" => "https://ignav.com",
         "auth" => {
           "prefix" => "",
+          "name" => "X-Api-Key",
         },
         "headers" => {
           "content-type" => "application/json",

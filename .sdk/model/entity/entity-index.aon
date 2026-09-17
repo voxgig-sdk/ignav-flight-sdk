@@ -1,6 +1,6 @@
 # Entity Models
 
-@"airport.aon"
-@"booking_link.aon"
-@"fare_search_model.aon"
-@"fare_search_response_model.aon"
+@"./airport.aon"
+@"./booking_link.aon"
+@"./fare_search_model.aon"
+@"./fare_search_response_model.aon"

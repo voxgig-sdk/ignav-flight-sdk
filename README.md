@@ -105,12 +105,12 @@ local results, err = client:Airport():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/ignav-flight-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/releases) |
-| Python | `voxgig-sdk-ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/releases) |
-| PHP | `voxgig-sdk/ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/releases) |
+| TypeScript | `@voxgig-sdk/ignav-flight-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/tags) |
+| Python | `voxgig-sdk-ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/tags) |
+| PHP | `voxgig-sdk/ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/ignav-flight-sdk/go` | `go get github.com/voxgig-sdk/ignav-flight-sdk/go@latest` |
-| Ruby | `voxgig-sdk-ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/releases) |
-| Lua | `voxgig-sdk-ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/releases) |
+| Ruby | `voxgig-sdk-ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/tags) |
+| Lua | `voxgig-sdk-ignav-flight` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ignav-flight-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/ignav-flight-sdk/go-cli` | `go install github.com/voxgig-sdk/ignav-flight-sdk/go-cli/cmd/ignav-flight@latest` |
 | Go MCP server | `github.com/voxgig-sdk/ignav-flight-sdk/go-mcp` | `go get github.com/voxgig-sdk/ignav-flight-sdk/go-mcp@latest` |
 

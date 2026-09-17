@@ -104,6 +104,7 @@ class Config {
         base: "https://ignav.com",
         auth: {
             prefix: '',
+            name: 'X-Api-Key',
         },
         headers: {
             "content-type": "application/json"

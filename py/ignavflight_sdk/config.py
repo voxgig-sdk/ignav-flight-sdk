@@ -106,6 +106,7 @@ def make_config():
             "base": "https://ignav.com",
             "auth": {
                 "prefix": "",
+                "name": "X-Api-Key",
             },
             "headers": {
         "content-type": "application/json",

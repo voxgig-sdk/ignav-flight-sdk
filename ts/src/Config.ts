@@ -123,6 +123,7 @@ class Config {
 
     auth: {
       prefix: '',
+      name: 'X-Api-Key',
     },
 
     headers: {
@@ -131,18 +132,18 @@ class Config {
 
     entity: {
       
-      airport: {
-      },
-
-      booking_link: {
-      },
-
-      fare_search_model: {
-      },
-
-      fare_search_response_model: {
-      },
-
+        airport: {
+        },
+  
+        booking_link: {
+        },
+  
+        fare_search_model: {
+        },
+  
+        fare_search_response_model: {
+        },
+  
     }
   }
 

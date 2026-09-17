@@ -1,6 +1,6 @@
 # Flows
 
-@"BasicAirportFlow.aon"
-@"BasicBookingLinkFlow.aon"
-@"BasicFareSearchModelFlow.aon"
-@"BasicFareSearchResponseModelFlow.aon"
+@"./BasicAirportFlow.aon"
+@"./BasicBookingLinkFlow.aon"
+@"./BasicFareSearchModelFlow.aon"
+@"./BasicFareSearchResponseModelFlow.aon"
