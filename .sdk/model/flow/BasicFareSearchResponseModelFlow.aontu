@@ -1,0 +1,18 @@
+# BasicFareSearchResponseModelFlow
+
+main: kit: flow: BasicFareSearchResponseModelFlow:
+{
+  entity: "fare_search_response_model",
+  kind: "basic",
+  name: "BasicFareSearchResponseModelFlow",
+  step: [
+    {
+      i: {
+        ref: "fare_search_response_model_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicFareSearchResponseModelFlow"
+}

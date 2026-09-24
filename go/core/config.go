@@ -98,23 +98,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "city",
-						"req": true,
+						"title": "City",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "code",
-						"req": true,
+						"title": "Code",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "country",
-						"req": true,
+						"title": "Country",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "name",
-						"req": true,
+						"title": "Name",
 						"type": "`$STRING`",
+						"req": true,
 					},
 				},
 				"name": "airport",
@@ -124,24 +128,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "q",
-											"orig": "q",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/airports",
@@ -153,19 +139,38 @@ func MakeConfig() map[string]any {
 										"lit": "airports",
 									},
 								},
+								"parts": []any{
+									"api",
+									"airports",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "q",
+											"orig": "q",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"q",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"airports",
 								},
 							},
 						},
@@ -179,58 +184,72 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "adults",
+						"title": "Adults",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "children",
+						"title": "Children",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "departure_date",
+						"title": "Departure Date",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "destination",
+						"title": "Destination",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "ignav_id",
+						"title": "Ignav Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inbound_carrier_code",
+						"title": "Inbound Carrier Code",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "inbound_flight_number",
+						"title": "Inbound Flight Number",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "infants_in_seat",
+						"title": "Infants In Seat",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "infants_on_lap",
+						"title": "Infants On Lap",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "market",
+						"title": "Market",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "origin",
+						"title": "Origin",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "outbound_carrier_code",
+						"title": "Outbound Carrier Code",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "outbound_flight_number",
+						"title": "Outbound Flight Number",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "return_date",
+						"title": "Return Date",
 						"type": "`$ANY`",
 					},
 				},
@@ -241,7 +260,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/fares/booking-links",
@@ -256,7 +274,12 @@ func MakeConfig() map[string]any {
 										"lit": "booking-links",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"api",
+									"fares",
+									"booking-links",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": map[string]any{
 										"adults": "`reqdata.adult`",
@@ -276,11 +299,8 @@ func MakeConfig() map[string]any {
 									},
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"fares",
-									"booking-links",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -293,60 +313,74 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "adults",
+						"title": "Adults",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "airlines_exclude",
+						"title": "Airlines Exclude",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "airlines_include",
+						"title": "Airlines Include",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "allow_self_transfer",
+						"title": "Allow Self Transfer",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "cabin_class",
+						"title": "Cabin Class",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "children",
+						"title": "Children",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "infants_in_seat",
+						"title": "Infants In Seat",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "infants_on_lap",
+						"title": "Infants On Lap",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "itineraries",
-						"req": true,
+						"title": "Itineraries",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "legs",
-						"req": true,
+						"title": "Legs",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "market",
+						"title": "Market",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "max_price",
+						"title": "Max Price",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "min_carry_on_bags",
+						"title": "Min Carry On Bags",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "min_checked_bags",
+						"title": "Min Checked Bags",
 						"type": "`$ANY`",
 					},
 				},
@@ -357,7 +391,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/fares/search",
@@ -372,7 +405,12 @@ func MakeConfig() map[string]any {
 										"lit": "search",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"api",
+									"fares",
+									"search",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": map[string]any{
 										"adults": "`reqdata.adult`",
@@ -391,11 +429,8 @@ func MakeConfig() map[string]any {
 									},
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"fares",
-									"search",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -408,94 +443,114 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "adults",
+						"title": "Adults",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "airlines_exclude",
+						"title": "Airlines Exclude",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "airlines_include",
+						"title": "Airlines Include",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "allow_self_transfer",
+						"title": "Allow Self Transfer",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "cabin_class",
+						"title": "Cabin Class",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "children",
+						"title": "Children",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
-						"format": "date",
 						"name": "departure_date",
-						"req": true,
+						"title": "Departure Date",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date",
 					},
 					map[string]any{
 						"name": "departure_time_range",
+						"title": "Departure Time Range",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "destination",
-						"req": true,
+						"title": "Destination",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "infants_in_seat",
+						"title": "Infants In Seat",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "infants_on_lap",
+						"title": "Infants On Lap",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "itineraries",
-						"req": true,
+						"title": "Itineraries",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "market",
+						"title": "Market",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "max_price",
+						"title": "Max Price",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "max_stops",
+						"title": "Max Stops",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "min_carry_on_bags",
+						"title": "Min Carry On Bags",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "min_checked_bags",
+						"title": "Min Checked Bags",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "origin",
-						"req": true,
+						"title": "Origin",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date",
 						"name": "return_date",
+						"title": "Return Date",
+						"type": "`$ANY`",
 						"op": map[string]any{
 							"create": map[string]any{
 								"req": true,
 								"type": "`$STRING`",
 							},
 						},
-						"type": "`$ANY`",
+						"format": "date",
 					},
 					map[string]any{
 						"name": "return_time_range",
+						"title": "Return Time Range",
 						"type": "`$ANY`",
 					},
 				},
@@ -506,7 +561,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/fares/one-way",
@@ -521,7 +575,12 @@ func MakeConfig() map[string]any {
 										"lit": "one-way",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"api",
+									"fares",
+									"one-way",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": map[string]any{
 										"adults": "`reqdata.adult`",
@@ -544,14 +603,10 @@ func MakeConfig() map[string]any {
 									},
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"fares",
-									"one-way",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/fares/round-trip",
@@ -566,7 +621,12 @@ func MakeConfig() map[string]any {
 										"lit": "round-trip",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"api",
+									"fares",
+									"round-trip",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": map[string]any{
 										"adults": "`reqdata.adult`",
@@ -591,11 +651,8 @@ func MakeConfig() map[string]any {
 									},
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"fares",
-									"round-trip",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

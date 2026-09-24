@@ -19,7 +19,6 @@ import type {
   AirportListMatch,
 } from '../IgnavFlightTypes'
 
-// TODO: needs Entity superclass
 class AirportEntity extends IgnavFlightEntityBase<Airport> {
 
   constructor(client: IgnavFlightSDK, entopts: any) {

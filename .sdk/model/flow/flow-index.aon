@@ -1,6 +1,0 @@
-# Flows
-
-@"./BasicAirportFlow.aon"
-@"./BasicBookingLinkFlow.aon"
-@"./BasicFareSearchModelFlow.aon"
-@"./BasicFareSearchResponseModelFlow.aon"

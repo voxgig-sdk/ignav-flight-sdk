@@ -106,23 +106,27 @@ module IgnavFlightConfig
           "fields" => [
             {
               "name" => "city",
-              "req" => true,
+              "title" => "City",
               "type" => "`$STRING`",
+              "req" => true,
             },
             {
               "name" => "code",
-              "req" => true,
+              "title" => "Code",
               "type" => "`$STRING`",
+              "req" => true,
             },
             {
               "name" => "country",
-              "req" => true,
+              "title" => "Country",
               "type" => "`$STRING`",
+              "req" => true,
             },
             {
               "name" => "name",
-              "req" => true,
+              "title" => "Name",
               "type" => "`$STRING`",
+              "req" => true,
             },
           ],
           "name" => "airport",
@@ -132,24 +136,6 @@ module IgnavFlightConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => 10,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "q",
-                        "orig" => "q",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/airports",
@@ -161,20 +147,39 @@ module IgnavFlightConfig
                       "lit" => "airports",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "airports",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 10,
+                      },
+                      {
+                        "name" => "q",
+                        "orig" => "q",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "limit",
                       "q",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "api",
-                    "airports",
-                  ],
                 },
               ],
             },
@@ -187,58 +192,72 @@ module IgnavFlightConfig
           "fields" => [
             {
               "name" => "adults",
+              "title" => "Adults",
               "type" => "`$ANY`",
             },
             {
               "name" => "children",
+              "title" => "Children",
               "type" => "`$ANY`",
             },
             {
               "name" => "departure_date",
+              "title" => "Departure Date",
               "type" => "`$ANY`",
             },
             {
               "name" => "destination",
+              "title" => "Destination",
               "type" => "`$ANY`",
             },
             {
               "name" => "ignav_id",
+              "title" => "Ignav Id",
               "type" => "`$STRING`",
             },
             {
               "name" => "inbound_carrier_code",
+              "title" => "Inbound Carrier Code",
               "type" => "`$ANY`",
             },
             {
               "name" => "inbound_flight_number",
+              "title" => "Inbound Flight Number",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "infants_in_seat",
+              "title" => "Infants In Seat",
               "type" => "`$ANY`",
             },
             {
               "name" => "infants_on_lap",
+              "title" => "Infants On Lap",
               "type" => "`$ANY`",
             },
             {
               "name" => "market",
+              "title" => "Market",
               "type" => "`$ANY`",
             },
             {
               "name" => "origin",
+              "title" => "Origin",
               "type" => "`$ANY`",
             },
             {
               "name" => "outbound_carrier_code",
+              "title" => "Outbound Carrier Code",
               "type" => "`$ANY`",
             },
             {
               "name" => "outbound_flight_number",
+              "title" => "Outbound Flight Number",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "return_date",
+              "title" => "Return Date",
               "type" => "`$ANY`",
             },
           ],
@@ -249,7 +268,6 @@ module IgnavFlightConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/fares/booking-links",
@@ -264,7 +282,12 @@ module IgnavFlightConfig
                       "lit" => "booking-links",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "api",
+                    "fares",
+                    "booking-links",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => {
                       "adults" => "`reqdata.adult`",
@@ -284,11 +307,8 @@ module IgnavFlightConfig
                     },
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "api",
-                    "fares",
-                    "booking-links",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -301,60 +321,74 @@ module IgnavFlightConfig
           "fields" => [
             {
               "name" => "adults",
+              "title" => "Adults",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "airlines_exclude",
+              "title" => "Airlines Exclude",
               "type" => "`$ANY`",
             },
             {
               "name" => "airlines_include",
+              "title" => "Airlines Include",
               "type" => "`$ANY`",
             },
             {
               "name" => "allow_self_transfer",
+              "title" => "Allow Self Transfer",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "cabin_class",
+              "title" => "Cabin Class",
               "type" => "`$STRING`",
             },
             {
               "name" => "children",
+              "title" => "Children",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "infants_in_seat",
+              "title" => "Infants In Seat",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "infants_on_lap",
+              "title" => "Infants On Lap",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "itineraries",
-              "req" => true,
+              "title" => "Itineraries",
               "type" => "`$ARRAY`",
+              "req" => true,
             },
             {
               "name" => "legs",
-              "req" => true,
+              "title" => "Legs",
               "type" => "`$ARRAY`",
+              "req" => true,
             },
             {
               "name" => "market",
+              "title" => "Market",
               "type" => "`$STRING`",
             },
             {
               "name" => "max_price",
+              "title" => "Max Price",
               "type" => "`$ANY`",
             },
             {
               "name" => "min_carry_on_bags",
+              "title" => "Min Carry On Bags",
               "type" => "`$ANY`",
             },
             {
               "name" => "min_checked_bags",
+              "title" => "Min Checked Bags",
               "type" => "`$ANY`",
             },
           ],
@@ -365,7 +399,6 @@ module IgnavFlightConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/fares/search",
@@ -380,7 +413,12 @@ module IgnavFlightConfig
                       "lit" => "search",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "api",
+                    "fares",
+                    "search",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => {
                       "adults" => "`reqdata.adult`",
@@ -399,11 +437,8 @@ module IgnavFlightConfig
                     },
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "api",
-                    "fares",
-                    "search",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -416,94 +451,114 @@ module IgnavFlightConfig
           "fields" => [
             {
               "name" => "adults",
+              "title" => "Adults",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "airlines_exclude",
+              "title" => "Airlines Exclude",
               "type" => "`$ANY`",
             },
             {
               "name" => "airlines_include",
+              "title" => "Airlines Include",
               "type" => "`$ANY`",
             },
             {
               "name" => "allow_self_transfer",
+              "title" => "Allow Self Transfer",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "cabin_class",
+              "title" => "Cabin Class",
               "type" => "`$STRING`",
             },
             {
               "name" => "children",
+              "title" => "Children",
               "type" => "`$INTEGER`",
             },
             {
-              "format" => "date",
               "name" => "departure_date",
-              "req" => true,
+              "title" => "Departure Date",
               "type" => "`$STRING`",
+              "req" => true,
+              "format" => "date",
             },
             {
               "name" => "departure_time_range",
+              "title" => "Departure Time Range",
               "type" => "`$ANY`",
             },
             {
               "name" => "destination",
-              "req" => true,
+              "title" => "Destination",
               "type" => "`$STRING`",
+              "req" => true,
             },
             {
               "name" => "infants_in_seat",
+              "title" => "Infants In Seat",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "infants_on_lap",
+              "title" => "Infants On Lap",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "itineraries",
-              "req" => true,
+              "title" => "Itineraries",
               "type" => "`$ARRAY`",
+              "req" => true,
             },
             {
               "name" => "market",
+              "title" => "Market",
               "type" => "`$STRING`",
             },
             {
               "name" => "max_price",
+              "title" => "Max Price",
               "type" => "`$ANY`",
             },
             {
               "name" => "max_stops",
+              "title" => "Max Stops",
               "type" => "`$ANY`",
             },
             {
               "name" => "min_carry_on_bags",
+              "title" => "Min Carry On Bags",
               "type" => "`$ANY`",
             },
             {
               "name" => "min_checked_bags",
+              "title" => "Min Checked Bags",
               "type" => "`$ANY`",
             },
             {
               "name" => "origin",
-              "req" => true,
+              "title" => "Origin",
               "type" => "`$STRING`",
+              "req" => true,
             },
             {
-              "format" => "date",
               "name" => "return_date",
+              "title" => "Return Date",
+              "type" => "`$ANY`",
               "op" => {
                 "create" => {
                   "req" => true,
                   "type" => "`$STRING`",
                 },
               },
-              "type" => "`$ANY`",
+              "format" => "date",
             },
             {
               "name" => "return_time_range",
+              "title" => "Return Time Range",
               "type" => "`$ANY`",
             },
           ],
@@ -514,7 +569,6 @@ module IgnavFlightConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/fares/one-way",
@@ -529,7 +583,12 @@ module IgnavFlightConfig
                       "lit" => "one-way",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "api",
+                    "fares",
+                    "one-way",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => {
                       "adults" => "`reqdata.adult`",
@@ -552,14 +611,10 @@ module IgnavFlightConfig
                     },
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "api",
-                    "fares",
-                    "one-way",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/fares/round-trip",
@@ -574,7 +629,12 @@ module IgnavFlightConfig
                       "lit" => "round-trip",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "api",
+                    "fares",
+                    "round-trip",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => {
                       "adults" => "`reqdata.adult`",
@@ -599,11 +659,8 @@ module IgnavFlightConfig
                     },
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "api",
-                    "fares",
-                    "round-trip",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },

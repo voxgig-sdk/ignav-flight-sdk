@@ -1,0 +1,18 @@
+# BasicFareSearchModelFlow
+
+main: kit: flow: BasicFareSearchModelFlow:
+{
+  entity: "fare_search_model",
+  kind: "basic",
+  name: "BasicFareSearchModelFlow",
+  step: [
+    {
+      i: {
+        ref: "fare_search_model_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicFareSearchModelFlow"
+}

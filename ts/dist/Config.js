@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -121,23 +114,27 @@ class Config {
             "fields": [
                 {
                     "name": "city",
-                    "req": true,
-                    "type": "`$STRING`"
+                    "title": "City",
+                    "type": "`$STRING`",
+                    "req": true
                 },
                 {
                     "name": "code",
-                    "req": true,
-                    "type": "`$STRING`"
+                    "title": "Code",
+                    "type": "`$STRING`",
+                    "req": true
                 },
                 {
                     "name": "country",
-                    "req": true,
-                    "type": "`$STRING`"
+                    "title": "Country",
+                    "type": "`$STRING`",
+                    "req": true
                 },
                 {
                     "name": "name",
-                    "req": true,
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "req": true
                 }
             ],
             "name": "airport",
@@ -147,24 +144,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": 10,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/airports",
@@ -176,20 +155,39 @@ class Config {
                                     "lit": "airports"
                                 }
                             ],
+                            "parts": [
+                                "api",
+                                "airports"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 10
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "limit",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "api",
-                                "airports"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -202,58 +200,72 @@ class Config {
             "fields": [
                 {
                     "name": "adults",
+                    "title": "Adults",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "children",
+                    "title": "Children",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "departure_date",
+                    "title": "Departure Date",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "destination",
+                    "title": "Destination",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "ignav_id",
+                    "title": "Ignav Id",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "inbound_carrier_code",
+                    "title": "Inbound Carrier Code",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "inbound_flight_number",
+                    "title": "Inbound Flight Number",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "infants_in_seat",
+                    "title": "Infants In Seat",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "infants_on_lap",
+                    "title": "Infants On Lap",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "market",
+                    "title": "Market",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "origin",
+                    "title": "Origin",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "outbound_carrier_code",
+                    "title": "Outbound Carrier Code",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "outbound_flight_number",
+                    "title": "Outbound Flight Number",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "return_date",
+                    "title": "Return Date",
                     "type": "`$ANY`"
                 }
             ],
@@ -264,7 +276,6 @@ class Config {
                     "name": "create",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/fares/booking-links",
@@ -279,7 +290,12 @@ class Config {
                                     "lit": "booking-links"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "api",
+                                "fares",
+                                "booking-links"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": {
                                     "adults": "`reqdata.adult`",
@@ -299,11 +315,8 @@ class Config {
                                 },
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "api",
-                                "fares",
-                                "booking-links"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -316,60 +329,74 @@ class Config {
             "fields": [
                 {
                     "name": "adults",
+                    "title": "Adults",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "airlines_exclude",
+                    "title": "Airlines Exclude",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "airlines_include",
+                    "title": "Airlines Include",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "allow_self_transfer",
+                    "title": "Allow Self Transfer",
                     "type": "`$BOOLEAN`"
                 },
                 {
                     "name": "cabin_class",
+                    "title": "Cabin Class",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "children",
+                    "title": "Children",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "infants_in_seat",
+                    "title": "Infants In Seat",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "infants_on_lap",
+                    "title": "Infants On Lap",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "itineraries",
-                    "req": true,
-                    "type": "`$ARRAY`"
+                    "title": "Itineraries",
+                    "type": "`$ARRAY`",
+                    "req": true
                 },
                 {
                     "name": "legs",
-                    "req": true,
-                    "type": "`$ARRAY`"
+                    "title": "Legs",
+                    "type": "`$ARRAY`",
+                    "req": true
                 },
                 {
                     "name": "market",
+                    "title": "Market",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "max_price",
+                    "title": "Max Price",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "min_carry_on_bags",
+                    "title": "Min Carry On Bags",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "min_checked_bags",
+                    "title": "Min Checked Bags",
                     "type": "`$ANY`"
                 }
             ],
@@ -380,7 +407,6 @@ class Config {
                     "name": "create",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/fares/search",
@@ -395,7 +421,12 @@ class Config {
                                     "lit": "search"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "api",
+                                "fares",
+                                "search"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": {
                                     "adults": "`reqdata.adult`",
@@ -414,11 +445,8 @@ class Config {
                                 },
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "api",
-                                "fares",
-                                "search"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -431,94 +459,114 @@ class Config {
             "fields": [
                 {
                     "name": "adults",
+                    "title": "Adults",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "airlines_exclude",
+                    "title": "Airlines Exclude",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "airlines_include",
+                    "title": "Airlines Include",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "allow_self_transfer",
+                    "title": "Allow Self Transfer",
                     "type": "`$BOOLEAN`"
                 },
                 {
                     "name": "cabin_class",
+                    "title": "Cabin Class",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "children",
+                    "title": "Children",
                     "type": "`$INTEGER`"
                 },
                 {
-                    "format": "date",
                     "name": "departure_date",
+                    "title": "Departure Date",
+                    "type": "`$STRING`",
                     "req": true,
-                    "type": "`$STRING`"
+                    "format": "date"
                 },
                 {
                     "name": "departure_time_range",
+                    "title": "Departure Time Range",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "destination",
-                    "req": true,
-                    "type": "`$STRING`"
+                    "title": "Destination",
+                    "type": "`$STRING`",
+                    "req": true
                 },
                 {
                     "name": "infants_in_seat",
+                    "title": "Infants In Seat",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "infants_on_lap",
+                    "title": "Infants On Lap",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "itineraries",
-                    "req": true,
-                    "type": "`$ARRAY`"
+                    "title": "Itineraries",
+                    "type": "`$ARRAY`",
+                    "req": true
                 },
                 {
                     "name": "market",
+                    "title": "Market",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "max_price",
+                    "title": "Max Price",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "max_stops",
+                    "title": "Max Stops",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "min_carry_on_bags",
+                    "title": "Min Carry On Bags",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "min_checked_bags",
+                    "title": "Min Checked Bags",
                     "type": "`$ANY`"
                 },
                 {
                     "name": "origin",
-                    "req": true,
-                    "type": "`$STRING`"
+                    "title": "Origin",
+                    "type": "`$STRING`",
+                    "req": true
                 },
                 {
-                    "format": "date",
                     "name": "return_date",
+                    "title": "Return Date",
+                    "type": "`$ANY`",
                     "op": {
                         "create": {
                             "req": true,
                             "type": "`$STRING`"
                         }
                     },
-                    "type": "`$ANY`"
+                    "format": "date"
                 },
                 {
                     "name": "return_time_range",
+                    "title": "Return Time Range",
                     "type": "`$ANY`"
                 }
             ],
@@ -529,7 +577,6 @@ class Config {
                     "name": "create",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/fares/one-way",
@@ -544,7 +591,12 @@ class Config {
                                     "lit": "one-way"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "api",
+                                "fares",
+                                "one-way"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": {
                                     "adults": "`reqdata.adult`",
@@ -567,14 +619,10 @@ class Config {
                                 },
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "api",
-                                "fares",
-                                "one-way"
-                            ]
+                            "args": {},
+                            "select": {}
                         },
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/fares/round-trip",
@@ -589,7 +637,12 @@ class Config {
                                     "lit": "round-trip"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "api",
+                                "fares",
+                                "round-trip"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": {
                                     "adults": "`reqdata.adult`",
@@ -614,11 +667,8 @@ class Config {
                                 },
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "api",
-                                "fares",
-                                "round-trip"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }

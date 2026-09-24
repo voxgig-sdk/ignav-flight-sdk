@@ -1,0 +1,235 @@
+# Entity: fare_search_response_model
+
+main: kit: entity: fare_search_response_model: {
+
+  alias: field: {}
+
+  fields: {
+    adults: {
+      h: "Adults"
+      n: "adults"
+      r: false
+      t: "`$INTEGER`"
+    }
+    airlines_exclude: {
+      h: "Airlines Exclude"
+      n: "airlines_exclude"
+      r: false
+      t: "`$ANY`"
+    }
+    airlines_include: {
+      h: "Airlines Include"
+      n: "airlines_include"
+      r: false
+      t: "`$ANY`"
+    }
+    allow_self_transfer: {
+      h: "Allow Self Transfer"
+      n: "allow_self_transfer"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    cabin_class: {
+      h: "Cabin Class"
+      n: "cabin_class"
+      r: false
+      t: "`$STRING`"
+    }
+    children: {
+      h: "Children"
+      n: "children"
+      r: false
+      t: "`$INTEGER`"
+    }
+    departure_date: {
+      fo: "date"
+      h: "Departure Date"
+      n: "departure_date"
+      r: true
+      t: "`$STRING`"
+    }
+    departure_time_range: {
+      h: "Departure Time Range"
+      n: "departure_time_range"
+      r: false
+      t: "`$ANY`"
+    }
+    destination: {
+      h: "Destination"
+      n: "destination"
+      r: true
+      t: "`$STRING`"
+    }
+    infants_in_seat: {
+      h: "Infants In Seat"
+      n: "infants_in_seat"
+      r: false
+      t: "`$INTEGER`"
+    }
+    infants_on_lap: {
+      h: "Infants On Lap"
+      n: "infants_on_lap"
+      r: false
+      t: "`$INTEGER`"
+    }
+    itineraries: {
+      h: "Itineraries"
+      n: "itineraries"
+      r: true
+      t: "`$ARRAY`"
+    }
+    market: {
+      h: "Market"
+      n: "market"
+      r: false
+      t: "`$STRING`"
+    }
+    max_price: {
+      h: "Max Price"
+      n: "max_price"
+      r: false
+      t: "`$ANY`"
+    }
+    max_stops: {
+      h: "Max Stops"
+      n: "max_stops"
+      r: false
+      t: "`$ANY`"
+    }
+    min_carry_on_bags: {
+      h: "Min Carry On Bags"
+      n: "min_carry_on_bags"
+      r: false
+      t: "`$ANY`"
+    }
+    min_checked_bags: {
+      h: "Min Checked Bags"
+      n: "min_checked_bags"
+      r: false
+      t: "`$ANY`"
+    }
+    origin: {
+      h: "Origin"
+      n: "origin"
+      r: true
+      t: "`$STRING`"
+    }
+    return_date: {
+      fo: "date"
+      h: "Return Date"
+      n: "return_date"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$ANY`"
+    }
+    return_time_range: {
+      h: "Return Time Range"
+      n: "return_time_range"
+      r: false
+      t: "`$ANY`"
+    }
+  }
+
+  name: "fare_search_response_model"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/fares/one-way"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/fares/one-way"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "fares"
+            }
+            {
+              lit: "one-way"
+            }
+          ]
+          t: {
+            req: {
+              adults: "`reqdata.adult`"
+              airlines_exclude: "`reqdata.airlines_exclude`"
+              airlines_include: "`reqdata.airlines_include`"
+              allow_self_transfer: "`reqdata.allow_self_transfer`"
+              cabin_class: "`reqdata.cabin_class`"
+              children: "`reqdata.child`"
+              departure_date: "`reqdata.departure_date`"
+              departure_time_range: "`reqdata.departure_time_range`"
+              destination: "`reqdata.destination`"
+              infants_in_seat: "`reqdata.infants_in_seat`"
+              infants_on_lap: "`reqdata.infants_on_lap`"
+              market: "`reqdata.market`"
+              max_price: "`reqdata.max_price`"
+              max_stops: "`reqdata.max_stop`"
+              min_carry_on_bags: "`reqdata.min_carry_on_bag`"
+              min_checked_bags: "`reqdata.min_checked_bag`"
+              origin: "`reqdata.origin`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/fares/round-trip"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/fares/round-trip"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "fares"
+            }
+            {
+              lit: "round-trip"
+            }
+          ]
+          t: {
+            req: {
+              adults: "`reqdata.adult`"
+              airlines_exclude: "`reqdata.airlines_exclude`"
+              airlines_include: "`reqdata.airlines_include`"
+              allow_self_transfer: "`reqdata.allow_self_transfer`"
+              cabin_class: "`reqdata.cabin_class`"
+              children: "`reqdata.child`"
+              departure_date: "`reqdata.departure_date`"
+              departure_time_range: "`reqdata.departure_time_range`"
+              destination: "`reqdata.destination`"
+              infants_in_seat: "`reqdata.infants_in_seat`"
+              infants_on_lap: "`reqdata.infants_on_lap`"
+              market: "`reqdata.market`"
+              max_price: "`reqdata.max_price`"
+              max_stops: "`reqdata.max_stop`"
+              min_carry_on_bags: "`reqdata.min_carry_on_bag`"
+              min_checked_bags: "`reqdata.min_checked_bag`"
+              origin: "`reqdata.origin`"
+              return_date: "`reqdata.return_date`"
+              return_time_range: "`reqdata.return_time_range`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

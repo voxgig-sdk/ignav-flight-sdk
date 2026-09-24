@@ -1,7 +1,7 @@
 // Typed models for the IgnavFlight SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,10 +14,6 @@ import (
 
 // Airport is the typed data model for the airport entity.
 type Airport struct {
-	City string `json:"city"`
-	Code string `json:"code"`
-	Country string `json:"country"`
-	Name string `json:"name"`
 }
 
 // AirportListMatch is the typed request payload for Airport.ListTyped.
@@ -28,20 +24,6 @@ type AirportListMatch struct {
 
 // BookingLink is the typed data model for the booking_link entity.
 type BookingLink struct {
-	Adults *any `json:"adults,omitempty"`
-	Children *any `json:"children,omitempty"`
-	DepartureDate *any `json:"departure_date,omitempty"`
-	Destination *any `json:"destination,omitempty"`
-	IgnavId *string `json:"ignav_id,omitempty"`
-	InboundCarrierCode *any `json:"inbound_carrier_code,omitempty"`
-	InboundFlightNumber *int `json:"inbound_flight_number,omitempty"`
-	InfantsInSeat *any `json:"infants_in_seat,omitempty"`
-	InfantsOnLap *any `json:"infants_on_lap,omitempty"`
-	Market *any `json:"market,omitempty"`
-	Origin *any `json:"origin,omitempty"`
-	OutboundCarrierCode *any `json:"outbound_carrier_code,omitempty"`
-	OutboundFlightNumber *int `json:"outbound_flight_number,omitempty"`
-	ReturnDate *any `json:"return_date,omitempty"`
 }
 
 // BookingLinkCreateData is the typed request payload for BookingLink.CreateTyped.
@@ -64,20 +46,6 @@ type BookingLinkCreateData struct {
 
 // FareSearchModel is the typed data model for the fare_search_model entity.
 type FareSearchModel struct {
-	Adults *int `json:"adults,omitempty"`
-	AirlinesExclude *any `json:"airlines_exclude,omitempty"`
-	AirlinesInclude *any `json:"airlines_include,omitempty"`
-	AllowSelfTransfer *bool `json:"allow_self_transfer,omitempty"`
-	CabinClass *string `json:"cabin_class,omitempty"`
-	Children *int `json:"children,omitempty"`
-	InfantsInSeat *int `json:"infants_in_seat,omitempty"`
-	InfantsOnLap *int `json:"infants_on_lap,omitempty"`
-	Itineraries []any `json:"itineraries"`
-	Legs []any `json:"legs"`
-	Market *string `json:"market,omitempty"`
-	MaxPrice *any `json:"max_price,omitempty"`
-	MinCarryOnBags *any `json:"min_carry_on_bags,omitempty"`
-	MinCheckedBags *any `json:"min_checked_bags,omitempty"`
 }
 
 // FareSearchModelCreateData is the typed request payload for FareSearchModel.CreateTyped.
@@ -100,26 +68,6 @@ type FareSearchModelCreateData struct {
 
 // FareSearchResponseModel is the typed data model for the fare_search_response_model entity.
 type FareSearchResponseModel struct {
-	Adults *int `json:"adults,omitempty"`
-	AirlinesExclude *any `json:"airlines_exclude,omitempty"`
-	AirlinesInclude *any `json:"airlines_include,omitempty"`
-	AllowSelfTransfer *bool `json:"allow_self_transfer,omitempty"`
-	CabinClass *string `json:"cabin_class,omitempty"`
-	Children *int `json:"children,omitempty"`
-	DepartureDate string `json:"departure_date"`
-	DepartureTimeRange *any `json:"departure_time_range,omitempty"`
-	Destination string `json:"destination"`
-	InfantsInSeat *int `json:"infants_in_seat,omitempty"`
-	InfantsOnLap *int `json:"infants_on_lap,omitempty"`
-	Itineraries []any `json:"itineraries"`
-	Market *string `json:"market,omitempty"`
-	MaxPrice *any `json:"max_price,omitempty"`
-	MaxStops *any `json:"max_stops,omitempty"`
-	MinCarryOnBags *any `json:"min_carry_on_bags,omitempty"`
-	MinCheckedBags *any `json:"min_checked_bags,omitempty"`
-	Origin string `json:"origin"`
-	ReturnDate *any `json:"return_date,omitempty"`
-	ReturnTimeRange *any `json:"return_time_range,omitempty"`
 }
 
 // FareSearchResponseModelCreateData is the typed request payload for FareSearchResponseModel.CreateTyped.

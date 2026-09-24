@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AirportEntity = void 0;
 const IgnavFlightEntityBase_1 = require("../IgnavFlightEntityBase");
-// TODO: needs Entity superclass
 class AirportEntity extends IgnavFlightEntityBase_1.IgnavFlightEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

@@ -24,38 +24,108 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "airport": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "city",
-              "req": true,
-              "type": "`$STRING`"
+          "fields": {
+            "city": {
+              "a": true,
+              "h": "City",
+              "n": "city",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "code",
-              "req": true,
-              "type": "`$STRING`"
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "country",
-              "req": true,
-              "type": "`$STRING`"
+            "country": {
+              "a": true,
+              "h": "Country",
+              "n": "country",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": true,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "airport",
           "op": {
             "list": {
@@ -63,38 +133,44 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/airports",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 10,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 10,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/airports",
-                    "json": "{\"operationId\":\"search_airports_api_airports_get\",\"parameters\":[{\"in\":\"query\",\"name\":\"q\",\"required\":true,\"schema\":{\"title\":\"Q\",\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":10,\"maximum\":20,\"minimum\":1,\"title\":\"Limit\",\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"city\":{\"title\":\"City\",\"type\":\"string\"},\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"country\":{\"title\":\"Country\",\"type\":\"string\"},\"name\":{\"title\":\"Name\",\"type\":\"string\"}},\"required\":[\"code\",\"name\",\"city\",\"country\"],\"title\":\"AirportModel\",\"type\":\"object\"},\"title\":\"Response Search Airports Api Airports Get\",\"type\":\"array\"}}},\"description\":\"Successful Response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Bad Request\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Unauthorized\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/airports",
+                  "q": {
+                    "exist": [
+                      "limit",
+                      "q"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/airports",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -102,13 +178,7 @@
                       "lit": "airports"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "limit",
-                      "q"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -125,92 +195,106 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "adults",
-              "req": false,
-              "type": "`$ANY`"
+          "fields": {
+            "adults": {
+              "a": true,
+              "h": "Adults",
+              "n": "adults",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "children",
-              "req": false,
-              "type": "`$ANY`"
+            "children": {
+              "a": true,
+              "h": "Children",
+              "n": "children",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "departure_date",
-              "req": false,
-              "type": "`$ANY`"
+            "departure_date": {
+              "a": true,
+              "h": "Departure Date",
+              "n": "departure_date",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "destination",
-              "req": false,
-              "type": "`$ANY`"
+            "destination": {
+              "a": true,
+              "h": "Destination",
+              "n": "destination",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "ignav_id",
-              "req": false,
-              "type": "`$STRING`"
+            "ignav_id": {
+              "a": true,
+              "h": "Ignav Id",
+              "n": "ignav_id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "inbound_carrier_code",
-              "req": false,
-              "type": "`$ANY`"
+            "inbound_carrier_code": {
+              "a": true,
+              "h": "Inbound Carrier Code",
+              "n": "inbound_carrier_code",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "inbound_flight_number",
-              "req": false,
-              "type": "`$INTEGER`"
+            "inbound_flight_number": {
+              "a": true,
+              "h": "Inbound Flight Number",
+              "n": "inbound_flight_number",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "infants_in_seat",
-              "req": false,
-              "type": "`$ANY`"
+            "infants_in_seat": {
+              "a": true,
+              "h": "Infants In Seat",
+              "n": "infants_in_seat",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "infants_on_lap",
-              "req": false,
-              "type": "`$ANY`"
+            "infants_on_lap": {
+              "a": true,
+              "h": "Infants On Lap",
+              "n": "infants_on_lap",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "market",
-              "req": false,
-              "type": "`$ANY`"
+            "market": {
+              "a": true,
+              "h": "Market",
+              "n": "market",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "origin",
-              "req": false,
-              "type": "`$ANY`"
+            "origin": {
+              "a": true,
+              "h": "Origin",
+              "n": "origin",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "outbound_carrier_code",
-              "req": false,
-              "type": "`$ANY`"
+            "outbound_carrier_code": {
+              "a": true,
+              "h": "Outbound Carrier Code",
+              "n": "outbound_carrier_code",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "outbound_flight_number",
-              "req": false,
-              "type": "`$INTEGER`"
+            "outbound_flight_number": {
+              "a": true,
+              "h": "Outbound Flight Number",
+              "n": "outbound_flight_number",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "return_date",
-              "req": false,
-              "type": "`$ANY`"
+            "return_date": {
+              "a": true,
+              "h": "Return Date",
+              "n": "return_date",
+              "r": false,
+              "t": "`$ANY`"
             }
-          ],
+          },
           "name": "booking_link",
           "op": {
             "create": {
@@ -218,18 +302,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/fares/booking-links",
-                    "json": "{\"operationId\":\"get_booking_links_api_fares_booking_links_post\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"adults\":{\"anyOf\":[{\"minimum\":1,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Adults\"},\"children\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Children\"},\"departure_date\":{\"anyOf\":[{\"format\":\"date\",\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Date\"},\"destination\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Destination\"},\"ignav_id\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Ignav Id\"},\"inbound_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Inbound Carrier Code\"},\"inbound_flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Inbound Flight Number\"},\"infants_in_seat\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Infants In Seat\"},\"infants_on_lap\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Infants On Lap\"},\"market\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Market\"},\"origin\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Origin\"},\"outbound_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Outbound Carrier Code\"},\"outbound_flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Outbound Flight Number\"},\"return_date\":{\"anyOf\":[{\"format\":\"date\",\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Return Date\"}},\"title\":\"BookingLinksRequest\",\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"booking_options\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"legs\":{\"items\":{\"enum\":[\"outbound\",\"inbound\"],\"type\":\"string\"},\"title\":\"Legs\",\"type\":\"array\"},\"links\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"fare_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Fare Name\"},\"price\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"amount\":{\"title\":\"Amount\",\"type\":\"number\"},\"currency\":{\"title\":\"Currency\",\"type\":\"string\"},\"status\":{\"enum\":[\"verified\",\"unverified\"],\"title\":\"Status\",\"type\":\"string\"}},\"required\":[\"amount\",\"currency\",\"status\"],\"title\":\"PriceModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"provider_name\":{\"title\":\"Provider Name\",\"type\":\"string\"},\"provider_type\":{\"enum\":[\"airline\",\"third_party\"],\"title\":\"Provider Type\",\"type\":\"string\"},\"url\":{\"title\":\"Url\",\"type\":\"string\"}},\"required\":[\"provider_name\",\"url\",\"provider_type\"],\"title\":\"BookingLinkModel\",\"type\":\"object\"},\"title\":\"Links\",\"type\":\"array\"}},\"required\":[\"legs\",\"links\"],\"title\":\"BookingOptionModel\",\"type\":\"object\"},\"title\":\"Booking Options\",\"type\":\"array\"},\"itinerary\":{\"additionalProperties\":false,\"properties\":{\"bags\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"carry_on\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Carry On\"},\"checked\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Checked\"}},\"title\":\"BaggageAllowanceModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"cabin_class\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Cabin Class\"},\"inbound\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"carrier\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Carrier\"},\"duration_minutes\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Duration Minutes\"},\"segments\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"aircraft\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Aircraft\"},\"arrival_airport\":{\"title\":\"Arrival Airport\",\"type\":\"string\"},\"arrival_time_local\":{\"title\":\"Arrival Time Local\",\"type\":\"string\"},\"arrival_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Time Utc\"},\"arrival_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Timezone\"},\"departure_airport\":{\"title\":\"Departure Airport\",\"type\":\"string\"},\"departure_time_local\":{\"title\":\"Departure Time Local\",\"type\":\"string\"},\"departure_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Time Utc\"},\"departure_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Timezone\"},\"duration_minutes\":{\"title\":\"Duration Minutes\",\"type\":\"integer\"},\"flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Flight Number\"},\"marketing_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Marketing Carrier Code\"},\"operating_carrier_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Operating Carrier Name\"}},\"required\":[\"marketing_carrier_code\",\"flight_number\",\"operating_carrier_name\",\"departure_airport\",\"departure_time_local\",\"departure_timezone\",\"departure_time_utc\",\"arrival_airport\",\"arrival_time_local\",\"arrival_timezone\",\"arrival_time_utc\",\"duration_minutes\",\"aircraft\"],\"title\":\"SegmentModel\",\"type\":\"object\"},\"title\":\"Segments\",\"type\":\"array\"}},\"required\":[\"segments\"],\"title\":\"LegModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"outbound\":{\"additionalProperties\":false,\"properties\":{\"carrier\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Carrier\"},\"duration_minutes\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Duration Minutes\"},\"segments\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"aircraft\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Aircraft\"},\"arrival_airport\":{\"title\":\"Arrival Airport\",\"type\":\"string\"},\"arrival_time_local\":{\"title\":\"Arrival Time Local\",\"type\":\"string\"},\"arrival_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Time Utc\"},\"arrival_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Timezone\"},\"departure_airport\":{\"title\":\"Departure Airport\",\"type\":\"string\"},\"departure_time_local\":{\"title\":\"Departure Time Local\",\"type\":\"string\"},\"departure_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Time Utc\"},\"departure_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Timezone\"},\"duration_minutes\":{\"title\":\"Duration Minutes\",\"type\":\"integer\"},\"flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Flight Number\"},\"marketing_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Marketing Carrier Code\"},\"operating_carrier_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Operating Carrier Name\"}},\"required\":[\"marketing_carrier_code\",\"flight_number\",\"operating_carrier_name\",\"departure_airport\",\"departure_time_local\",\"departure_timezone\",\"departure_time_utc\",\"arrival_airport\",\"arrival_time_local\",\"arrival_timezone\",\"arrival_time_utc\",\"duration_minutes\",\"aircraft\"],\"title\":\"SegmentModel\",\"type\":\"object\"},\"title\":\"Segments\",\"type\":\"array\"}},\"required\":[\"segments\"],\"title\":\"LegModel\",\"type\":\"object\"},\"price\":{\"additionalProperties\":false,\"properties\":{\"amount\":{\"title\":\"Amount\",\"type\":\"number\"},\"currency\":{\"title\":\"Currency\",\"type\":\"string\"},\"status\":{\"enum\":[\"verified\",\"unverified\"],\"title\":\"Status\",\"type\":\"string\"}},\"required\":[\"amount\",\"currency\",\"status\"],\"title\":\"PriceModel\",\"type\":\"object\"},\"requires_self_transfer\":{\"anyOf\":[{\"type\":\"boolean\"},{\"type\":\"null\"}],\"title\":\"Requires Self Transfer\"}},\"required\":[\"price\",\"outbound\"],\"title\":\"BookingItineraryModel\",\"type\":\"object\"}},\"required\":[\"itinerary\",\"booking_options\"],\"title\":\"BookingOptionsResponseModel\",\"type\":\"object\"},{\"additionalProperties\":false,\"properties\":{\"booking_options\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"leg_indexes\":{\"items\":{\"type\":\"integer\"},\"title\":\"Leg Indexes\",\"type\":\"array\"},\"links\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"fare_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Fare Name\"},\"price\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"amount\":{\"title\":\"Amount\",\"type\":\"number\"},\"currency\":{\"title\":\"Currency\",\"type\":\"string\"},\"status\":{\"enum\":[\"verified\",\"unverified\"],\"title\":\"Status\",\"type\":\"string\"}},\"required\":[\"amount\",\"currency\",\"status\"],\"title\":\"PriceModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"provider_name\":{\"title\":\"Provider Name\",\"type\":\"string\"},\"provider_type\":{\"enum\":[\"airline\",\"third_party\"],\"title\":\"Provider Type\",\"type\":\"string\"},\"url\":{\"title\":\"Url\",\"type\":\"string\"}},\"required\":[\"provider_name\",\"url\",\"provider_type\"],\"title\":\"BookingLinkModel\",\"type\":\"object\"},\"title\":\"Links\",\"type\":\"array\"}},\"required\":[\"leg_indexes\",\"links\"],\"title\":\"SearchBookingOptionModel\",\"type\":\"object\"},\"title\":\"Booking Options\",\"type\":\"array\"},\"itinerary\":{\"additionalProperties\":false,\"properties\":{\"bags\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"carry_on\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Carry On\"},\"checked\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Checked\"}},\"title\":\"BaggageAllowanceModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"cabin_class\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Cabin Class\"},\"legs\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"carrier\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Carrier\"},\"duration_minutes\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Duration Minutes\"},\"segments\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"aircraft\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Aircraft\"},\"arrival_airport\":{\"title\":\"Arrival Airport\",\"type\":\"string\"},\"arrival_time_local\":{\"title\":\"Arrival Time Local\",\"type\":\"string\"},\"arrival_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Time Utc\"},\"arrival_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Timezone\"},\"departure_airport\":{\"title\":\"Departure Airport\",\"type\":\"string\"},\"departure_time_local\":{\"title\":\"Departure Time Local\",\"type\":\"string\"},\"departure_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Time Utc\"},\"departure_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Timezone\"},\"duration_minutes\":{\"title\":\"Duration Minutes\",\"type\":\"integer\"},\"flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Flight Number\"},\"marketing_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Marketing Carrier Code\"},\"operating_carrier_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Operating Carrier Name\"}},\"required\":[\"marketing_carrier_code\",\"flight_number\",\"operating_carrier_name\",\"departure_airport\",\"departure_time_local\",\"departure_timezone\",\"departure_time_utc\",\"arrival_airport\",\"arrival_time_local\",\"arrival_timezone\",\"arrival_time_utc\",\"duration_minutes\",\"aircraft\"],\"title\":\"SegmentModel\",\"type\":\"object\"},\"title\":\"Segments\",\"type\":\"array\"}},\"required\":[\"segments\"],\"title\":\"LegModel\",\"type\":\"object\"},\"title\":\"Legs\",\"type\":\"array\"},\"price\":{\"additionalProperties\":false,\"properties\":{\"amount\":{\"title\":\"Amount\",\"type\":\"number\"},\"currency\":{\"title\":\"Currency\",\"type\":\"string\"},\"status\":{\"enum\":[\"verified\",\"unverified\"],\"title\":\"Status\",\"type\":\"string\"}},\"required\":[\"amount\",\"currency\",\"status\"],\"title\":\"PriceModel\",\"type\":\"object\"},\"requires_self_transfer\":{\"anyOf\":[{\"type\":\"boolean\"},{\"type\":\"null\"}],\"title\":\"Requires Self Transfer\"}},\"required\":[\"price\",\"legs\"],\"title\":\"SearchBookingItineraryModel\",\"type\":\"object\"}},\"required\":[\"itinerary\",\"booking_options\"],\"title\":\"SearchBookingOptionsResponseModel\",\"type\":\"object\"}],\"title\":\"Response Get Booking Links Api Fares Booking Links Post\"}}},\"description\":\"Successful Response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Bad Request\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Unauthorized\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Not Found\"},\"424\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Failed Dependency\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/fares/booking-links",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/fares/booking-links",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -240,8 +325,7 @@
                       "lit": "booking-links"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": {
                       "adults": "`reqdata.adult`",
                       "children": "`reqdata.child`",
@@ -273,92 +357,106 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "adults",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "adults": {
+              "a": true,
+              "h": "Adults",
+              "n": "adults",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "airlines_exclude",
-              "req": false,
-              "type": "`$ANY`"
+            "airlines_exclude": {
+              "a": true,
+              "h": "Airlines Exclude",
+              "n": "airlines_exclude",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "airlines_include",
-              "req": false,
-              "type": "`$ANY`"
+            "airlines_include": {
+              "a": true,
+              "h": "Airlines Include",
+              "n": "airlines_include",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "allow_self_transfer",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "allow_self_transfer": {
+              "a": true,
+              "h": "Allow Self Transfer",
+              "n": "allow_self_transfer",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "cabin_class",
-              "req": false,
-              "type": "`$STRING`"
+            "cabin_class": {
+              "a": true,
+              "h": "Cabin Class",
+              "n": "cabin_class",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "children",
-              "req": false,
-              "type": "`$INTEGER`"
+            "children": {
+              "a": true,
+              "h": "Children",
+              "n": "children",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "infants_in_seat",
-              "req": false,
-              "type": "`$INTEGER`"
+            "infants_in_seat": {
+              "a": true,
+              "h": "Infants In Seat",
+              "n": "infants_in_seat",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "infants_on_lap",
-              "req": false,
-              "type": "`$INTEGER`"
+            "infants_on_lap": {
+              "a": true,
+              "h": "Infants On Lap",
+              "n": "infants_on_lap",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "itineraries",
-              "req": true,
-              "type": "`$ARRAY`"
+            "itineraries": {
+              "a": true,
+              "h": "Itineraries",
+              "n": "itineraries",
+              "r": true,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "legs",
-              "req": true,
-              "type": "`$ARRAY`"
+            "legs": {
+              "a": true,
+              "h": "Legs",
+              "n": "legs",
+              "r": true,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "market",
-              "req": false,
-              "type": "`$STRING`"
+            "market": {
+              "a": true,
+              "h": "Market",
+              "n": "market",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "max_price",
-              "req": false,
-              "type": "`$ANY`"
+            "max_price": {
+              "a": true,
+              "h": "Max Price",
+              "n": "max_price",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "min_carry_on_bags",
-              "req": false,
-              "type": "`$ANY`"
+            "min_carry_on_bags": {
+              "a": true,
+              "h": "Min Carry On Bags",
+              "n": "min_carry_on_bags",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "min_checked_bags",
-              "req": false,
-              "type": "`$ANY`"
+            "min_checked_bags": {
+              "a": true,
+              "h": "Min Checked Bags",
+              "n": "min_checked_bags",
+              "r": false,
+              "t": "`$ANY`"
             }
-          ],
+          },
           "name": "fare_search_model",
           "op": {
             "create": {
@@ -366,18 +464,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/fares/search",
-                    "json": "{\"operationId\":\"search_fares_api_fares_search_post\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"adults\":{\"default\":1,\"minimum\":1,\"title\":\"Adults\",\"type\":\"integer\"},\"airlines_exclude\":{\"anyOf\":[{\"items\":{\"type\":\"string\"},\"type\":\"array\"},{\"type\":\"null\"}],\"title\":\"Airlines Exclude\"},\"airlines_include\":{\"anyOf\":[{\"items\":{\"type\":\"string\"},\"type\":\"array\"},{\"type\":\"null\"}],\"title\":\"Airlines Include\"},\"allow_self_transfer\":{\"default\":true,\"title\":\"Allow Self Transfer\",\"type\":\"boolean\"},\"cabin_class\":{\"default\":\"economy\",\"enum\":[\"economy\",\"premium_economy\",\"business\",\"first\"],\"title\":\"Cabin Class\",\"type\":\"string\"},\"children\":{\"default\":0,\"minimum\":0,\"title\":\"Children\",\"type\":\"integer\"},\"infants_in_seat\":{\"default\":0,\"minimum\":0,\"title\":\"Infants In Seat\",\"type\":\"integer\"},\"infants_on_lap\":{\"default\":0,\"minimum\":0,\"title\":\"Infants On Lap\",\"type\":\"integer\"},\"legs\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"departure_date\":{\"format\":\"date\",\"title\":\"Departure Date\",\"type\":\"string\"},\"departure_time_range\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"arrival_earliest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Arrival Earliest Hour\"},\"arrival_latest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Arrival Latest Hour\"},\"earliest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Earliest Hour\"},\"latest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Latest Hour\"}},\"title\":\"TimeRangeInput\",\"type\":\"object\"},{\"type\":\"null\"}]},\"destination\":{\"title\":\"Destination\",\"type\":\"string\"},\"max_stops\":{\"anyOf\":[{\"maximum\":2,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Max Stops\"},\"origin\":{\"title\":\"Origin\",\"type\":\"string\"}},\"required\":[\"origin\",\"destination\",\"departure_date\"],\"title\":\"SearchLegInput\",\"type\":\"object\"},\"maxItems\":4,\"minItems\":1,\"title\":\"Legs\",\"type\":\"array\"},\"market\":{\"default\":\"US\",\"title\":\"Market\",\"type\":\"string\"},\"max_price\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Max Price\"},\"min_carry_on_bags\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Min Carry On Bags\"},\"min_checked_bags\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Min Checked Bags\"}},\"required\":[\"legs\"],\"title\":\"FareSearchRequest\",\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"itineraries\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"bags\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"carry_on\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Carry On\"},\"checked\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Checked\"}},\"title\":\"BaggageAllowanceModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"cabin_class\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Cabin Class\"},\"ignav_id\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Ignav Id\"},\"legs\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"carrier\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Carrier\"},\"duration_minutes\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Duration Minutes\"},\"segments\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"aircraft\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Aircraft\"},\"arrival_airport\":{\"title\":\"Arrival Airport\",\"type\":\"string\"},\"arrival_time_local\":{\"title\":\"Arrival Time Local\",\"type\":\"string\"},\"arrival_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Time Utc\"},\"arrival_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Timezone\"},\"departure_airport\":{\"title\":\"Departure Airport\",\"type\":\"string\"},\"departure_time_local\":{\"title\":\"Departure Time Local\",\"type\":\"string\"},\"departure_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Time Utc\"},\"departure_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Timezone\"},\"duration_minutes\":{\"title\":\"Duration Minutes\",\"type\":\"integer\"},\"flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Flight Number\"},\"marketing_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Marketing Carrier Code\"},\"operating_carrier_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Operating Carrier Name\"}},\"required\":[\"marketing_carrier_code\",\"flight_number\",\"operating_carrier_name\",\"departure_airport\",\"departure_time_local\",\"departure_timezone\",\"departure_time_utc\",\"arrival_airport\",\"arrival_time_local\",\"arrival_timezone\",\"arrival_time_utc\",\"duration_minutes\",\"aircraft\"],\"title\":\"SegmentModel\",\"type\":\"object\"},\"title\":\"Segments\",\"type\":\"array\"}},\"required\":[\"segments\"],\"title\":\"LegModel\",\"type\":\"object\"},\"title\":\"Legs\",\"type\":\"array\"},\"price\":{\"additionalProperties\":false,\"properties\":{\"amount\":{\"title\":\"Amount\",\"type\":\"number\"},\"currency\":{\"title\":\"Currency\",\"type\":\"string\"},\"status\":{\"enum\":[\"verified\",\"unverified\"],\"title\":\"Status\",\"type\":\"string\"}},\"required\":[\"amount\",\"currency\",\"status\"],\"title\":\"PriceModel\",\"type\":\"object\"},\"requires_self_transfer\":{\"anyOf\":[{\"type\":\"boolean\"},{\"type\":\"null\"}],\"title\":\"Requires Self Transfer\"}},\"required\":[\"price\",\"legs\"],\"title\":\"SearchItineraryModel\",\"type\":\"object\"},\"title\":\"Itineraries\",\"type\":\"array\"},\"legs\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"departure_date\":{\"title\":\"Departure Date\",\"type\":\"string\"},\"destination\":{\"title\":\"Destination\",\"type\":\"string\"},\"origin\":{\"title\":\"Origin\",\"type\":\"string\"}},\"required\":[\"origin\",\"destination\",\"departure_date\"],\"title\":\"SearchLegModel\",\"type\":\"object\"},\"title\":\"Legs\",\"type\":\"array\"}},\"required\":[\"legs\",\"itineraries\"],\"title\":\"FareSearchModel\",\"type\":\"object\"}}},\"description\":\"Successful Response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Bad Request\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Unauthorized\"},\"424\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Failed Dependency\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/fares/search",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/fares/search",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -388,8 +487,7 @@
                       "lit": "search"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": {
                       "adults": "`reqdata.adult`",
                       "airlines_exclude": "`reqdata.airlines_exclude`",
@@ -420,136 +518,156 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "adults",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "adults": {
+              "a": true,
+              "h": "Adults",
+              "n": "adults",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "airlines_exclude",
-              "req": false,
-              "type": "`$ANY`"
+            "airlines_exclude": {
+              "a": true,
+              "h": "Airlines Exclude",
+              "n": "airlines_exclude",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "airlines_include",
-              "req": false,
-              "type": "`$ANY`"
+            "airlines_include": {
+              "a": true,
+              "h": "Airlines Include",
+              "n": "airlines_include",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "allow_self_transfer",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "allow_self_transfer": {
+              "a": true,
+              "h": "Allow Self Transfer",
+              "n": "allow_self_transfer",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "cabin_class",
-              "req": false,
-              "type": "`$STRING`"
+            "cabin_class": {
+              "a": true,
+              "h": "Cabin Class",
+              "n": "cabin_class",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "children",
-              "req": false,
-              "type": "`$INTEGER`"
+            "children": {
+              "a": true,
+              "h": "Children",
+              "n": "children",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "departure_date",
-              "req": true,
-              "type": "`$STRING`"
+            "departure_date": {
+              "a": true,
+              "fo": "date",
+              "h": "Departure Date",
+              "n": "departure_date",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "departure_time_range",
-              "req": false,
-              "type": "`$ANY`"
+            "departure_time_range": {
+              "a": true,
+              "h": "Departure Time Range",
+              "n": "departure_time_range",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "destination",
-              "req": true,
-              "type": "`$STRING`"
+            "destination": {
+              "a": true,
+              "h": "Destination",
+              "n": "destination",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "infants_in_seat",
-              "req": false,
-              "type": "`$INTEGER`"
+            "infants_in_seat": {
+              "a": true,
+              "h": "Infants In Seat",
+              "n": "infants_in_seat",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "infants_on_lap",
-              "req": false,
-              "type": "`$INTEGER`"
+            "infants_on_lap": {
+              "a": true,
+              "h": "Infants On Lap",
+              "n": "infants_on_lap",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "itineraries",
-              "req": true,
-              "type": "`$ARRAY`"
+            "itineraries": {
+              "a": true,
+              "h": "Itineraries",
+              "n": "itineraries",
+              "r": true,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "market",
-              "req": false,
-              "type": "`$STRING`"
+            "market": {
+              "a": true,
+              "h": "Market",
+              "n": "market",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "max_price",
-              "req": false,
-              "type": "`$ANY`"
+            "max_price": {
+              "a": true,
+              "h": "Max Price",
+              "n": "max_price",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "max_stops",
-              "req": false,
-              "type": "`$ANY`"
+            "max_stops": {
+              "a": true,
+              "h": "Max Stops",
+              "n": "max_stops",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "min_carry_on_bags",
-              "req": false,
-              "type": "`$ANY`"
+            "min_carry_on_bags": {
+              "a": true,
+              "h": "Min Carry On Bags",
+              "n": "min_carry_on_bags",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "min_checked_bags",
-              "req": false,
-              "type": "`$ANY`"
+            "min_checked_bags": {
+              "a": true,
+              "h": "Min Checked Bags",
+              "n": "min_checked_bags",
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "origin",
-              "req": true,
-              "type": "`$STRING`"
+            "origin": {
+              "a": true,
+              "h": "Origin",
+              "n": "origin",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "return_date",
+            "return_date": {
+              "a": true,
+              "fo": "date",
+              "h": "Return Date",
+              "n": "return_date",
               "op": {
                 "create": {
                   "req": true,
                   "type": "`$STRING`"
                 }
               },
-              "req": false,
-              "type": "`$ANY`"
+              "r": false,
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "return_time_range",
-              "req": false,
-              "type": "`$ANY`"
+            "return_time_range": {
+              "a": true,
+              "h": "Return Time Range",
+              "n": "return_time_range",
+              "r": false,
+              "t": "`$ANY`"
             }
-          ],
+          },
           "name": "fare_search_response_model",
           "op": {
             "create": {
@@ -557,18 +675,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/fares/one-way",
-                    "json": "{\"operationId\":\"search_one_way_api_fares_one_way_post\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"adults\":{\"default\":1,\"minimum\":1,\"title\":\"Adults\",\"type\":\"integer\"},\"airlines_exclude\":{\"anyOf\":[{\"items\":{\"type\":\"string\"},\"type\":\"array\"},{\"type\":\"null\"}],\"title\":\"Airlines Exclude\"},\"airlines_include\":{\"anyOf\":[{\"items\":{\"type\":\"string\"},\"type\":\"array\"},{\"type\":\"null\"}],\"title\":\"Airlines Include\"},\"allow_self_transfer\":{\"default\":true,\"title\":\"Allow Self Transfer\",\"type\":\"boolean\"},\"cabin_class\":{\"default\":\"economy\",\"enum\":[\"economy\",\"premium_economy\",\"business\",\"first\"],\"title\":\"Cabin Class\",\"type\":\"string\"},\"children\":{\"default\":0,\"minimum\":0,\"title\":\"Children\",\"type\":\"integer\"},\"departure_date\":{\"format\":\"date\",\"title\":\"Departure Date\",\"type\":\"string\"},\"departure_time_range\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"arrival_earliest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Arrival Earliest Hour\"},\"arrival_latest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Arrival Latest Hour\"},\"earliest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Earliest Hour\"},\"latest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Latest Hour\"}},\"title\":\"TimeRangeInput\",\"type\":\"object\"},{\"type\":\"null\"}]},\"destination\":{\"title\":\"Destination\",\"type\":\"string\"},\"infants_in_seat\":{\"default\":0,\"minimum\":0,\"title\":\"Infants In Seat\",\"type\":\"integer\"},\"infants_on_lap\":{\"default\":0,\"minimum\":0,\"title\":\"Infants On Lap\",\"type\":\"integer\"},\"market\":{\"default\":\"US\",\"title\":\"Market\",\"type\":\"string\"},\"max_price\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Max Price\"},\"max_stops\":{\"anyOf\":[{\"maximum\":2,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Max Stops\"},\"min_carry_on_bags\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Min Carry On Bags\"},\"min_checked_bags\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Min Checked Bags\"},\"origin\":{\"title\":\"Origin\",\"type\":\"string\"}},\"required\":[\"origin\",\"destination\",\"departure_date\"],\"title\":\"OneWayRequest\",\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"departure_date\":{\"title\":\"Departure Date\",\"type\":\"string\"},\"destination\":{\"title\":\"Destination\",\"type\":\"string\"},\"itineraries\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"bags\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"carry_on\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Carry On\"},\"checked\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Checked\"}},\"title\":\"BaggageAllowanceModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"cabin_class\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Cabin Class\"},\"ignav_id\":{\"title\":\"Ignav Id\",\"type\":\"string\"},\"inbound\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"carrier\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Carrier\"},\"duration_minutes\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Duration Minutes\"},\"segments\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"aircraft\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Aircraft\"},\"arrival_airport\":{\"title\":\"Arrival Airport\",\"type\":\"string\"},\"arrival_time_local\":{\"title\":\"Arrival Time Local\",\"type\":\"string\"},\"arrival_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Time Utc\"},\"arrival_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Timezone\"},\"departure_airport\":{\"title\":\"Departure Airport\",\"type\":\"string\"},\"departure_time_local\":{\"title\":\"Departure Time Local\",\"type\":\"string\"},\"departure_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Time Utc\"},\"departure_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Timezone\"},\"duration_minutes\":{\"title\":\"Duration Minutes\",\"type\":\"integer\"},\"flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Flight Number\"},\"marketing_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Marketing Carrier Code\"},\"operating_carrier_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Operating Carrier Name\"}},\"required\":[\"marketing_carrier_code\",\"flight_number\",\"operating_carrier_name\",\"departure_airport\",\"departure_time_local\",\"departure_timezone\",\"departure_time_utc\",\"arrival_airport\",\"arrival_time_local\",\"arrival_timezone\",\"arrival_time_utc\",\"duration_minutes\",\"aircraft\"],\"title\":\"SegmentModel\",\"type\":\"object\"},\"title\":\"Segments\",\"type\":\"array\"}},\"required\":[\"segments\"],\"title\":\"LegModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"outbound\":{\"additionalProperties\":false,\"properties\":{\"carrier\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Carrier\"},\"duration_minutes\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Duration Minutes\"},\"segments\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"aircraft\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Aircraft\"},\"arrival_airport\":{\"title\":\"Arrival Airport\",\"type\":\"string\"},\"arrival_time_local\":{\"title\":\"Arrival Time Local\",\"type\":\"string\"},\"arrival_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Time Utc\"},\"arrival_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Timezone\"},\"departure_airport\":{\"title\":\"Departure Airport\",\"type\":\"string\"},\"departure_time_local\":{\"title\":\"Departure Time Local\",\"type\":\"string\"},\"departure_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Time Utc\"},\"departure_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Timezone\"},\"duration_minutes\":{\"title\":\"Duration Minutes\",\"type\":\"integer\"},\"flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Flight Number\"},\"marketing_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Marketing Carrier Code\"},\"operating_carrier_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Operating Carrier Name\"}},\"required\":[\"marketing_carrier_code\",\"flight_number\",\"operating_carrier_name\",\"departure_airport\",\"departure_time_local\",\"departure_timezone\",\"departure_time_utc\",\"arrival_airport\",\"arrival_time_local\",\"arrival_timezone\",\"arrival_time_utc\",\"duration_minutes\",\"aircraft\"],\"title\":\"SegmentModel\",\"type\":\"object\"},\"title\":\"Segments\",\"type\":\"array\"}},\"required\":[\"segments\"],\"title\":\"LegModel\",\"type\":\"object\"},\"price\":{\"additionalProperties\":false,\"properties\":{\"amount\":{\"title\":\"Amount\",\"type\":\"number\"},\"currency\":{\"title\":\"Currency\",\"type\":\"string\"},\"status\":{\"enum\":[\"verified\",\"unverified\"],\"title\":\"Status\",\"type\":\"string\"}},\"required\":[\"amount\",\"currency\",\"status\"],\"title\":\"PriceModel\",\"type\":\"object\"},\"requires_self_transfer\":{\"anyOf\":[{\"type\":\"boolean\"},{\"type\":\"null\"}],\"title\":\"Requires Self Transfer\"}},\"required\":[\"price\",\"outbound\",\"ignav_id\"],\"title\":\"ItineraryModel\",\"type\":\"object\"},\"title\":\"Itineraries\",\"type\":\"array\"},\"origin\":{\"title\":\"Origin\",\"type\":\"string\"},\"return_date\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Return Date\"}},\"required\":[\"origin\",\"destination\",\"departure_date\",\"itineraries\"],\"title\":\"FareSearchResponseModel\",\"type\":\"object\"}}},\"description\":\"Successful Response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Bad Request\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Unauthorized\"},\"424\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Failed Dependency\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/fares/one-way",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/fares/one-way",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -579,8 +698,7 @@
                       "lit": "one-way"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": {
                       "adults": "`reqdata.adult`",
                       "airlines_exclude": "`reqdata.airlines_exclude`",
@@ -604,18 +722,19 @@
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/fares/round-trip",
-                    "json": "{\"operationId\":\"search_round_trip_api_fares_round_trip_post\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"adults\":{\"default\":1,\"minimum\":1,\"title\":\"Adults\",\"type\":\"integer\"},\"airlines_exclude\":{\"anyOf\":[{\"items\":{\"type\":\"string\"},\"type\":\"array\"},{\"type\":\"null\"}],\"title\":\"Airlines Exclude\"},\"airlines_include\":{\"anyOf\":[{\"items\":{\"type\":\"string\"},\"type\":\"array\"},{\"type\":\"null\"}],\"title\":\"Airlines Include\"},\"allow_self_transfer\":{\"default\":true,\"title\":\"Allow Self Transfer\",\"type\":\"boolean\"},\"cabin_class\":{\"default\":\"economy\",\"enum\":[\"economy\",\"premium_economy\",\"business\",\"first\"],\"title\":\"Cabin Class\",\"type\":\"string\"},\"children\":{\"default\":0,\"minimum\":0,\"title\":\"Children\",\"type\":\"integer\"},\"departure_date\":{\"format\":\"date\",\"title\":\"Departure Date\",\"type\":\"string\"},\"departure_time_range\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"arrival_earliest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Arrival Earliest Hour\"},\"arrival_latest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Arrival Latest Hour\"},\"earliest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Earliest Hour\"},\"latest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Latest Hour\"}},\"title\":\"TimeRangeInput\",\"type\":\"object\"},{\"type\":\"null\"}]},\"destination\":{\"title\":\"Destination\",\"type\":\"string\"},\"infants_in_seat\":{\"default\":0,\"minimum\":0,\"title\":\"Infants In Seat\",\"type\":\"integer\"},\"infants_on_lap\":{\"default\":0,\"minimum\":0,\"title\":\"Infants On Lap\",\"type\":\"integer\"},\"market\":{\"default\":\"US\",\"title\":\"Market\",\"type\":\"string\"},\"max_price\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Max Price\"},\"max_stops\":{\"anyOf\":[{\"maximum\":2,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Max Stops\"},\"min_carry_on_bags\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Min Carry On Bags\"},\"min_checked_bags\":{\"anyOf\":[{\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Min Checked Bags\"},\"origin\":{\"title\":\"Origin\",\"type\":\"string\"},\"return_date\":{\"format\":\"date\",\"title\":\"Return Date\",\"type\":\"string\"},\"return_time_range\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"arrival_earliest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Arrival Earliest Hour\"},\"arrival_latest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Arrival Latest Hour\"},\"earliest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Earliest Hour\"},\"latest_hour\":{\"anyOf\":[{\"maximum\":23,\"minimum\":0,\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Latest Hour\"}},\"title\":\"TimeRangeInput\",\"type\":\"object\"},{\"type\":\"null\"}]}},\"required\":[\"origin\",\"destination\",\"departure_date\",\"return_date\"],\"title\":\"RoundTripRequest\",\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"departure_date\":{\"title\":\"Departure Date\",\"type\":\"string\"},\"destination\":{\"title\":\"Destination\",\"type\":\"string\"},\"itineraries\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"bags\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"carry_on\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Carry On\"},\"checked\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Checked\"}},\"title\":\"BaggageAllowanceModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"cabin_class\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Cabin Class\"},\"ignav_id\":{\"title\":\"Ignav Id\",\"type\":\"string\"},\"inbound\":{\"anyOf\":[{\"additionalProperties\":false,\"properties\":{\"carrier\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Carrier\"},\"duration_minutes\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Duration Minutes\"},\"segments\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"aircraft\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Aircraft\"},\"arrival_airport\":{\"title\":\"Arrival Airport\",\"type\":\"string\"},\"arrival_time_local\":{\"title\":\"Arrival Time Local\",\"type\":\"string\"},\"arrival_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Time Utc\"},\"arrival_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Timezone\"},\"departure_airport\":{\"title\":\"Departure Airport\",\"type\":\"string\"},\"departure_time_local\":{\"title\":\"Departure Time Local\",\"type\":\"string\"},\"departure_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Time Utc\"},\"departure_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Timezone\"},\"duration_minutes\":{\"title\":\"Duration Minutes\",\"type\":\"integer\"},\"flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Flight Number\"},\"marketing_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Marketing Carrier Code\"},\"operating_carrier_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Operating Carrier Name\"}},\"required\":[\"marketing_carrier_code\",\"flight_number\",\"operating_carrier_name\",\"departure_airport\",\"departure_time_local\",\"departure_timezone\",\"departure_time_utc\",\"arrival_airport\",\"arrival_time_local\",\"arrival_timezone\",\"arrival_time_utc\",\"duration_minutes\",\"aircraft\"],\"title\":\"SegmentModel\",\"type\":\"object\"},\"title\":\"Segments\",\"type\":\"array\"}},\"required\":[\"segments\"],\"title\":\"LegModel\",\"type\":\"object\"},{\"type\":\"null\"}]},\"outbound\":{\"additionalProperties\":false,\"properties\":{\"carrier\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Carrier\"},\"duration_minutes\":{\"anyOf\":[{\"type\":\"integer\"},{\"type\":\"null\"}],\"title\":\"Duration Minutes\"},\"segments\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"aircraft\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Aircraft\"},\"arrival_airport\":{\"title\":\"Arrival Airport\",\"type\":\"string\"},\"arrival_time_local\":{\"title\":\"Arrival Time Local\",\"type\":\"string\"},\"arrival_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Time Utc\"},\"arrival_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Arrival Timezone\"},\"departure_airport\":{\"title\":\"Departure Airport\",\"type\":\"string\"},\"departure_time_local\":{\"title\":\"Departure Time Local\",\"type\":\"string\"},\"departure_time_utc\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Time Utc\"},\"departure_timezone\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Departure Timezone\"},\"duration_minutes\":{\"title\":\"Duration Minutes\",\"type\":\"integer\"},\"flight_number\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Flight Number\"},\"marketing_carrier_code\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Marketing Carrier Code\"},\"operating_carrier_name\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Operating Carrier Name\"}},\"required\":[\"marketing_carrier_code\",\"flight_number\",\"operating_carrier_name\",\"departure_airport\",\"departure_time_local\",\"departure_timezone\",\"departure_time_utc\",\"arrival_airport\",\"arrival_time_local\",\"arrival_timezone\",\"arrival_time_utc\",\"duration_minutes\",\"aircraft\"],\"title\":\"SegmentModel\",\"type\":\"object\"},\"title\":\"Segments\",\"type\":\"array\"}},\"required\":[\"segments\"],\"title\":\"LegModel\",\"type\":\"object\"},\"price\":{\"additionalProperties\":false,\"properties\":{\"amount\":{\"title\":\"Amount\",\"type\":\"number\"},\"currency\":{\"title\":\"Currency\",\"type\":\"string\"},\"status\":{\"enum\":[\"verified\",\"unverified\"],\"title\":\"Status\",\"type\":\"string\"}},\"required\":[\"amount\",\"currency\",\"status\"],\"title\":\"PriceModel\",\"type\":\"object\"},\"requires_self_transfer\":{\"anyOf\":[{\"type\":\"boolean\"},{\"type\":\"null\"}],\"title\":\"Requires Self Transfer\"}},\"required\":[\"price\",\"outbound\",\"ignav_id\"],\"title\":\"ItineraryModel\",\"type\":\"object\"},\"title\":\"Itineraries\",\"type\":\"array\"},\"origin\":{\"title\":\"Origin\",\"type\":\"string\"},\"return_date\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Return Date\"}},\"required\":[\"origin\",\"destination\",\"departure_date\",\"itineraries\"],\"title\":\"FareSearchResponseModel\",\"type\":\"object\"}}},\"description\":\"Successful Response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Bad Request\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Unauthorized\"},\"424\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"error\":{\"additionalProperties\":false,\"properties\":{\"code\":{\"title\":\"Code\",\"type\":\"string\"},\"field\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"title\":\"Field\"},\"message\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Type\",\"type\":\"string\"}},\"required\":[\"type\",\"code\",\"message\"],\"title\":\"ErrorDetailModel\",\"type\":\"object\"}},\"required\":[\"error\"],\"title\":\"ErrorResponseModel\",\"type\":\"object\"}}},\"description\":\"Failed Dependency\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"in\":\"header\",\"name\":\"X-Api-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/fares/round-trip",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/fares/round-trip",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -626,8 +745,7 @@
                       "lit": "round-trip"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": {
                       "adults": "`reqdata.adult`",
                       "airlines_exclude": "`reqdata.airlines_exclude`",
@@ -1076,13 +1194,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1102,15 +1220,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "booking_link_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         },
@@ -1123,15 +1241,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "fare_search_model_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         },
@@ -1144,15 +1262,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "fare_search_response_model_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         }

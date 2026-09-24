@@ -45,7 +45,7 @@ local airports, err = client:Airport():list()
 if err then error(err) end
 
 for _, item in ipairs(airports) do
-  print(item["city"])
+  print(item)
 end
 ```
 
