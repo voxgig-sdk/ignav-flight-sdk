@@ -1,5 +1,5 @@
 {
-  "name": "voxgig-sdk/ignav-flight",
+  "name": "voxgig-sdk/ignav-flight-sdk",
   "description": "Unofficial generated PHP SDK for the Ignav Public public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
   "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "ignav-flight"],
