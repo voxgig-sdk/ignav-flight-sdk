@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 IgnavFlightUtility.registrar = ->(u) {
   u.clean = IgnavFlightUtilities::Clean
+  u.clean_add = IgnavFlightUtilities::CleanAdd
+  u.clean_explain = IgnavFlightUtilities::CleanExplain
   u.done = IgnavFlightUtilities::Done
   u.make_error = IgnavFlightUtilities::MakeError
   u.feature_add = IgnavFlightUtilities::FeatureAdd

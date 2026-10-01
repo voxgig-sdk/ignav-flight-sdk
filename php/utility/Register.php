@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 IgnavFlightUtility::setRegistrar(function (IgnavFlightUtility $u): void {
     $u->clean = [IgnavFlightClean::class, 'call'];
+    $u->clean_add = [IgnavFlightClean::class, 'add'];
+    $u->clean_explain = [IgnavFlightDone::class, 'clean_explain'];
     $u->done = [IgnavFlightDone::class, 'call'];
     $u->make_error = [IgnavFlightMakeError::class, 'call'];
     $u->feature_add = [IgnavFlightFeatureAdd::class, 'call'];
