@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/ignav-flight-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/ignav-flight-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -25,7 +25,7 @@ composer require voxgig-sdk/ignav-flight-sdk:@dev
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key in the `X-Api-Key` header.
 
 ### 1. Create a client
 
@@ -43,7 +43,7 @@ $client = new IgnavFlightSDK([
 ```php
 try {
     // list() returns entity instances; data_get() reads each record.
-    $airports = $client->Airport()->list();
+    $airports = $client->Airport()->list(["q" => "example"]);
     foreach ($airports as $record) {
         $item = $record->data_get();
         echo $item["city"] . "\n";
@@ -61,7 +61,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $airports = $client->Airport()->list();
+    $airports = $client->Airport()->list(["q" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -135,7 +135,7 @@ $client = IgnavFlightSDK::test();
 
 // list() returns entity instances (throws on error);
 // call data_get() for the mock record.
-$airport = $client->Airport()->list();
+$airport = $client->Airport()->list(["q" => "example"]);
 print_r(array_map(fn($item) => $item->data_get(), $airport));
 ```
 
@@ -228,8 +228,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
+| `create` | `($reqdata, $ctrl): mixed` | Create a new entity, and return it. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -239,9 +239,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -372,8 +372,8 @@ Create an instance: `$airport = $client->Airport();`
 #### Example: List
 
 ```php
-// list() returns an array of Airport records (throws on error).
-$airports = $client->Airport()->list();
+// list() returns an array of Airport entities, one per record (throws on error).
+$airports = $client->Airport()->list(["q" => "example"]);
 ```
 
 
@@ -447,7 +447,6 @@ Create an instance: `$fare_search_model = $client->FareSearchModel();`
 
 ```php
 $fare_search_model = $client->FareSearchModel()->create([
-    "itineraries" => null, // array
     "legs" => null, // array
 ]);
 ```
@@ -494,8 +493,8 @@ Create an instance: `$fare_search_response_model = $client->FareSearchResponseMo
 $fare_search_response_model = $client->FareSearchResponseModel()->create([
     "departure_date" => null, // string
     "destination" => null, // string
-    "itineraries" => null, // array
     "origin" => null, // string
+    "return_date" => null, // mixed
 ]);
 ```
 
@@ -662,7 +661,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $airport = $client->Airport();
-$airport->list();
+$airport->list(["q" => "example"]);
 
 // $airport->data_get() now returns the airport data from the last list
 // $airport->match_get() returns the last match criteria

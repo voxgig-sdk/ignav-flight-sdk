@@ -251,9 +251,6 @@ FareSearchModel = Struct.new(
 # @!attribute [rw] infants_on_lap
 #   @return [Integer, nil]
 #
-# @!attribute [rw] itineraries
-#   @return [Array]
-#
 # @!attribute [rw] legs
 #   @return [Array]
 #
@@ -277,7 +274,6 @@ FareSearchModelCreateData = Struct.new(
   :children,
   :infants_in_seat,
   :infants_on_lap,
-  :itineraries,
   :legs,
   :market,
   :max_price,
@@ -406,9 +402,6 @@ FareSearchResponseModel = Struct.new(
 # @!attribute [rw] infants_on_lap
 #   @return [Integer, nil]
 #
-# @!attribute [rw] itineraries
-#   @return [Array]
-#
 # @!attribute [rw] market
 #   @return [String, nil]
 #
@@ -428,7 +421,7 @@ FareSearchResponseModel = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] return_date
-#   @return [Object, nil]
+#   @return [Object]
 #
 # @!attribute [rw] return_time_range
 #   @return [Object, nil]
@@ -444,7 +437,6 @@ FareSearchResponseModelCreateData = Struct.new(
   :destination,
   :infants_in_seat,
   :infants_on_lap,
-  :itineraries,
   :market,
   :max_price,
   :max_stops,

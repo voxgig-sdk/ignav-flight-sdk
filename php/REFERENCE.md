@@ -114,10 +114,10 @@ $airport = $client->Airport();
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$results = $client->Airport()->list();
+$results = $client->Airport()->list(["q" => "example"]);
 ```
 
 ### Common Methods
@@ -179,7 +179,7 @@ $booking_link = $client->BookingLink();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->BookingLink()->create([
@@ -245,11 +245,10 @@ $fare_search_model = $client->FareSearchModel();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->FareSearchModel()->create([
-  "itineraries" => null, // array
   "legs" => null, // array
 ]);
 ```
@@ -344,14 +343,14 @@ $fare_search_response_model = $client->FareSearchResponseModel();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->FareSearchResponseModel()->create([
   "departure_date" => null, // string
   "destination" => null, // string
-  "itineraries" => null, // array
   "origin" => null, // string
+  "return_date" => null, // mixed
 ]);
 ```
 
@@ -542,6 +541,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

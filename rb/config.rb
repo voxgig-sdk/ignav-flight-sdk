@@ -79,6 +79,7 @@ module IgnavFlightConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -176,9 +177,12 @@ module IgnavFlightConfig
                   },
                   "select" => {
                     "exist" => [
-                      "limit",
                       "q",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -309,6 +313,10 @@ module IgnavFlightConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -439,6 +447,10 @@ module IgnavFlightConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },
@@ -554,7 +566,6 @@ module IgnavFlightConfig
                   "type" => "`$STRING`",
                 },
               },
-              "format" => "date",
             },
             {
               "name" => "return_time_range",
@@ -613,6 +624,10 @@ module IgnavFlightConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
                 {
                   "kind" => "http",
@@ -661,6 +676,10 @@ module IgnavFlightConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
               ],
             },

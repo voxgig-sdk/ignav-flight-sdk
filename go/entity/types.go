@@ -58,7 +58,6 @@ type FareSearchModelCreateData struct {
 	Children *int `json:"children,omitempty"`
 	InfantsInSeat *int `json:"infants_in_seat,omitempty"`
 	InfantsOnLap *int `json:"infants_on_lap,omitempty"`
-	Itineraries []any `json:"itineraries"`
 	Legs []any `json:"legs"`
 	Market *string `json:"market,omitempty"`
 	MaxPrice *any `json:"max_price,omitempty"`
@@ -83,14 +82,13 @@ type FareSearchResponseModelCreateData struct {
 	Destination string `json:"destination"`
 	InfantsInSeat *int `json:"infants_in_seat,omitempty"`
 	InfantsOnLap *int `json:"infants_on_lap,omitempty"`
-	Itineraries []any `json:"itineraries"`
 	Market *string `json:"market,omitempty"`
 	MaxPrice *any `json:"max_price,omitempty"`
 	MaxStops *any `json:"max_stops,omitempty"`
 	MinCarryOnBags *any `json:"min_carry_on_bags,omitempty"`
 	MinCheckedBags *any `json:"min_checked_bags,omitempty"`
 	Origin string `json:"origin"`
-	ReturnDate *any `json:"return_date,omitempty"`
+	ReturnDate any `json:"return_date"`
 	ReturnTimeRange *any `json:"return_time_range,omitempty"`
 }
 

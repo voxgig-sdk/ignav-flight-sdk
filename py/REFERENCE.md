@@ -107,14 +107,14 @@ airport = client.Airport()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list[AirportEntity]`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
 
 ```python
 results = client.Airport().list({"q": "example"})
 for airport in results:
-    print(airport)
+    print(airport.data_get())
 ```
 
 ### Common Methods
@@ -173,9 +173,9 @@ booking_link = client.BookingLink()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> BookingLinkEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.BookingLink().create({
@@ -238,13 +238,12 @@ fare_search_model = client.FareSearchModel()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> FareSearchModelEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.FareSearchModel().create({
-    "itineraries": [],  # list
     "legs": [],  # list
 })
 ```
@@ -336,16 +335,16 @@ fare_search_response_model = client.FareSearchResponseModel()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> FareSearchResponseModelEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.FareSearchResponseModel().create({
     "departure_date": "example_departure_date",  # str
     "destination": "example_destination",  # str
-    "itineraries": [],  # list
     "origin": "example_origin",  # str
+    "return_date": "example_return_date",  # Any
 })
 ```
 
@@ -535,6 +534,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

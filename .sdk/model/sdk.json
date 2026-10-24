@@ -165,11 +165,14 @@
                   "o": "/api/airports",
                   "q": {
                     "exist": [
-                      "limit",
                       "q"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -303,6 +306,22 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "adults",
+                    "children",
+                    "departure_date",
+                    "destination",
+                    "ignav_id",
+                    "inbound_carrier_code",
+                    "inbound_flight_number",
+                    "infants_in_seat",
+                    "infants_on_lap",
+                    "market",
+                    "origin",
+                    "outbound_carrier_code",
+                    "outbound_flight_number",
+                    "return_date"
+                  ],
                   "co": {
                     "id": "POST /api/fares/booking-links",
                     "source": "openapi3",
@@ -314,6 +333,10 @@
                   "o": "/api/fares/booking-links",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -465,6 +488,21 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "adults",
+                    "airlines_exclude",
+                    "airlines_include",
+                    "allow_self_transfer",
+                    "cabin_class",
+                    "children",
+                    "infants_in_seat",
+                    "infants_on_lap",
+                    "legs",
+                    "market",
+                    "max_price",
+                    "min_carry_on_bags",
+                    "min_checked_bags"
+                  ],
                   "co": {
                     "id": "POST /api/fares/search",
                     "source": "openapi3",
@@ -476,6 +514,10 @@
                   "o": "/api/fares/search",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -648,7 +690,6 @@
             },
             "return_date": {
               "a": true,
-              "fo": "date",
               "h": "Return Date",
               "n": "return_date",
               "op": {
@@ -676,6 +717,25 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "adults",
+                    "airlines_exclude",
+                    "airlines_include",
+                    "allow_self_transfer",
+                    "cabin_class",
+                    "children",
+                    "departure_date",
+                    "departure_time_range",
+                    "destination",
+                    "infants_in_seat",
+                    "infants_on_lap",
+                    "market",
+                    "max_price",
+                    "max_stops",
+                    "min_carry_on_bags",
+                    "min_checked_bags",
+                    "origin"
+                  ],
                   "co": {
                     "id": "POST /api/fares/one-way",
                     "source": "openapi3",
@@ -687,6 +747,10 @@
                   "o": "/api/fares/one-way",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -723,6 +787,27 @@
                 },
                 {
                   "a": true,
+                  "bf": [
+                    "adults",
+                    "airlines_exclude",
+                    "airlines_include",
+                    "allow_self_transfer",
+                    "cabin_class",
+                    "children",
+                    "departure_date",
+                    "departure_time_range",
+                    "destination",
+                    "infants_in_seat",
+                    "infants_on_lap",
+                    "market",
+                    "max_price",
+                    "max_stops",
+                    "min_carry_on_bags",
+                    "min_checked_bags",
+                    "origin",
+                    "return_date",
+                    "return_time_range"
+                  ],
                   "co": {
                     "id": "POST /api/fares/round-trip",
                     "source": "openapi3",
@@ -734,6 +819,10 @@
                   "o": "/api/fares/round-trip",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1100,6 +1189,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -1303,7 +1393,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -1356,6 +1446,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -1586,7 +1681,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1963,6 +2061,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

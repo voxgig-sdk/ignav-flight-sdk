@@ -97,6 +97,22 @@ main: kit: entity: booking_link: {
       name: "create"
       points: [
         {
+          bf: [
+            "adults"
+            "children"
+            "departure_date"
+            "destination"
+            "ignav_id"
+            "inbound_carrier_code"
+            "inbound_flight_number"
+            "infants_in_seat"
+            "infants_on_lap"
+            "market"
+            "origin"
+            "outbound_carrier_code"
+            "outbound_flight_number"
+            "return_date"
+          ]
           co: {
             id: "POST /api/fares/booking-links"
             source: "openapi3"
@@ -104,6 +120,10 @@ main: kit: entity: booking_link: {
           }
           m: "POST"
           o: "/api/fares/booking-links"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

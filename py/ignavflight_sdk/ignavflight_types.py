@@ -86,7 +86,6 @@ class FareSearchModel(FareSearchModelRequired, total=False):
 
 
 class FareSearchModelCreateDataRequired(TypedDict):
-    itineraries: list
     legs: list
 
 
@@ -134,8 +133,8 @@ class FareSearchResponseModel(FareSearchResponseModelRequired, total=False):
 class FareSearchResponseModelCreateDataRequired(TypedDict):
     departure_date: str
     destination: str
-    itineraries: list
     origin: str
+    return_date: Any
 
 
 class FareSearchResponseModelCreateData(FareSearchResponseModelCreateDataRequired, total=False):
@@ -153,5 +152,4 @@ class FareSearchResponseModelCreateData(FareSearchResponseModelCreateDataRequire
     max_stops: Any
     min_carry_on_bags: Any
     min_checked_bags: Any
-    return_date: Any
     return_time_range: Any

@@ -97,6 +97,21 @@ main: kit: entity: fare_search_model: {
       name: "create"
       points: [
         {
+          bf: [
+            "adults"
+            "airlines_exclude"
+            "airlines_include"
+            "allow_self_transfer"
+            "cabin_class"
+            "children"
+            "infants_in_seat"
+            "infants_on_lap"
+            "legs"
+            "market"
+            "max_price"
+            "min_carry_on_bags"
+            "min_checked_bags"
+          ]
           co: {
             id: "POST /api/fares/search"
             source: "openapi3"
@@ -104,6 +119,10 @@ main: kit: entity: fare_search_model: {
           }
           m: "POST"
           o: "/api/fares/search"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

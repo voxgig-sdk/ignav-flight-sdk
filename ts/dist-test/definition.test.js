@@ -16,13 +16,27 @@ const PLAN = [
         "path": "/api/airports",
         "args": [],
         "select": {
-            "limit": "v1",
-            "q": "v1"
+            "q": "v1",
+            "limit": 10
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "q",
             "limit"
+        ],
+        "queryArgs": [
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": [
             [
@@ -52,7 +66,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [
             [
                 {
@@ -122,7 +141,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [
             [
                 {

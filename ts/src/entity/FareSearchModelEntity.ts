@@ -131,9 +131,12 @@ class FareSearchModelEntity extends IgnavFlightEntityBase<FareSearchModel> {
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
       try {
+        // Once per operation: makeError fires it for its own error.
+        if (!ctx.unexpectedFired) {
 
-        fres = featureHook(ctx, 'PreUnexpected')
-        if (fres instanceof Promise) { await fres }
+          fres = featureHook(ctx, 'PreUnexpected')
+          if (fres instanceof Promise) { await fres }
+        }
       }
       catch (hookerr: any) {
         err = hookerr
@@ -146,11 +149,12 @@ class FareSearchModelEntity extends IgnavFlightEntityBase<FareSearchModel> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<FareSearchModel> return stays clean under strict null checks.
+        // Promise<FareSearchModelEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

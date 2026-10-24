@@ -96,7 +96,6 @@ class FareSearchModelCreateData
     public ?int $children = null;
     public ?int $infants_in_seat = null;
     public ?int $infants_on_lap = null;
-    public array $itineraries;
     public array $legs;
     public ?string $market = null;
     public mixed $max_price = null;
@@ -143,14 +142,13 @@ class FareSearchResponseModelCreateData
     public string $destination;
     public ?int $infants_in_seat = null;
     public ?int $infants_on_lap = null;
-    public array $itineraries;
     public ?string $market = null;
     public mixed $max_price = null;
     public mixed $max_stops = null;
     public mixed $min_carry_on_bags = null;
     public mixed $min_checked_bags = null;
     public string $origin;
-    public mixed $return_date = null;
+    public mixed $return_date;
     public mixed $return_time_range = null;
 }
 

@@ -12,6 +12,8 @@ type IgnavFlightError struct {
 	Ctx    *Context `json:"-"`
 	Result any
 	Spec   any
+	// The HTTP status, -1 when there was no response.
+	Status int
 }
 
 func NewIgnavFlightError(code string, msg string, ctx *Context) *IgnavFlightError {
@@ -21,7 +23,12 @@ func NewIgnavFlightError(code string, msg string, ctx *Context) *IgnavFlightErro
 		Code:               code,
 		Msg:                msg,
 		Ctx:                ctx,
+		Status:             -1,
 	}
+}
+
+func (e *IgnavFlightError) NotFound() bool {
+	return 404 == e.Status
 }
 
 func (e *IgnavFlightError) Error() string {
@@ -35,6 +42,7 @@ func (e *IgnavFlightError) Record() map[string]any {
 		"sdk":     e.Sdk,
 		"code":    e.Code,
 		"message": e.Msg,
+		"status":  e.Status,
 		"result":  e.Result,
 		"spec":    e.Spec,
 	}

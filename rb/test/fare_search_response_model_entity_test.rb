@@ -6,10 +6,28 @@ require_relative "../IgnavFlight_sdk"
 require_relative "runner"
 
 class FareSearchResponseModelEntityTest < Minitest::Test
+  # main.kit.test.live.strict is true (the default is true): a live
+  # request that fails, or a live test missing an input it needs,
+  # fails the test.
+  # An account with no record for a test to read skips it either way.
+  LIVE_STRICT = true
+
   def test_create_instance
     testsdk = IgnavFlightSDK.test(nil, nil)
     ent = testsdk.FareSearchResponseModel(nil)
     assert !ent.nil?
+  end
+
+  def test_validate
+    cfg = IgnavFlightConfig.shared_config
+    unless cfg["feature"].is_a?(Hash) && cfg["feature"].key?("validate")
+      skip("feature not present in this SDK: validate")
+    end
+    client = IgnavFlightSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
+    err = assert_raises(StandardError) do
+      client.FareSearchResponseModel(nil).create({ "adults" => "x", "departure_date" => "x", "destination" => "x", "origin" => "x", "return_date" => "x" }, nil)
+    end
+    assert_equal "validate_failed", err.code
   end
 
   def test_basic_flow
@@ -22,12 +40,6 @@ class FareSearchResponseModelEntityTest < Minitest::Test
         skip(_reason || "skipped via sdk-test-control.json")
         return
       end
-    end
-    # The basic flow consumes synthetic IDs from the fixture. In live mode
-    # without an *_ENTID env override, those IDs hit the live API and 4xx.
-    if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set IGNAV_FLIGHT_TEST_FARE_SEARCH_RESPONSE_MODEL_ENTID JSON to run live"
-      return
     end
     client = setup[:client]
 
@@ -47,7 +59,7 @@ def fare_search_response_model_basic_setup(extra)
   Runner.load_env_local
 
   entity_data_file = File.join(__dir__, "..", "..", ".sdk", "test", "entity", "fare_search_response_model", "FareSearchResponseModelTestData.json")
-  entity_data_source = File.read(entity_data_file)
+  entity_data_source = File.read(entity_data_file, encoding: "UTF-8")
   entity_data = JSON.parse(entity_data_source)
 
   options = {}
@@ -66,9 +78,8 @@ def fare_search_response_model_basic_setup(extra)
     }
   )
 
-  # Detect ENTID env override before envOverride consumes it. When live
-  # mode is on without a real override, the basic test runs against synthetic
-  # IDs from the fixture and 4xx's. Surface this so the test can skip.
+  # Whether *_ENTID supplied the idmap, read before env_override consumes
+  # it: without it, the ids a live flow binds are the fixture's synthetic ones.
   entid_env_raw = ENV["IGNAV_FLIGHT_TEST_FARE_SEARCH_RESPONSE_MODEL_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 

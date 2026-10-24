@@ -115,7 +115,6 @@ main: kit: entity: fare_search_response_model: {
       t: "`$STRING`"
     }
     return_date: {
-      fo: "date"
       h: "Return Date"
       n: "return_date"
       op: {
@@ -141,6 +140,25 @@ main: kit: entity: fare_search_response_model: {
       name: "create"
       points: [
         {
+          bf: [
+            "adults"
+            "airlines_exclude"
+            "airlines_include"
+            "allow_self_transfer"
+            "cabin_class"
+            "children"
+            "departure_date"
+            "departure_time_range"
+            "destination"
+            "infants_in_seat"
+            "infants_on_lap"
+            "market"
+            "max_price"
+            "max_stops"
+            "min_carry_on_bags"
+            "min_checked_bags"
+            "origin"
+          ]
           co: {
             id: "POST /api/fares/one-way"
             source: "openapi3"
@@ -148,6 +166,10 @@ main: kit: entity: fare_search_response_model: {
           }
           m: "POST"
           o: "/api/fares/one-way"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -183,6 +205,27 @@ main: kit: entity: fare_search_response_model: {
           }
         }
         {
+          bf: [
+            "adults"
+            "airlines_exclude"
+            "airlines_include"
+            "allow_self_transfer"
+            "cabin_class"
+            "children"
+            "departure_date"
+            "departure_time_range"
+            "destination"
+            "infants_in_seat"
+            "infants_on_lap"
+            "market"
+            "max_price"
+            "max_stops"
+            "min_carry_on_bags"
+            "min_checked_bags"
+            "origin"
+            "return_date"
+            "return_time_range"
+          ]
           co: {
             id: "POST /api/fares/round-trip"
             source: "openapi3"
@@ -190,6 +233,10 @@ main: kit: entity: fare_search_response_model: {
           }
           m: "POST"
           o: "/api/fares/round-trip"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

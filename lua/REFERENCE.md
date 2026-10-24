@@ -112,10 +112,10 @@ local airport = client:Airport(nil)
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:Airport():list()
+local results, err = client:Airport():list({ q = "example" })
 ```
 
 ### Common Methods
@@ -177,7 +177,7 @@ local booking_link = client:BookingLink(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:BookingLink():create({
@@ -243,11 +243,10 @@ local fare_search_model = client:FareSearchModel(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:FareSearchModel():create({
-  itineraries = --[[ table ]],
   legs = --[[ table ]],
 })
 ```
@@ -342,14 +341,14 @@ local fare_search_response_model = client:FareSearchResponseModel(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:FareSearchResponseModel():create({
   departure_date = --[[ string ]],
   destination = --[[ string ]],
-  itineraries = --[[ table ]],
   origin = --[[ string ]],
+  return_date = --[[ any ]],
 })
 ```
 
@@ -540,6 +539,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

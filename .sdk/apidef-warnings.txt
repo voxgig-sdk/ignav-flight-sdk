@@ -1,0 +1,11 @@
+{
+  point: "warning"
+  note: "Points POST /api/fares/one-way and POST /api/fares/round-trip on entity=fare_search_response_model op=create have the same selector (exist: none), so only POST /api/fares/one-way is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "fare_search_response_model"
+  op: "create"
+  points: [
+    "POST /api/fares/one-way"
+    "POST /api/fares/round-trip"
+  ]
+
+}

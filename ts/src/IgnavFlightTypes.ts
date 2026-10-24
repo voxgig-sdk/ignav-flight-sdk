@@ -77,7 +77,6 @@ export interface FareSearchModelCreateData {
   children?: number
   infants_in_seat?: number
   infants_on_lap?: number
-  itineraries: any[]
   legs: any[]
   market?: string
   max_price?: any
@@ -120,14 +119,13 @@ export interface FareSearchResponseModelCreateData {
   destination: string
   infants_in_seat?: number
   infants_on_lap?: number
-  itineraries: any[]
   market?: string
   max_price?: any
   max_stops?: any
   min_carry_on_bags?: any
   min_checked_bags?: any
   origin: string
-  return_date?: any
+  return_date: any
   return_time_range?: any
 }
 

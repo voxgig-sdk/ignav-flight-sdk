@@ -15,7 +15,7 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/ignav-flight-sdk/releases)), or from a
+release tag (`ts/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/ignav-flight-sdk/tags)), or from a
 clone, which carries the compiled `dist/`:
 
 ```bash
@@ -27,7 +27,7 @@ npm install ./ignav-flight-sdk/ts
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key in the `X-Api-Key` header.
 
 ### 1. Create a client
 
@@ -49,7 +49,7 @@ resolves to entities, not raw records. Iterate them directly, and call
 const airports = await client.Airport().list({ q: "example" })
 
 for (const airport of airports) {
-  console.log(airport)
+  console.log(airport.data())
 }
 ```
 
@@ -60,15 +60,16 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const airports = await client.Airport().list()
-  console.log(airports)
+  const airports = await client.Airport().list({ q: "example" })
+  console.log(airports.map((item) => item.data()))
 } catch (err) {
   console.error('list failed:', err)
 }
 ```
 
 The low-level `direct()` method does **not** throw — it returns the
-value or an `Error`, so check the result before using it:
+result envelope. Branch on `ok`; on failure `status` holds the HTTP status
+(for error responses) and `err` holds the error:
 
 ```ts
 const result = await client.direct({
@@ -77,8 +78,8 @@ const result = await client.direct({
   params: { id: 'example_id' },
 })
 
-if (result instanceof Error) {
-  throw result
+if (!result.ok) {
+  console.error('request failed:', result.status, result.err)
 }
 ```
 
@@ -96,9 +97,6 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
-if (result instanceof Error) {
-  throw result
-}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -127,10 +125,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = IgnavFlightSDK.test()
 
-const airport = await client.Airport().list()
-// airport is the entity, populated with mock response data
-// — call airport.data() for the record itself
-console.log(airport)
+const airports = await client.Airport().list({ q: 'example_q' })
+// airports is an array of Airport entities, one per mock record
+console.log(airports.map((airport) => airport.data()))
 ```
 
 You can also use the instance method:
@@ -148,7 +145,7 @@ Entity instances remember their last match and data:
 const entity = client.Airport()
 
 // First call runs the operation and stores its result
-await entity.list()
+await entity.list({ q: 'example_q' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -252,8 +249,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria, one per record. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity, and return it. |
 | `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
 | `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
@@ -262,8 +259,8 @@ All entities share the same interface.
 
 #### Return values
 
-Entity operations resolve to the entity data directly — there is no
-result envelope:
+Entity operations resolve to the entity itself — there is no result
+envelope, and an entity's `data()` reads its record:
 
 - `create` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
@@ -492,7 +489,6 @@ Create an instance: `const fare_search_model = client.FareSearchModel()`
 
 ```ts
 const fare_search_model = await client.FareSearchModel().create({
-  itineraries: [],
   legs: [],
 })
 ```
@@ -539,8 +535,8 @@ Create an instance: `const fare_search_response_model = client.FareSearchRespons
 const fare_search_response_model = await client.FareSearchResponseModel().create({
   departure_date: 'example_departure_date',
   destination: 'example_destination',
-  itineraries: [],
   origin: 'example_origin',
+  return_date: 'example_return_date',
 })
 ```
 
@@ -699,7 +695,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const airport = client.Airport()
-await airport.list()
+await airport.list({ q: "example" })
 
 // airport.data() now returns the airport data from the last `list`
 // airport.match() returns the last match criteria

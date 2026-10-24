@@ -73,7 +73,6 @@
 ---@field children? number
 ---@field infants_in_seat? number
 ---@field infants_on_lap? number
----@field itineraries table
 ---@field legs table
 ---@field market? string
 ---@field max_price? any
@@ -114,14 +113,13 @@
 ---@field destination string
 ---@field infants_in_seat? number
 ---@field infants_on_lap? number
----@field itineraries table
 ---@field market? string
 ---@field max_price? any
 ---@field max_stops? any
 ---@field min_carry_on_bags? any
 ---@field min_checked_bags? any
 ---@field origin string
----@field return_date? any
+---@field return_date any
 ---@field return_time_range? any
 
 local M = {}

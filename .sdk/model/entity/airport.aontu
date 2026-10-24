@@ -65,9 +65,12 @@ main: kit: entity: airport: {
           o: "/api/airports"
           q: {
             exist: [
-              "limit"
               "q"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

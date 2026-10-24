@@ -3,5 +3,11 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Public fare search, booking-link, and airport-search contract.",
+      "Successful Response"
+    ]
+  }
 }

@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/ignav-flight-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/ignav-flight-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -29,7 +29,7 @@ gem "voxgig-sdk-ignav-flight-sdk", path: "./ignav-flight-sdk/rb"
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key in the `X-Api-Key` header.
 
 ### 1. Create a client
 
@@ -45,10 +45,11 @@ client = IgnavFlightSDK.new({
 
 ```ruby
 begin
-  # list returns an Array of Airport records — iterate directly.
-  airports = client.Airport.list
+  # list returns an Array of Airport entities, one per record; data_get reads the record.
+  airports = client.Airport.list({ "q" => "example" })
   airports.each do |item|
-    puts "#{item["city"]}"
+    record = item.data_get
+    puts "#{record["city"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -62,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  airports = client.Airport.list()
+  airports = client.Airport.list({ "q" => "example" })
 rescue => err
   warn "list failed: #{err}"
 end
@@ -130,10 +131,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = IgnavFlightSDK.test
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-airport = client.Airport.list()
-puts airport
+# list returns an Array of Airport entities, one per mock record (raises on
+# error); data_get reads each record.
+airports = client.Airport.list({ "q" => "example" })
+airports.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -222,8 +223,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity, and return it. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -233,9 +234,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `IgnavFlightError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`IgnavFlightError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -365,8 +367,9 @@ Create an instance: `airport = client.Airport`
 #### Example: List
 
 ```ruby
-# list returns an Array of Airport records (raises on error).
-airports = client.Airport.list
+# list returns an Array of Airport entities, one per record (raises on error).
+airports = client.Airport.list({ "q" => "example" })
+airports.each { |item| puts item.data_get }
 ```
 
 
@@ -440,7 +443,6 @@ Create an instance: `fare_search_model = client.FareSearchModel`
 
 ```ruby
 fare_search_model = client.FareSearchModel.create({
-  "itineraries" => [], # Array
   "legs" => [], # Array
 })
 ```
@@ -487,8 +489,8 @@ Create an instance: `fare_search_response_model = client.FareSearchResponseModel
 fare_search_response_model = client.FareSearchResponseModel.create({
   "departure_date" => "example_departure_date", # String
   "destination" => "example_destination", # String
-  "itineraries" => [], # Array
   "origin" => "example_origin", # String
+  "return_date" => "example_return_date", # Object
 })
 ```
 
@@ -655,7 +657,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 airport = client.Airport
-airport.list()
+airport.list({ "q" => "example" })
 
 # airport.data_get now returns the airport data from the last list
 # airport.match_get returns the last match criteria
